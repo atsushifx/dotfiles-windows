@@ -1,0 +1,32 @@
+[credential]
+	helper = manager-core
+
+[color]
+	ui = auto
+
+[core]
+	autocrlf = false
+
+[user]
+	name = Atsushi Furukawa
+	email = atsushifx@aglabo.com
+
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+
+[push]
+	default = current
+
+[credential "helperselector"]
+	selected = store
+
+[init]
+	defaultBranch = main
+
+[alias]
+	co = checkout
+	st = status

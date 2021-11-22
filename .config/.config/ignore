@@ -1,0 +1,15 @@
+##
+## global ignore files using git
+##
+
+# credential files
+..ssh
+.dbus-keyrings
+.*credential*
+*/.*credential*
+
+
+
+## ignore programming
+#  patch
+*.diff
