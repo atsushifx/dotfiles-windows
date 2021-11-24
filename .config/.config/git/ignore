@@ -1,0 +1,17 @@
+##
+## global ignore files using git
+##
+
+# backup
+*~
+.DS_Store
+
+
+# credential files
+.ssh/
+.dbus-keyrings/
+.*credential*
+
+## ignore programming
+#  patch
+*.diff
