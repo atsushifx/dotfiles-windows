@@ -8,4 +8,6 @@
 *hst
 *info
 
-
+# tools
+.MakeMKV/
+.*/scoop/config.json
