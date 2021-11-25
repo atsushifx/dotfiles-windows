@@ -5,6 +5,7 @@
 # backup
 *~
 .DS_Store
+thums.db
 
 
 # credential files
