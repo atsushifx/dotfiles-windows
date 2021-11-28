@@ -8,6 +8,12 @@
 *hst
 *info
 
+# skip .config/.gitignore same this
+.config/.gitignore
+
 # tools
 .MakeMKV/
 .*/scoop/config.json
+
+# not include extension
+extension/
