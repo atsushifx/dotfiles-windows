@@ -16,4 +16,7 @@
 .*/scoop/config.json
 
 # not include extension
-extension/
+extensions/
+
+# visual studio code
+.vscode/argv.json
