@@ -5,7 +5,7 @@
 	ui = auto
 
 [core]
-	autocrlf = false
+	autocrlf = input
 
 [user]
 	name = Atsushi Furukawa

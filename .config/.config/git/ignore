@@ -6,7 +6,8 @@
 *~
 .DS_Store
 thums.db
-
+# editor backup
+$~*
 
 # credential files
 .ssh/
