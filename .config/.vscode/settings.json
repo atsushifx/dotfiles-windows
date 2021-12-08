@@ -1,4 +1,7 @@
 {
     "workbench.colorTheme": "Iceberg",
-    "editor.fontFamily": "'PlemolJP35 Console'"
+    "editor.fontFamily": "'HackGen35Nerd Console'",
+    "editor.cursorStyle": "block",
+    "markdown.extension.preview.autoShowPreviewToSide": true,
+    "markdown.extension.print.absoluteImgPath": false
 }

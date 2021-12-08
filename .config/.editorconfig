@@ -16,3 +16,11 @@ charset = utf-8
 # indent style
 indent_size = 4
 indent_style = tab
+
+## markdown
+[*.md]
+
+# indent
+indent_size = 2
+indent_style = space
+
