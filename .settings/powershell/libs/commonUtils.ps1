@@ -12,6 +12,14 @@
 
 #>
 
+
+<#
+ # static function class for check user role
+ #
+ # check current user is elevated as 'Administrator'
+ #
+ #
+ #>
 class myUserRole
 {
   hidden static [Security.Principal.WindowsPrincipal]  $principal = [myUserRole]::getCurrentPrincipal()
@@ -27,15 +35,24 @@ class myUserRole
   #
   static [bool]  hasRole([Security.Principal.WindowsBuiltInRole] $role)
   {
-    return [myUserRole]::principal.IsInRole($role)
+    <#
+      .SYNOPSIS
+        check current user has role parameter
+
+      .PARAMETER
+        $role
+        user role (Administrator, User, ...)
+    #>
+    return [myUserRole]::principal.IsInRole([Security.Principal.WindowsBuiltinRole] $role)
   }
 
   #
   static [bool]  isAdmin()
   {
+    <#
+      check user as 'Administrator'
+    #>
     return [myUserRole]::hasRole([Security.Principal.WindowsBuiltinRole]::Administrator)
   }
-
-
 }
 
