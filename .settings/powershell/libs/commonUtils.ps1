@@ -2,11 +2,11 @@
   .SYNOPSIS
     freq use functions library
 
-
+  .
   .NOTES
 
     Author: Atsushi Furukawa
-    License: https://opensource.org/licenses/MIT
+    License: MIT License https://opensource.org/licenses/MIT
 
     Version 1.0.0
 
