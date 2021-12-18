@@ -1,10 +1,10 @@
 <#
   .SYNOPSIS
-   PowerShell initialize script for CLI
+    PowerShell initialize script for CLI
 
   .NOTE
-   Author Atsushi Furukawa <atsushifx@aglabo.com>
-   License: MIT License  https://opensource.org/licenses/MITo
+    Author:   Atsushi Furukawa <atsushifx@aglabo.com>
+    License:  MIT License  https://opensource.org/licenses/MIT
 
 THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 
@@ -16,15 +16,19 @@ $Script = $MyInvocation.MyCommand.path
 $myLibsDir = $PSScriptRoot + '/libs'
 . ($myLibsDir + '/commonUtils.ps1')
 
-## prompt
-# Invoke-Expression (&starship init powershell)
-function prompt()
-{
-  <#
-    .SYNOPSIS
-      set CLI prompt
+### prompt
+## set prompt
 
-  #>
+# Invoke-Expression (&starship init powershell)
+<#
+  .SYNOPSIS
+    set default prompt for powershell
+    
+  .DESCRPTION
+#>
+function  prompt()
+{
+  param()
 
   $isAdmin = [myUserRole]::isAdmin()
   $prompt = $isAdmin ? " # " :  " > "
@@ -33,7 +37,5 @@ function prompt()
   $userName =$env:USERNAME
 
   # Prompt return
-  $currentDrive+": /" + $currentPath + $prompt
+  return $currentDrive+": /" + $currentPath + $prompt
 }
-
-

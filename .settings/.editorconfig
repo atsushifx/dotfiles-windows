@@ -1,0 +1,20 @@
+# EditorConfig is awesome: https://EditorConfig.org
+#
+# editorconfig for powershell script
+
+# top-most EditorConfig file
+# root = true
+
+### Powershell Script
+[*.{ps1,psm1}]
+
+# indent
+indent_size = 2
+indent_style = space
+
+
+### VS Code
+[*workspace]
+tab_width = 4
+
+

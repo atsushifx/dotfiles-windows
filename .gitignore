@@ -13,10 +13,24 @@
 
 # tools
 .MakeMKV/
-.*/scoop/config.json
+.*/scoop/*
 
 # not include extension
-extensions/
+extensions/*
 
-# visual studio code
-.vscode/argv.json
+### visualstudiocode
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+

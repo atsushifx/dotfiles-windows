@@ -1,5 +1,6 @@
 @{
-  ModuleVersion    = "0.0.1.20211218"
+  ModuleVersion = "0.0.1.20211218"
+  RootModule    = "aglaUtils.psm1"
 
-  DefaultCommandPrefix = 'aglaUtils'
+  DefaultCommandPrefix = 'agla.'
 }
