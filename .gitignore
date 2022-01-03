@@ -33,4 +33,7 @@ extensions/*
 # Built Visual Studio Code Extensions
 *.vsix
 
+### Vagrant & VirtualBox
+.vagrant.d/
+.virtualbox/
 
