@@ -1,7 +1,7 @@
 {
-  "lastupdate": "2012-01-03T18:40:45.0017179+09:00",
+  "lastupdate": "2022-01-03T19:15:53.9613305+09:00",
   "SCOOP_REPO": "https://github.com/ScoopInstaller/Scoop",
-  "SCOOP_BRANCH": "master"
+  "SCOOP_BRANCH": "master",
   "globalPath": "c:/app/scoop",
-  "cachePath": "c:/app/scoop/cache",
+  "cachePath": "c:/app/scoop/.system/cache"
 }

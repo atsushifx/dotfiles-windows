@@ -28,3 +28,5 @@
 [credential]
 	helper = manager-core
 
+[credential "helperselector"]
+	selected = manager-core
