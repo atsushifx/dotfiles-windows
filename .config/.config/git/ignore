@@ -3,11 +3,15 @@
 ##
 
 # backup
-*~
 .DS_Store
 thums.db
+
 # editor backup
 $~*
+*~
+
+#  ignore patch
+*.diff
 
 # credential files
 .ssh/
