@@ -1,8 +1,9 @@
-[color]
-	ui = auto
-
 [core]
 	autocrlf = input
+	editor = "code --wait "
+
+[color]
+	ui = true
 
 [user]
 	name = Atsushi Furukawa
@@ -30,3 +31,11 @@
 
 [credential "helperselector"]
 	selected = manager-core
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[ghq]

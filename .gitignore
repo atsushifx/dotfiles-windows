@@ -3,17 +3,34 @@
 ##    for windows dotfiles
 ##
 
-## history/info
-*history
-*hst
-*info
-
+### dotfiles specific
 # skip .config/.gitignore same this
 .config/.gitignore
 
 # tools
 .MakeMKV/
 .*/scoop/*
+
+# ghq
+.ghq/*
+
+
+## ssh credentials
+*/.ssh/*
+
+
+### PowerShell
+*/powershell/Modules/*
+
+
+
+
+
+## history/info
+*history
+*hst
+*info
+
 
 # not include extension
 extensions/*
