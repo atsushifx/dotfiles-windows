@@ -12,7 +12,7 @@
 .*/scoop/*
 
 # ghq
-.ghq/*
+*/.ghq/*
 
 
 ## ssh credentials
