@@ -18,19 +18,17 @@
 ## ssh credentials
 */.ssh/*
 
+### nodejs
+*/.node/*
+*/.node/corepack/*
 
 ### PowerShell
 */powershell/Modules/*
-
-
-
-
 
 ## history/info
 *history
 *hst
 *info
-
 
 # not include extension
 extensions/*
