@@ -1,6 +1,6 @@
 [core]
 	autocrlf = input
-	editor = "code --wait "
+##	editor = "code --wait "
 
 [color]
 	ui = true
@@ -40,3 +40,6 @@
 
 [ghq]
 	root = ~/.ghq
+	root = c:/Users/atsushifx/workspaces/gitworks
+	root = c:/Users/atsushifx/workspaces/education
+	root = c:/Users/atsushifx/workspaces/develop
