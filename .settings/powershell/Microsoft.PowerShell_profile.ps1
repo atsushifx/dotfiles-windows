@@ -39,6 +39,5 @@ function  prompt()
   # Prompt return
   return $currentDrive+": /" + $currentPath + $prompt
 }
-
 Import-Module posh-git
 Import-Module scoop-completion
