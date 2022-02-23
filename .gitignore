@@ -20,7 +20,8 @@
 
 ### nodejs
 */.node/*
-*/.node/corepack/*
+*/corepack/*
+*/pnpm/*
 
 ### PowerShell
 */powershell/Modules/*
