@@ -1,30 +1,72 @@
-# Auto detect text files and perform LF normalization
-* text=input
+###############################################################################
+# Set default behavior to automatically normalize line endings.
+###############################################################################
+*  text=unput
 
-###############################
-# Git Large File System (LFS) #
-###############################
 
-# Archives
-*.7z binary
-*.br binary
-*.gz binary
-*.tar binary
-*.zip binary
+## Audio
+
+*.aif                binary
+*.aiff               binary
+*.it                 binary
+*.mod                binary
+*.mp3                binary
+*.ogg                binary
+*.s3m                binary
+*.wav                binary
+*.xm                 binary
+
+## Video
+*.asf                binary
+*.avi                binary
+*.flv                binary
+*.mov                binary
+*.mp4                binary
+*.mpeg               binary
+*.mpg                binary
+*.ogv                binary
+*.wmv                binary
+
+## Images
+*.bmp               binary
+*.gif               binary
+*.hdr               binary
+*.iff               binary
+*.jpeg              binary
+*.jpg               binary
+*.pict              binary
+*.png               binary
+*.psd               binary
+*.tga               binary
+*.tif               binary
+*.tiff              binary
+*.ico				binary
+
+## Archive
+*.7z                binary
+*.bz2               binary
+*.gz                binary
+*.rar               binary
+*.tar               binary
+*.zip               binary
+
+# Compiled Dynamic Library
+*.dll               binary
+*.pdb               binary
+*.so                binary
+
+# Fonts
+*.otf               binary
+*.ttf               binary
+*.woff*             binary
+
+# Executable/Installer
+*.apk               binary
+*.exe               binary
 
 # Documents
-*.pdf binary
+*.pdf               binary
 
-# Images
-*.gif binary
-*.ico binary
-*.jpg binary
-*.pdf binary
-*.png binary
-*.psd binary
-*.webp binary
+*.txt  text
 
 
-
-# Other
-*.exe binary
