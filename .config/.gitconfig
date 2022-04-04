@@ -6,8 +6,8 @@
 	ui = true
 
 [user]
-	name = Atsushi Furukawa
-	email = atsushifx@aglabo.com
+	name = Furukawa, Atsushi
+	email = atsushifx@gmail.com
 
 [difftool "sourcetree"]
 	cmd = '' \"$LOCAL\" \"$REMOTE\"
@@ -25,6 +25,8 @@
 [alias]
 	co = checkout
 	st = status
+	fixit = commit --amend --no-edit
+	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 [credential]
 	helper = manager-core
@@ -32,14 +34,13 @@
 [credential "helperselector"]
 	selected = manager-core
 
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
 [ghq]
 	root = ~/.ghq
 	root = c:/Users/atsushifx/workspaces/gitworks
 	root = c:/Users/atsushifx/workspaces/education
 	root = c:/Users/atsushifx/workspaces/develop
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
