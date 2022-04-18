@@ -10,13 +10,10 @@ thums.db
 $~*
 *~
 
-#  ignore patch
-*.diff
-
 # credential files
 .ssh/
 .dbus-keyrings/
-.*credential*
+*credentials
 
 ## ignore programming
 #  patch

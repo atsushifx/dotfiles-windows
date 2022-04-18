@@ -32,7 +32,7 @@
 	helper = manager-core
 
 [credential "helperselector"]
-	selected = manager-core
+	selected = store
 
 [ghq]
 	root = ~/.ghq

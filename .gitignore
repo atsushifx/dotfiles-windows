@@ -15,8 +15,9 @@
 */.ghq/*
 
 
-## ssh credentials
+## credentials
 */.ssh/*
+**credential*
 
 ### nodejs
 */.node/*

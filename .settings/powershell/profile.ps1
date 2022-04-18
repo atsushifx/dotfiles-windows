@@ -24,7 +24,6 @@ $myLibsDir = $PSScriptRoot + '/libs'
   .SYNOPSIS
     set default prompt for powershell
 
-  .DESCRPTION
 #>
 function  prompt()
 {
@@ -39,5 +38,9 @@ function  prompt()
   # Prompt return
   return $currentDrive+": /" + $currentPath + $prompt
 }
+
+## Tab completion
 Import-Module posh-git
 Import-Module scoop-completion
+#  volta completions
+& volta completions powershell | Out-String | Invoke-Expression
