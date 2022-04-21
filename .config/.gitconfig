@@ -35,10 +35,10 @@
 	selected = store
 
 [ghq]
-	root = ~/.ghq
-	root = c:/Users/atsushifx/workspaces/gitworks
-	root = c:/Users/atsushifx/workspaces/education
 	root = c:/Users/atsushifx/workspaces/develop
+	root = c:/Users/atsushifx/workspaces/education
+	root = c:/Users/atsushifx/workspaces/gitworks
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
