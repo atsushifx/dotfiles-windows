@@ -35,12 +35,7 @@
 	selected = store
 
 [ghq]
-	root = c:/Users/atsushifx/workspaces/develop
-	root = c:/Users/atsushifx/workspaces/education
 	root = c:/Users/atsushifx/workspaces/gitworks
+	root = c:/Users/atsushifx/workspaces/education
+	root = c:/Users/atsushifx/workspaces/develop
 
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true

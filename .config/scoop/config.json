@@ -1,7 +1,8 @@
 {
   "SCOOP_REPO": "https://github.com/ScoopInstaller/Scoop",
   "SCOOP_BRANCH": "master",
+  "rootPath": "C:\\Users\\atsushifx\\app\\scoop",
   "globalPath": "c:/app/scoop",
   "cachePath": "c:/app/scoop/.system/cache",
-  "lastupdate": "2022-04-20T14:46:06.2771058+09:00"
+  "lastupdate": "2022-05-03T16:56:43.7483644+09:00"
 }
