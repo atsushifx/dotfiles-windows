@@ -7,7 +7,7 @@
 
 [user]
 	name = Furukawa, Atsushi
-	email = atsushifx@gmail.com
+	email = 98551+atsushifx@users.noreply.github.com
 
 [difftool "sourcetree"]
 	cmd = '' \"$LOCAL\" \"$REMOTE\"
