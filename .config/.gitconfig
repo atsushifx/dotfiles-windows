@@ -1,6 +1,6 @@
 [core]
 	autocrlf = input
-##	editor = "code --wait "
+	editor = "code --wait "
 
 [color]
 	ui = true
@@ -39,3 +39,6 @@
 	root = c:/Users/atsushifx/workspaces/education
 	root = c:/Users/atsushifx/workspaces/develop
 
+[safe]
+	directory = C:/Users/atsushifx/app/scoop/buckets/extras
+	directory = C:\\Users\\atsushifx\\app\\scoop\\buckets\\nirsoft

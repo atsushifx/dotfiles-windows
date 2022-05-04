@@ -1,6 +1,27 @@
 {
-    "workbench.colorTheme": "Iceberg",
-    "editor.cursorStyle": "block",
-    "markdown.extension.preview.autoShowPreviewToSide": true,
-    "markdown.extension.print.absoluteImgPath": false
+  "editor.fontFamily": "'HackGen35Nerd Console', 'Courier Prime Code','DejaVu Serif'",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  // editor config
+  "editor.autoIndent": "advanced",
+  "editor.suggestSelection": "first",
+  // textlint
+  "textlint.configPath": ".textlintrc",
+  "textlint.autoFixOnSave": true,
+  "textlint.nodePath": "",
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "editor.tabSize": 2,
+  "textlint.languages": [
+  
+  ],
+  "workbench.colorTheme": "Iceberg",
+  "workbench.startupEditor": "none",
+  "editor.cursorStyle": "block",
+  "files.eol": "\n"
 }
