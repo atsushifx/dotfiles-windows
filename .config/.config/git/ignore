@@ -15,6 +15,11 @@ $~*
 .dbus-keyrings/
 *credentials
 
+## ignore shell
+.*hist*
+.*info
+
+
 ## ignore programming
 #  patch
 *.diff

@@ -19,23 +19,12 @@
 */.ssh/*
 **credential*
 
-### nodejs
-*/.node/*
-*/corepack/*
-*/pnpm/*
-
-### PowerShell
-*/powershell/Modules/*
-
-## history/info
-*history
-*hst
-*info
-
 # not include extension
 extensions/*
 
-### xdata-config
+### unix shell
+.*hist*
+.*info
 
 ### gh
 */gh/*
@@ -56,6 +45,11 @@ extensions/*
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+### eclipse
+*/jgit/*
+
+
 
 ### Vagrant & VirtualBox
 .vagrant.d/
