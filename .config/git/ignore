@@ -11,8 +11,8 @@ $~*
 *~
 
 # credential files
-*/.ssh/
-*/.gnupg/*
+.ssh/
+.gnupg/*
 .dbus-keyrings/
 *credential*
 
