@@ -16,8 +16,9 @@
 
 
 ## credentials
-*/.ssh/*
-**credential*
+#*/.ssh/*
+#*/.gnupg/*
+#**credential*
 
 # not include extension
 extensions/*
