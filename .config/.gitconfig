@@ -55,3 +55,8 @@ alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\
 [safe]
 	directory = C:/Users/atsushifx/app/scoop/buckets/extras
 	directory = C:\\Users\\atsushifx\\app\\scoop\\buckets\\nirsoft
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
