@@ -1,6 +1,6 @@
 [core]
 	autocrlf = input
-	editor = "code --wait "
+#	editor = "wzeditor --wait "
 
 [color]
 	ui = true
