@@ -18,6 +18,9 @@ Set-PSReadLineKeyHandler -chord Ctrl+A -function SelectAll
 Set-PSReadLineKeyHandler -chord Ctrl+X -function cut
 Set-PSReadLineKeyHandler -chord Ctrl+C -function copy
 
+# exit shell
+# Set-PSReadLineKeyHandler -chord Ctrl+Z -function ViAcceptLineOrExit
+
 # Wz/Vz like +alpha
 Set-PSReadLineKeyHandler -chord Ctrl+a -function ShellBackwardWord
 Set-PSReadLineKeyHandler -chord Ctrl+s -function BackwardChar

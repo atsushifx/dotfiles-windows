@@ -7,32 +7,47 @@
 # skip .config/.gitignore same this
 .config/.gitignore
 
-# tools
-.MakeMKV/
-.*/scoop/*
-
-# ghq
-*/.ghq/*
-
-
-## credentials
-#*/.ssh/*
-#*/.gnupg/*
-#**credential*
+###
+# credentials
+#
+*/.ssh/*
+*/.gnupg/*
 
 # not include extension
 extensions/*
 
-### unix shell
+###
+#  tools utils settings
+#
+#
+
+# unix shell
 .*hist*
 .*info
 
-### gh
+
+# gh (GitHub CLI)
 */gh/*
 !*/gh/config.yml
 
+# scoop
+.*/scoop/*
 
-### visualstudiocode
+
+###
+#
+# IDE settings
+#
+
+
+# eclipse
+*/.eclipse/*
+
+
+# Android Studio
+*/.AndroidStudio/*
+
+# visualstudiocode
 
 .vscode/*
 !.vscode/settings.json
@@ -46,13 +61,4 @@ extensions/*
 
 # Built Visual Studio Code Extensions
 *.vsix
-
-### eclipse
-.eclipse/*
-
-
-
-### Vagrant & VirtualBox
-.vagrant.d/
-.virtualbox/
 

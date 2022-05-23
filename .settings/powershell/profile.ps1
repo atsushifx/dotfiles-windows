@@ -15,6 +15,7 @@ Set-StrictMode -version latest
 $baseDir = $PSScriptRoot
 $scriptsDir = $baseDir + '/scripts/'
 $libsDir = $baseDir + '/libs/'
+
 . ($libsDir + 'commonUtils.ps1')
 
 ### prompt
