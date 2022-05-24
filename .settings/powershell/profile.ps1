@@ -27,10 +27,8 @@ $libsDir = $baseDir + '/libs/'
     set default prompt for powershell
 
 #>
-function  prompt()
+function prompt()
 {
-  param()
-
   $isAdmin = [myUserRole]::isAdmin()
   $prompt = $isAdmin ? " # " :  " > "
   $currentPath = (Split-Path (Get-Location) -Leaf)

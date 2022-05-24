@@ -9,16 +9,21 @@ thums.db
 # editor backup
 $~*
 *~
+*tmp
 
 # credential files
-.ssh/
-.gnupg/*
-.dbus-keyrings/
+*/.ssh/
+*/.gnupg/*
+*/.dbus-keyrings/
 *credential*
 
 ## ignore shell
 .*hist*
 .*info
+
+## Log Files
+*.log
+
 
 
 ## ignore programming
