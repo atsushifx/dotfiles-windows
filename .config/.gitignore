@@ -1,0 +1,59 @@
+##
+##  ignore files using  git
+##    for windows dotfiles
+##
+
+### dotfiles specific
+# skip .config/.gitignore same this
+.config/.gitignore
+
+###
+# credentials
+#
+*/.ssh/*
+*/.gnupg/*
+
+# not include extension
+extensions/*
+
+###
+#  tools utils settings
+#
+#
+
+# unix shell
+.*hist*
+.*info
+
+## gh (GitHub CLI)
+# ignore hosts.yml
+/gh/*
+!/gh/config.yml
+
+
+
+###
+#
+# IDE settings
+#
+
+## Android Studio
+/.AndroidStudio/*
+
+## visual studio code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+## eclipse
+*/.eclipse/*
+
