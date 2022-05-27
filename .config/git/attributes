@@ -54,6 +54,7 @@
 *.dll               binary
 *.pdb               binary
 *.so                binary
+*.jar               binary
 
 # Fonts
 *.otf               binary
