@@ -4,26 +4,32 @@
 ##
 
 ### dotfiles specific
-# skip .config/.gitignore same this
-.config/.gitignore
+#
+
+###
+#
+# general settingds
+
+
+# unix shell
+.*hist*
+.*info
+
+# not include extension
+/extensions/*
 
 ###
 # credentials
 #
 */.ssh/*
 */.gnupg/*
+*cred*
 
-# not include extension
-extensions/*
 
 ###
 #  tools utils settings
 #
-#
 
-# unix shell
-.*hist*
-.*info
 
 
 # scoop

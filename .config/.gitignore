@@ -4,33 +4,29 @@
 ##
 
 ### dotfiles specific
-# skip .config/.gitignore same this
-.config/.gitignore
+#
 
 ###
 # credentials
 #
+
 */.ssh/*
 */.gnupg/*
-
-# not include extension
-extensions/*
+*cred*
 
 ###
 #  tools utils settings
-#
 #
 
 # unix shell
 .*hist*
 .*info
 
+
 ## gh (GitHub CLI)
 # ignore hosts.yml
 /gh/*
 !/gh/config.yml
-
-
 
 ###
 #
@@ -38,15 +34,18 @@ extensions/*
 #
 
 ## Android Studio
-/.AndroidStudio/*
+/.AndroidStudio/config/*
+!/.AndroidStudio/config/options/
+/.AndroidStudio/config/options/*
+!.AndroidStudio/config/options/ide.general.xml
+!.AndroidStudio/config/options/other.xml
+!.AndroidStudio/config/options/project.default.xml
+!.AndroidStudio/config/options/editor.xml
+!.AndroidStudio/config/options/terminal.xml
+
 
 ## visual studio code
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
 
 # Local History for Visual Studio Code
 .history/

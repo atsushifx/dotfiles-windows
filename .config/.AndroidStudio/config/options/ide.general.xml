@@ -1,0 +1,10 @@
+<application>
+  <component name="GeneralSettings">
+    <option name="autoSaveIfInactive" value="true" />
+    <option name="confirmOpenNewProject2" value="1" />
+    <option name="defaultProjectDirectory" value="C:\Users\atsushifx\workspaces\develop\github.com\atsushifx\sandbox" />
+  </component>
+  <component name="Registry">
+    <entry key="external.system.auto.import.disabled" value="true" />
+  </component>
+</application>

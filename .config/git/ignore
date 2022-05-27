@@ -24,8 +24,6 @@ $~*
 ## Log Files
 *.log
 
-
-
 ## ignore programming
 #  patch
 *.diff

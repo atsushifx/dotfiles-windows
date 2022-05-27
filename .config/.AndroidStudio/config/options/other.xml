@@ -1,0 +1,38 @@
+<application>
+  <component name="NotRoamableUiSettings">
+    <option name="fontFace" value="DejaVu Serif" />
+  </component>
+  <component name="ProjectPluginTrackerManager">
+    <trackers>
+      <map>
+        <entry key="Default (Template) Project">
+          <value>
+            <ProjectPluginTracker />
+          </value>
+        </entry>
+      </map>
+    </trackers>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="AndroidInitConfigurator.V1" value="true" />
+    <property name="AndroidInitConfigurator.V3" value="true" />
+    <property name="AndroidInitConfigurator.V5" value="true" />
+    <property name="Darcula.SavedEditorTheme" value="_@user_Darcula" />
+    <property name="FileTemplates.SelectedTemplate" value="HTML File" />
+    <property name="NextRunPlatformUpdateBuild" value="AI-212.5712.43.2112.8609683/Chipmunk | 2021.2.1 Patch 1" />
+    <property name="NextRunPlatformUpdateVersion" value="Chipmunk | 2021.2.1 Patch 1" />
+    <property name="NonModalCommitCustomization.IsApplied" value="true" />
+    <property name="PluginConfigurable.selectionTab" value="1" />
+    <property name="android.sdk.path" value="C:/app/develop/android/sdk" />
+    <property name="ask.about.ctrl.y.shortcut.v2" value="true" />
+    <property name="file.chooser.recent.files" value="C:/Users/atsushifx/workspaces/develop/github.com/atsushifx/sandbox" />
+    <property name="fileTypeChangedCounter" value="1" />
+    <property name="fileTypeDetectors" value="com.android.tools.idea.profilers.capture.MemoryCaptureFileType$Detector:com.android.tools.idea.sqlite.fileType.SqliteFileTypeDetector:com.intellij.ide.scratch.ScratchFileServiceImpl$Detector:com.jetbrains.cidr.lang.OCHeaderFileTypeDetector:org.jetbrains.plugins.textmate.TextMateFileType$TextMateFileDetector" />
+    <property name="last_opened_file_path" value="C:/Users/atsushifx/workspaces/develop/github.com/atsushifx/sandbox" />
+    <property name="studio.activity.count" value="94" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+  </component>
+  <component name="ToolbarSettingsService">
+    <option name="NEW_TOOLBAR_SETTINGS" value="OLD_NAVBAR" />
+  </component>
+</application>
