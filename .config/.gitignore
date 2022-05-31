@@ -56,3 +56,9 @@
 ## eclipse
 */.eclipse/*
 
+## maven
+/.m2/*
+
+## applet
+.applet*
+

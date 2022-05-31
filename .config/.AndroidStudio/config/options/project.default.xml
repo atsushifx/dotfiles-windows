@@ -26,7 +26,7 @@
       </component>
       <component name="PropertiesComponent">
         <property name="android.sdk.path" value="C:/app/develop/android/sdk" />
-        <property name="settings.editor.selected.configurable" value="advanced.settings" />
+        <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
       </component>
       <component name="SvnConfiguration">
         <configuration>C:\Users\atsushifx\AppData\Roaming\Subversion</configuration>
