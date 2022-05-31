@@ -9,13 +9,6 @@
 	name = Furukawa, Atsushi
 	email = 98551+atsushifx@users.noreply.github.com
 
-[difftool "sourcetree"]
-	cmd = '' \"$LOCAL\" \"$REMOTE\"
-
-[mergetool "sourcetree"]
-	cmd = "'' "
-	trustExitCode = true
-
 [push]
 	default = current
 
@@ -31,12 +24,10 @@
 	root = c:/Users/atsushifx/workspaces/develop
 
 [safe]
-	directory = C:/Users/atsushifx/app/scoop/buckets/extras
-	directory = C:\\Users\\atsushifx\\app\\scoop\\buckets\\nirsoft
+	directory = C:/Users/atsushifx/app/scoop/buckets/
 
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
+[secrets]
+	providers = git secrets --aws-provider
+	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?

@@ -23,6 +23,11 @@
 .*info
 
 
+### git / github tools
+
+# git-secrets
+.git-secrets/*
+
 ## gh (GitHub CLI)
 # ignore hosts.yml
 /gh/*

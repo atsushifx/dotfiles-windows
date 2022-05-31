@@ -4,9 +4,6 @@
 [color]
 	ui = true
 
-[difftool "sourcetree"]
-	cmd = '' \"$LOCAL\" \"$REMOTE\"
-
 [push]
 	default = current
 
@@ -14,9 +11,6 @@
 	defaultBranch = master
 
 [alias]
-    b = branch
-    l = log
-    cm = commit
     ss = status -s
     br = branch
     co = checkout
