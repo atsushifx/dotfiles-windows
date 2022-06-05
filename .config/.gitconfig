@@ -1,5 +1,6 @@
 [core]
 	autocrlf = input
+	attributesfile = C:\\Users\\atsushifx\\.config\\git\\attributes
 #	editor = "wzeditor --wait "
 
 [color]
@@ -11,6 +12,24 @@
 
 [push]
 	default = current
+
+[diff]
+    tool = WinMerge
+
+[difftool "WinMerge"]
+    path = C:/app/develop/scm/WinMerge/WinMergeU.exe
+    cmd = WinMergeU.exe -f \"*.*\" -e -u -r \"$LOCAL\" \"$REMOTE\"
+
+[merge]
+    tool = WinMerge
+
+[mergetool "WinMerge"]
+    path = C:/app/develop/scm/WinMerge/WinMergeU.exe
+    cmd = WinMergeU.exe\" -e -u \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+
+[alias]
+    windiff = difftool -y -d -t WinMerge
+    winmerge = mergetool -y -t WinMerge
 
 [credential]
 	helper = manager-core

@@ -33,3 +33,8 @@
 
 [pull]
 	ff = only
+
+
+[alias]
+    windiff = difftool -y -d -t WinMerge
+    winmerge = mergetool -y -t WinMerge
