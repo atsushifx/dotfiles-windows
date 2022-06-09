@@ -13,13 +13,31 @@ THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK
 ## Wz like key bindings
 Set-PSReadLineOption -EditMode windows
 
+
+
+## Special key function
+function global:SelectandExecHistory()
+{
+	$selectCmd = (tail -20 (Get-PSReadLineOption).HistorySavePath)|peco --select-1 --on-cancel error
+	if ($?) {
+		[Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+		[Microsoft.PowerShell.PSConsoleReadLine]::Insert($selectCmd)
+		# [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+	} else {
+		[Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+	}
+}
+
 # windows defaukt
 Set-PSReadLineKeyHandler -chord Ctrl+A -function SelectAll
 Set-PSReadLineKeyHandler -chord Ctrl+X -function cut
 Set-PSReadLineKeyHandler -chord Ctrl+C -function copy
 
 # exit shell
-# Set-PSReadLineKeyHandler -chord Ctrl+Z -function ViAcceptLineOrExit
+Set-PSReadLineKeyHandler -chord Ctrl+Z -scriptBlock {
+	[Microsoft.PowerShell.PSConsoleReadLine]::Insert('exit')
+	[Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+}
 
 # Wz/Vz like +alpha
 Set-PSReadLineKeyHandler -chord Ctrl+a -function ShellBackwardWord
@@ -34,7 +52,7 @@ Set-PSReadLineKeyHandler -chord Ctrl+y -function Paste
 Set-PSReadLineKeyHandler -chord Ctrl+j -function Paste
 
 # history
-Set-PSReadLineKeyHandler -chord Ctrl+p -function PreviousHistory
+Set-PSReadLineKeyHandler -chord Ctrl+p -scriptBlock { SelectandExecHistory }
 Set-PSReadLineKeyHandler -chord Ctrl+n -function NextHistory
 
 Set-PSReadLineKeyHandler -chord Ctrl+e -function PreviousHistory

@@ -64,6 +64,9 @@
 ## maven
 /.m2/*
 
-## applet
+# Java Applet
 .applet*
 
+
+# sonar
+/.sonarlint/
