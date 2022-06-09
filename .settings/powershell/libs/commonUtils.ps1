@@ -1,6 +1,6 @@
 <#
   .SYNOPSIS
-    freq use functions library
+    frequency use functions library
 
   .
   .NOTES
@@ -10,7 +10,9 @@
 
     Version 1.0.0
 
+THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 #>
+Set-StrictMode -version latest
 
 
 <#
@@ -56,3 +58,29 @@ class myUserRole
   }
 }
 
+<#
+  .SYNOPSIS
+    select command from history and execute
+
+  .DESCRIPTION
+    select history wuth peco and set command line to execute this.
+
+
+  .EXAMPLE
+    Set-PSReadLineKeyHandler -chord Ctrl+p -scriptBlock { SelectandExecHistory }
+    using above that hit ctrl+p to use this.
+
+#>
+function global:SelectandExecHistory()
+{
+	$selectCmd = (tail -20 (Get-PSReadLineOption).HistorySavePath)|peco --select-1 --on-cancel error
+	if ($?) {
+		[Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+		[Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
+		[Microsoft.PowerShell.PSConsoleReadLine]::Insert($selectCmd)
+		# [Microsoft.PowerShell.PSConsoleReadLine]::EndOfLine()
+		# [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+	} else {
+		[Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+	}
+}
