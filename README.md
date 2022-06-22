@@ -1,2 +1,4 @@
-# dotfiles-windows
-Windows用初期設定ファイル
+# dotfiles
+dotfiles, rcfiles for Windows, linux(debian)
+use XDG Base Environment
+
