@@ -32,7 +32,7 @@
     winmerge = mergetool -y -t WinMerge
 
 [credential]
-	helper = manager-core
+	helper = store
 
 [credential "helperselector"]
 	selected = store
