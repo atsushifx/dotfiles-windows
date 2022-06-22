@@ -38,3 +38,6 @@
 [alias]
     windiff = difftool -y -d -t WinMerge
     winmerge = mergetool -y -t WinMerge
+[user]
+	name = Furukawa, Atsushi
+	email = 98551+atsushifx@users.noreply.github.com
