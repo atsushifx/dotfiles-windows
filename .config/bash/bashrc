@@ -1,6 +1,15 @@
+#!/usr/bin/env bash
 ##
 # @(#) .config/ bashrc : user defined bashrc
 #
 # user defined bashrc
 # 
+
 echo "Exec .config/bash/bashrc"
+
+
+## bash completion
+_cmpl_d=/home/linuxbrew/.linuxbrew/etc/bash_completion.d
+for f in ${_cmpl_d}/*; do
+  . "${f}"
+done
