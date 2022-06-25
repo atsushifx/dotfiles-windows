@@ -26,7 +26,7 @@
 
 
 [credential]
-	helper = store  --file=~/.config/.git-credentials
+	helper = store --file ~/.config/.git-credentials
 
 [credential "helperselector"]
 	selected = store
