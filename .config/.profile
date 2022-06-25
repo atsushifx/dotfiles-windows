@@ -8,8 +8,16 @@
 # for ssh logins, install and configure the libpam-umask package.
 umask 022
 
-echo "Exec dotfiles/.profile"
+echo "Exec .config/.profile"
 
+# // functions
+isInteractive() {
+  case $- in
+    *i*) return 1;;
+      *) return 0;;
+  esac
+  return 1;
+}
 
 ## setup path
 # set PATH so it includes user's private bin if it exists
@@ -25,8 +33,13 @@ fi
 ## シェル別の設定
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.config/bash/bashrc" ]; then
-	. "$HOME/.config/bash/bashrc"
-    fi
+  # include .bashrc if it exists
+  if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+  fi
+
+  # user defined bashrc
+  if [[ isInteractive ]] && [[ -f ${HOME}/.config/bash/bashrc ]]; then
+    . ${HOME}/.config/bash/bashrc
+  fi
 fi
