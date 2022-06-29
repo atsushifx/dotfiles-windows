@@ -35,8 +35,9 @@
 
 ###
 #
-# IDE settings
+# IDE/Editor settings
 #
+
 
 ## Android Studio
 /.AndroidStudio/config/*

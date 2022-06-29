@@ -1,4 +1,4 @@
-##
+B##
 ##  ignore files using  git
 ##    for windows dotfiles
 ##
@@ -7,32 +7,86 @@
 #
 
 ###
-#
-# general settingds
-
-
-# unix shell
-.*hist*
-.*info
-
-# not include extension
-/extensions/*
-
-###
 # credentials
 #
 */.ssh/*
 */.gnupg/*
 *cred*
 
+##
+# general settingds
 
-###
+# unix shell
+.*hist*
+.*info
+
+
+# not include extension
+/extensions/*
+
+
+##
 #  tools utils settings
 #
 
 
-
-# scoop
+### scoop
 .*/scoop/*
+
+### PowerShell
+
+
+##
+# Editor / IDE settings
+
+### emacs
+
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Org-mode
+.org-id-locations
+*_archive
+
+# flymake-mode
+*_flymake.*
+
+# eshell files
+/eshell/history
+/eshell/lastdir
+
+# elpa packages
+**/elpa/
+
+# reftex files
+*.rel
+
+# AUCTeX auto folder
+**/auto/
+
+# cask packages
+.cask/
+dist/
+
+# Flycheck
+flycheck_*.el
+
+# server auth directory
+/server/
+
+# projectiles files
+.projectile
+
+# directory configuration
+.dir-locals.el
+
+# network security
+/network-security.data
 
 
