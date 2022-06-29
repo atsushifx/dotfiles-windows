@@ -1,0 +1,26 @@
+B##
+##  ignore files using  git
+##
+
+##
+# PowerShell
+
+### PowerShell Modules
+
+# include gitfiles
+!*git*
+
+
+## Modules
+# directory skip
+*/*
+!*/*/
+*/*/*
+
+# Modules (files)
+!**/*.psd1
+!**/*.psm1
+
+# License, etc
+!**/*.txt
+
