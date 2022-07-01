@@ -7,6 +7,13 @@
 
 echo "Exec .config/bash/bashrc"
 
+peco-history () {
+  local _cmd
+  _cmd=`history 20|tac|sed -e "s/^[0-9 ]*//g"|peco`
+  echo "Exec ${_cmd}"
+  echo "${_cmd}"|xargs
+}
+
 
 ## bash completion
 _cmpl_d=/home/linuxbrew/.linuxbrew/etc/bash_completion.d
