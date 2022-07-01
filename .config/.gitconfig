@@ -1,5 +1,6 @@
 [core]
 	autocrlf = input
+	safecrlf = true
 	attributesfile = C:\\Users\\atsushifx\\.config\\git\\attributes
 #	editor = "wzeditor --wait "
 

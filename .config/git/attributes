@@ -41,7 +41,7 @@
 *.tif               binary
 *.tiff              binary
 *.webp              binary
-*.ico				binary
+*.ico               binary
 
 ## Archive
 *.7z                binary
@@ -65,6 +65,7 @@
 # Executable/Installer
 *.apk               binary
 *.exe               binary
+*.dll               binary
 
 # Documents
 *.pdf               binary
