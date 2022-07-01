@@ -1,0 +1,22 @@
+#
+##
+# @(#) optional profile (v1.0.0) : shell initalization on user define
+#
+# @author  Furukawa, Atsushi \atsushifx@gmail.com>
+# @date    2022-06-21
+#
+#
+echo "Exec /opt/etc/profile"
+
+# sysad define command's directory
+if [ "$(id -u)" -eq 0 ] && [ -d /opt/sbin ]; then
+  export PATH=${PATH}:/opt/sbin
+fi
+if [ -d /opt/bin ]; then
+  export PATH=${PATH}:/opt/bin
+fi
+
+## common environment setup
+if [ -f /opt/etc/envrc ]; then
+  . /opt/etc/envrc
+fi
