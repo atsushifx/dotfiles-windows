@@ -29,3 +29,6 @@ set virtualedit=block
 " 挿入モードでバックスペースで削除できるようにする
 set backspace=indent,eol,start
 
+" for vim ocaml
+
+set rtp^="/home/atsushifx/.opam/default/share/ocp-indent/vim"

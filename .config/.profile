@@ -15,8 +15,11 @@ isInteractive() {
   return 1;
 }
 
-##  common environ settingsth
-. ~/.config/.common.env
+
+
+##  common environ settings
+# in zsh this is called by zshenv
+# . ~/.config/.common.env
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
@@ -32,4 +35,4 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # opam configuration
-# test -r /home/atsushifx/.opam/opam-init/init.sh && . /home/atsushifx/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+test -r /home/atsushifx/.opam/opam-init/init.sh && . /home/atsushifx/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
