@@ -8,6 +8,10 @@
 " @license   MIT
 "
 
+""
+" viminfo
+" set viminfofile=$XDG_DATA_HOME/vim/viminfo
+
 
 "" vim common settings
 
@@ -19,3 +23,4 @@ set virtualedit=block
 
 " 挿入モードでバックスペースで削除できるようにする
 set backspace=indent,eol,start
+
