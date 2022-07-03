@@ -1,0 +1,66 @@
+#!/bin/bash
+#
+# @(#) : display bash script usage
+#
+# @version 0.0.3
+# @author  Furukawa, Atsushi <atsushifx@gmail.com>
+# @date    2022-07-02
+# @license MIT
+#
+# @help
+#
+# what <shellscript>
+#
+# display shell script usage
+#
+##
+
+## initialize
+set -euC -o pipefail
+readonly SCRIPTDIR=$(
+  cd $(dirname "$0")
+  pwd
+)
+readonly WORKINGDIR=$(pwd)
+# cd "$SCRIPTDIR"
+
+## utility functionis
+
+# output error message
+_err() {
+  echo "[ $0 $(date +'%Y-%m-%d %H:%M:%S') ]: $*" >&2
+}
+
+## main functions
+
+###
+# what
+#  print oneline usage created bt '@(#)' comment
+what() {
+  local _file="$*"
+
+  local _cmd=$( basename "${_file}" )
+  local _ver=$( fgrep '@version' "${_file}" |head -1 |awk '{print $3}')
+  local _desc=$( fgrep '@(#)' "${_file}" |head -1 |sed -e 's/[^.]*#)[ :]*//' )
+
+  echo "${_cmd} ( v$_ver ) : ${_desc}" 
+
+  return 0;
+}
+
+##
+# help
+#
+# create & print help message form header comment
+#
+help() {
+  sed -rn '/^#[ ]*@(usage|help|desc)/,/^$/{ p; }' $1 |
+    sed -e 's/^[# ]*//' |
+    tail -n +2 |
+    cat -s
+
+}
+
+## main
+what $1
+what $0
