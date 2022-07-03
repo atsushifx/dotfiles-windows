@@ -1,0 +1,21 @@
+"" vim settings
+"" @(#) vim user specific settings[
+""
+"
+" @versiion  1.0.0
+" @author    Furukawa, Atsushi <atsushifx@aglabo.com>
+" @date      2022-07-02
+" @license   MIT
+"
+
+
+"" vim common settings
+
+" 行番号
+set number
+
+" vim の矩形選択で文字が無くても右へ進める
+set virtualedit=block
+
+" 挿入モードでバックスペースで削除できるようにする
+set backspace=indent,eol,start
