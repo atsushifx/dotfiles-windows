@@ -6,10 +6,10 @@
 # @author    Furukawa, Atsushi <atsushifx@aglabo.com>
 # @license   MIT
 #
-# @description <<
+# @description 
 # user default editorconfig : 
 # symlink this to ~ : user root
-#<<
+#
 
 # top-most EditorConfig file
 root = true

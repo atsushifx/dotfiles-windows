@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# @(#) : check file type is binary
+#
+# @version 0.0.3
+# @author  Furukawa, Atsushi <atsushifx@gmail.com>
+# @date    2022-07-02
+# @license MIT
+#
+# @description
+#
+# ,what <shellscript>
+#
+# display shell script usage
+#
+##
+
+## initialize
+set -euC
+readonly SCRIPTDIR=$(
+  cd $(dirname "$0")
+  pwd
+)
+readonly WORKINGDIR=$(pwd)
+# cd "$SCRIPTDIR"
+
+filetype=$( file "$1" )
+if [[ "${filetype}" =~ "text" ]]; then
+  echo "text"
+else
+  echo "binary"
+fi
+
+

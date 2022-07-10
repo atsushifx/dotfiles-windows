@@ -7,13 +7,13 @@
 # @date    2022-07-02
 # @license MIT
 #
-# @help
+# @usage<<
 #
 # what <shellscript>
 #
 # display shell script usage
 #
-##
+#<<
 
 ## initialize
 set -euC -o pipefail
@@ -36,16 +36,15 @@ _err() {
 ###
 # what
 #  print oneline usage created bt '@(#)' comment
-what() {
-  local _file="$*"
+what_1line() {
+  local _file="$1"
 
-  local _cmd=$( basename "${_file}" )
-  local _ver=$( fgrep '@version' "${_file}" |head -1 |awk '{print $3}')
-  local _desc=$( fgrep '@(#)' "${_file}" |head -1 |sed -e 's/[^.]*#)[ :]*//' )
+  local _cmd=$(basename "${_file}")
+  local _ver=$(strings "${_file}" | grep '@version' | head -1 | awk '{print $3}')
+  local _desc=$(strings "${_file}" | grep '@(#)' | head -1 | sed -e 's/[^.]*#)[ :]*//')
 
-  echo "${_cmd} ( v$_ver ) : ${_desc}" 
-
-  return 0;
+  echo "${_cmd} ( v$_ver ) : ${_desc}"
+  return 0
 }
 
 ##
@@ -53,14 +52,20 @@ what() {
 #
 # create & print help message form header comment
 #
-help() {
-  sed -rn '/^#[ ]*@(usage|help|desc)/,/^$/{ p; }' $1 |
+what_desc() {
+  local _file="$1"
+
+  strings "${_file}" |
+    sed -rn '/^#[ ]*@(usage|help|desc)/,/^##/{ p; }' |
     sed -e 's/^[# ]*//' |
     tail -n +2 |
     cat -s
-
 }
 
 ## main
-what $1
-what $0
+echo "What:"
+what_1line "$0"
+
+echo; echo "Description:"
+what_desc "$0"
+
