@@ -1,71 +1,97 @@
 #!/bin/bash
 #
-# @(#) : display bash script usage
+# @(#) : display shell script usage
 #
 # @version 0.0.3
 # @author  Furukawa, Atsushi <atsushifx@gmail.com>
 # @date    2022-07-02
 # @license MIT
 #
-# @usage<<
+# @usage <<
 #
-# what <shellscript>
+# what <command> : print shell script usage
 #
-# display shell script usage
 #
-#<<
+#
+#
 
-## initialize
+### initialize
 set -euC -o pipefail
 readonly SCRIPTDIR=$(
   cd $(dirname "$0")
   pwd
 )
 readonly WORKINGDIR=$(pwd)
+readonly LIBDIR="${HOME}/bin/inc"
 # cd "$SCRIPTDIR"
+
+### linrary read
+. ${LIBDIR}/utils.inc.sh
+
+
+### Global Variables
+INPUT_FILE=
+FLAG_HEADER=0
+
 
 ## utility functionis
 
-# output error message
-_err() {
-  echo "[ $0 $(date +'%Y-%m-%d %H:%M:%S') ]: $*" >&2
-}
 
-## main functions
+### main functions
 
-###
+#
+# parse_argument : check option and file from commanf line
+#
+
+
+#
 # what
 #  print oneline usage created bt '@(#)' comment
-what_1line() {
-  local _file="$1"
+what() {
+  local _file
+  _file="$*"
 
-  local _cmd=$(basename "${_file}")
-  local _ver=$(strings "${_file}" | grep '@version' | head -1 | awk '{print $3}')
-  local _desc=$(strings "${_file}" | grep '@(#)' | head -1 | sed -e 's/[^.]*#)[ :]*//')
+  local _cmd=$(basename "$_file")
+  local _ver=$(strings "$_file" | grep '@version' | head -1 | awk '{print $3}')
+  local _desc=$(strings "$_file" | grep '@(#)' | head -1 | sed -e 's/[^.]*#)[ :]*//')
 
   echo "${_cmd} ( v$_ver ) : ${_desc}"
   return 0
 }
 
-##
-# help
-#
-# create & print help message form header comment
-#
-what_desc() {
-  local _file="$1"
 
-  strings "${_file}" |
-    sed -rn '/^#[ ]*@(usage|help|desc)/,/^##/{ p; }' |
-    sed -e 's/^[# ]*//' |
-    tail -n +2 |
+##
+# usage : print usage
+#
+# @param nil
+# @return usage message
+#
+# @desc<<
+# print usage created by header commeny
+# message begins @help, @help, @desc(ription) and
+# ends by null line or '<<'(for binary)
+#
+#<<
+usage() {
+  local _file="$*"
+  local _type=$( _isBinary "$_file" )
+
+  if [[ "$_type" == "text" ]]; then
+   cat "${_file}" |
+    sed -r '1,/^#[ ]*@(usage|help|desc)/d' |
+    sed -r '/^$/,${ d; }' |
+    tail +2 |
+    sed -e 's/^[#< ]*//' |
     cat -s
+  else
+   strings "${_file}" |
+    sed -r '1,/^#[ ]*@(usage|help|desc)/d' |
+    sed -r '/^$/,${ d; }' |
+    tail +2 |
+    sed -e 's/^[#< ]*//' |
+    cat -s
+  fi
 }
 
 ## main
-echo "What:"
-what_1line "$0"
-
-echo; echo "Description:"
-what_desc "$0"
-
+usage $0

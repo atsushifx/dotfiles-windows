@@ -15,7 +15,7 @@ indent_size = 2
 tab_width = 2
 
 # shell script
-[**.{sh,bash}]
+[**.{sh,bash.inc}]
 indent_style = space
 indent_size = 2
 tab_width = 2
