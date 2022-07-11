@@ -16,10 +16,13 @@ isInteractive() {
 }
 
 
-
 ##  common environ settings
+if [ -n "$BASH_VERSION" ]; then
+  . ~/.config/.common.env
+fi
+export PATH
+
 # in zsh this is called by zshenv
-# . ~/.config/.common.env
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then

@@ -9,7 +9,7 @@ echo "Exec .config/bash/bashrc"
 
 peco-history () {
   local _cmd
-  _cmd=`history 20|tac|sed -e "s/^[0-9 ]*//g"|peco`
+  _cmd=$( history 20|tac|sed -e "s/^[0-9 ]*//g"|peco )
   if [[ -n ${_cmd} ]]; then
     echo -n "Exec ${_cmd}"
   #  READLINE_LINE="$_cmd"
@@ -17,10 +17,29 @@ peco-history () {
   fi
 }
 
+#
+# prompt : set prompt for bash
+#
+_set_prompt() {
+  local _colorprompt
+
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    _color_prompt=yes
+  else
+    _color_prompt=
+  fi
+
+  if [ "$_color_prompt" = yes ]; then
+    PS1='[\[\033[01;32m\]\u@\h\[\033[34m\] \W\[\033[00m\]] \$ '
+  else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  fi
+  export PS1
+}
+_set_prompt
 
 ## key config
 #bind -x '"\C-r": peco-history'
-
 
 
 ## bash completion
@@ -28,3 +47,6 @@ _cmpl_d=/home/linuxbrew/.linuxbrew/etc/bash_completion.d
 for f in ${_cmpl_d}/*; do
   . "${f}"
 done
+
+# volta
+# volta completions bash | bash
