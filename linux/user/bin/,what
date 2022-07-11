@@ -132,8 +132,10 @@ fi
 
 ### mai roution
 main() {
-  for f in "${INPUT_FILES}"; do
-    echo "File:[$f]"
+  local _file
+
+  for _file in "(${@})"; do
+    echo "$_file"
   done
 }
 
@@ -143,6 +145,6 @@ if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   if [[ "${INPUT_FILES}" == "" ]]; then
     version
   else
-    main
+    main ${INPUT_FILES}
   fi
 fi
