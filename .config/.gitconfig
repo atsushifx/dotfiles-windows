@@ -1,58 +1,53 @@
+###
+#
+# @(#) : global git config for Windows
+#
+# @version 1.0.0
+# @author  Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date    2022-07-18
+# @license MIT
+#
+# @desc<<
+#
+# git global settings for Windows
+# Windows/WSL common settings is git/config-common
+#
+#
+# THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
+# THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
+#
+#<<
+
+##
+## common settings
+##
+[include]
+	path = ./git/config-common
+
+##
+## settings for Windows
+##
 [core]
 	autocrlf = input
-	safecrlf = true
-	attributesfile = C:\\Users\\atsushifx\\.config\\git\\attributes
-#	editor = "wzeditor --wait "
+	attributesfile = './git/gitatributes'
 
 [color]
 	ui = true
 
-[user]
-	name = Furukawa, Atsushi
-	email = 98551+atsushifx@users.noreply.github.com
-
 [push]
 	default = current
 
-[diff]
-    tool = WinMerge
-
-[difftool "WinMerge"]
-    path = C:/app/develop/scm/WinMerge/WinMergeU.exe
-    cmd = WinMergeU.exe -f \"*.*\" -e -u -r \"$LOCAL\" \"$REMOTE\"
-
-[merge]
-    tool = WinMerge
-
-[mergetool "WinMerge"]
-    path = C:/app/develop/scm/WinMerge/WinMergeU.exe
-    cmd = WinMergeU.exe\" -e -u \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-
-[alias]
-    windiff = difftool -y -d -t WinMerge
-    winmerge = mergetool -y -t WinMerge
+[init]
+	defaultBranch = master
 
 [credential]
-	helper = store
+	helper = manager-core
+
 
 [credential "helperselector"]
 	selected = store
 
 [ghq]
-	root = c:/Users/atsushifx/workspaces/gitworks
-	root = c:/Users/atsushifx/workspaces/education
-	root = c:/Users/atsushifx/workspaces/develop
-
-[safe]
-	directory = C:/Users/atsushifx/app/scoop/apps/scoop/current
-
-[secrets]
-	providers = git secrets --aws-provider
-	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
-	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
-	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+	root = ../workspaces/gitworks
+	root = ../workspaces/education
+	root = ../workspaces/develop

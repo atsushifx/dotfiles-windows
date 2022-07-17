@@ -1,0 +1,66 @@
+###
+#
+# @(#) : git Linux / Windows common settings
+#
+# @version 1.0.0
+# @author  Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date    2022-07-18
+# @license MIT
+#
+# @desc<<
+#
+# git common settings for Windows & Linux
+# this file used by include directive from .gitconfig for Linux/Windows
+#
+#
+# THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
+# THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
+#
+#<<
+
+[core]
+	autocrlf = input
+
+[color]
+	ui = true
+
+[push]
+	default = current
+
+[init]
+	defaultBranch = master
+
+[user]
+	name = Furukawa, Atsushi
+	email = 98551+atsushifx@users.noreply.github.com
+
+[push]
+	default = current
+
+[alias]
+    ss = status -s
+    br = branch
+    co = checkout
+    sw = switch
+    pr = pull -r
+    ps = push
+    co = checkout
+    st = status
+    fixit = commit --amend --no-edit
+	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+	ll = log --stat --abbrev-commit
+	lg = log --color --graph --pretty=format:'%C(bold white)%h%Creset -%C(bold green)%d%Creset %s %C(bold green)(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	llg = log --color --graph --pretty=format:'%C(bold white)%H %d%Creset%n%s%n%+b%C(bold blue)%an <%ae>%Creset %C(bold green)%cr (%ci)' --abbrev-commit
+    alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+
+
+[secrets]
+	providers = git secrets --aws-provider
+	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

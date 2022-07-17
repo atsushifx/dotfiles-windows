@@ -13,6 +13,23 @@ B##
 */.gnupg/*
 *cred*
 
+###
+#
+# Windows settings
+#
+
+
+## PowerShell
+
+# ignore modules
+**/PSReadLine/
+
+## Scoop
+
+# ignore scoop settings
+**/scoop/
+
+
 ##
 # general settingds
 
@@ -29,11 +46,18 @@ B##
 #  tools utils settings
 #
 
+##
+#	Windows settings
+#
 
-### scoop
-.*/scoop/*
+# PowerShell
+$
 
-### PowerShell
+
+
+# scoop
+**/scoop/*
+
 
 
 ##

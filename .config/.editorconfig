@@ -1,15 +1,21 @@
 ## EditorConfig is awesome: https://EditorConfig.org
-## @(#)  default editorconfig settings for user
 #
-# @version   1.0.3
-# @update    2022-07-02
-# @author    Furukawa, Atsushi <atsushifx@aglabo.com>
-# @license   MIT
+# @(#)  default editorconfig settings for user
 #
-# @description 
-# user default editorconfig : 
+# @version  1.0.3
+# @date		2022-07-02
+# @author	Furukawa, Atsushi <atsushifx@aglabo.com>
+# @license  MIT
+#
+# @update	2022-07-22	add config for .git*
+#
+# @description
+# user default editorconfig :
 # symlink this to ~ : user root
 #
+#
+
+
 
 # top-most EditorConfig file
 root = true
@@ -35,6 +41,7 @@ indent_style = space
 indent_size = 2
 tab_width = 2
 
+
 # shell script
 [**.{sh,bash}]
 indent_style = space
@@ -44,6 +51,18 @@ tab_width = 2
 
 
 ### setting files
+
+# for git config
+[**.git*]
+indent_style = tab
+indent_size = tab
+tab_width = 4
+
+[*/git/*]
+indent_style = tab
+indent_size = tab
+tab_width = 4
+
 # ini files
 [**.ini]
 tab_width = 4
