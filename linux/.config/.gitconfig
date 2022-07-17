@@ -1,0 +1,53 @@
+###
+#
+# @(#) : global git config for Windows
+#
+# @version 1.0.0
+# @author  Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date    2022-07-18
+# @license MIT
+#
+# @desc<<
+#
+# git global settings for Windows
+# Windows/WSL common settings is git/config-common
+#
+#
+# THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
+# THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
+#
+#<<
+
+##
+## common settings
+##
+[include]
+	path = ./git/config-common
+
+##
+## settings for Windows
+##
+[core]
+	autocrlf = input
+	attributesfile = './git/gitatributes'
+
+[color]
+	ui = true
+
+[push]
+	default = current
+
+[init]
+	defaultBranch = master
+
+[credential]
+	helper = manager-core
+
+
+[credential "helperselector"]
+	selected = store
+
+[ghq]
+	root = ../workspaces/gitworks
+	root = ../workspaces/education
+	root = ../workspaces/develop

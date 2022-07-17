@@ -1,0 +1,86 @@
+## EditorConfig is awesome: https://EditorConfig.org
+#
+# @(#)  default editorconfig settings for user
+#
+# @version  1.0.3
+# @date		2022-07-02
+# @author	Furukawa, Atsushi <atsushifx@aglabo.com>
+# @license  MIT
+#
+# @update	2022-07-22	add config for .git*
+#
+# @description
+# user default editorconfig :
+# symlink this to ~ : user root
+#
+#
+
+
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# default character-set
+charset = utf-8
+
+# indent style
+indent_size = tab
+indent_style = tab
+tab_width=4
+
+# ext type settings
+
+# script executable
+[**.]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+
+# shell script
+[**.{sh,bash}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+
+
+### setting files
+
+# for git config
+[**.git*]
+indent_style = tab
+indent_size = tab
+tab_width = 4
+
+[*/git/*]
+indent_style = tab
+indent_size = tab
+tab_width = 4
+
+# ini files
+[**.ini]
+tab_width = 4
+indent_style = tab
+
+# json, yml
+[**.{json, yml}]
+tab_width = 4
+indent_style = tab
+
+# rc files
+[**rc]
+tab_width = 2
+indent_style = space
+
+### markdown
+[**.md]
+indent_size = tab
+tab_width = 2
+indent_style = space
+
