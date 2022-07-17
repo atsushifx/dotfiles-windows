@@ -1,5 +1,29 @@
+###
+#
+# @(#) : git global settings for WSL / Linux
+#
+# @version 1.0.0
+# @author  Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date    2022-07-18
+# @license MIT
+#
+# @desc<<
+#
+# git common settings for WSL / Linux
+# Windows / Linux common settings is .config/config-commoon
+#
+#
+# THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
+# THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
+#
+#<<
+
+## important settings
+#
+#
 [core]
 	autocrlf = input
+	symlinks = true
 
 [color]
 	ui = true
@@ -10,6 +34,17 @@
 [init]
 	defaultBranch = master
 
+[pull]
+	ff = only
+
+[user]
+	name = Furukawa, Atsushi
+	email = 98551+atsushifx@users.noreply.github.com
+
+## common settings from config-common
+#
+[include]
+	path = ../../../.config/git/config-common
 
 
 [credential]
@@ -18,13 +53,6 @@
 [credential "helperselector"]
 	selected = store
 
-[pull]
-	ff = only
-
-
-[user]
-	name = Furukawa, Atsushi
-	email = 98551+atsushifx@users.noreply.github.com
 [ghq]
 	root = /home/atsushifx/workspaces/
 
