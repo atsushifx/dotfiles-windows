@@ -1,6 +1,6 @@
 ###
 #
-# @(#) : global git config for Windows
+# @(#) : dotfiles git settings
 #
 # @version 1.0.0
 # @author  Furukawa, Atsushi <atsushifx@aglabo.com>
@@ -19,37 +19,9 @@
 #<<
 
 ##
-## common settings
-##
-[include]
-	path = ./git/config-common
-
-##
 ## settings for Windows
 ##
 [core]
 	autocrlf = input
-	synlinks = true
-	attributesfile = './git/atributes'
-
-[color]
-	ui = true
-
-[push]
-	default = current
-
-[init]
-	defaultBranch = master
-
-[credential]
-	helper = manager-core
-
-
-[credential "helperselector"]
-	selected = store
-
-[ghq]
-	root = ../workspaces/gitworks
-	root = ../workspaces/education
-	root = ../workspaces/develop
+	excludesfile = linux/,config/git/ignore
 

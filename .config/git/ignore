@@ -28,8 +28,10 @@ thums.db
 ##
 #	backup
 $~*
+~*
 *~
 *tmp
+*swp
 
 ##
 #	credential files
@@ -45,7 +47,7 @@ $~*
 
 #	history & info
 .*hist*
-.*info
+.*info*
 
 #	Log Files
 *.log
