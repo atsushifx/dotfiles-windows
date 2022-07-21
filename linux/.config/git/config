@@ -54,5 +54,5 @@
 	selected = store
 
 [ghq]
-	root = /home/atsushifx/workspaces/
+	root = /home/atsushifx/workspaces/develop
 
