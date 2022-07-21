@@ -1,0 +1,35 @@
+"" vim settings
+"" @(#) vim user specific settings[
+""
+"
+" @versiion  1.0.0
+" @author    Furukawa, Atsushi <atsushifx@aglabo.com>
+" @date      2022-07-02
+" @license   MIT
+"
+
+
+
+""
+" viminfo
+set viminfofile=$XDG_DATA_HOME/vim/viminfo
+
+
+"" vim common settings
+
+" encoding : default display Japanese
+set fenc=utf-8
+set encoding=utf-8
+set fileformats=unix
+
+" disp line number
+set number
+
+
+set virtualedit=block
+
+
+set backspace=indent,eol,start
+
+
+
