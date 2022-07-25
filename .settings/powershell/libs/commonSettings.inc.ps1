@@ -21,10 +21,10 @@ Set-StrictMode -version latest
 
 ## Set common Constants
 $baseDir = (Split-Path -Path $PROFILE)
-set-Variable -Option Constant -Name THISCMD -Value (Split-Path -Leaf $MyInvocation.PSCommandPath) -Description "executes command"
-Set-Variable -Option Constant -Name LIBSDIR -Value $baseDir'/libs/' -Description 'common libs directory'
-Set-Variable -Option Constant -Name SCRIPTSDIR -Value $baseDir'/scripts/' -Description 'Common scripts directory'
-Set-Variable -Option Constant -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
+set-Variable -Option ReadOnly -Name THISCMD -Value (Split-Path -Leaf $MyInvocation.PSCommandPath) -Description "executes command"
+Set-Variable -Option ReadOnly -Name LIBSDIR -Value $baseDir'/libs/' -Description 'common libs directory'
+Set-Variable -Option ReadOnly -Name SCRIPTSDIR -Value $baseDir'/scripts/' -Description 'Common scripts directory'
+Set-Variable -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
 
 <#
  # static function class for check user role

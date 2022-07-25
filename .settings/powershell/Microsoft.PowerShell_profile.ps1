@@ -45,8 +45,14 @@ function prompt() {
 }
 
 ## setup current directory
-if ($WORKINGDIR.Contains('AppData')) {
+## ランチャー内やシステムディレクトリのときは、カレントディレクトリを移動
+if ($WORKINGDIR.Contains('AppData') -OR $WORKINGDIR.Contains('Windows')) {
 	Set-Location '~/workspaces'
+
+  # WORKINGDIRを再設定
+  Remove-Item Variable:\WORKINGDIR -Force
+  Set-Variable -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
+
 }
 
 
