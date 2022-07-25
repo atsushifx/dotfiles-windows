@@ -13,7 +13,6 @@ THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK
 ## Script Setup
 Set-StrictMode -version latest
 . ((Split-Path -Path ($profile)) + '/libs/commonSettings.inc.ps1')
-Set-Variable -Option Constant -Name THISCMD -Value $MyInvocation.MyCommand.Name -Description 'This executes script'
 
 ### functions
 function private:write-sudo-messages() {

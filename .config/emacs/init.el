@@ -2,7 +2,7 @@
 ;; @(#) : emacs initialize script
 ;;
 (eval-and-compile
-  (setq user-emacs-directory "$HOME/emacs/.emacs.d")
+  (setq user-emacs-directory concat( (getenv home) "/emacs.d"))
   )
 
 
