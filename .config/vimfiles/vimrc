@@ -9,10 +9,18 @@
 "
 
 
+"" load default.vim
+source $VIMRUNTIME/defaults.vim
+
+"" File
 
 ""
 " viminfo
-set viminfofile=$XDG_DATA_HOME/vim/viminfo
+set viminfofile=$XDG_DATA_HOME/vim/.viminfo
+
+""
+"
+" set runtimepath~=~/vimfiles
 
 
 "" vim common settings
@@ -32,4 +40,7 @@ set virtualedit=block
 set backspace=indent,eol,start
 
 
-
+"" plugins
+call plug#begin('~/vimfiles/plugged')
+"  Plug 'jez/vim-better-sml'
+call plug#end()
