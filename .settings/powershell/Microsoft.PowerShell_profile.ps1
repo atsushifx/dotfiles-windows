@@ -49,13 +49,18 @@ function prompt() {
 if ($WORKINGDIR.Contains('AppData') -OR $WORKINGDIR.Contains('Windows')) {
 	Set-Location '~/workspaces'
 
-  # WORKINGDIRを再設定
-  Remove-Item Variable:\WORKINGDIR -Force
-  Set-Variable -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
+	# WORKINGDIRを再設定
+	Remove-Item Variable:\WORKINGDIR -Force
+	Set-Variable -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
 
 }
 
-
+## Add Path for dotnet
+$newPath = $env:path
+$newPath += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\Roslyn'
+$newPath += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools'
+$newPath += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.32.31326\bin\Hostx64\x64'
+$env:path = $newPath
 
 
 ## key binding

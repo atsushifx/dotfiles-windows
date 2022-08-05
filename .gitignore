@@ -33,6 +33,10 @@ B##
 # ignore scoop settings
 **/scoop/
 
+## pnpm ?
+**/configStore/*
+
+
 
 ##
 # unix settings
