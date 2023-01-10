@@ -13,6 +13,7 @@ THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK
 ## Script Setup
 Set-StrictMode -version latest
 . ((Split-Path -Path ($profile)) + '/libs/commonSettings.inc.ps1')
+. ($LIBSDIR + "/cliFunctions.inc.ps1")  # for readline function
 
 ### functions
 function private:write-sudo-messages() {

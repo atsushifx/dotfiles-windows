@@ -65,29 +65,3 @@ class myUserRole {
 	}
 }
 
-<#
-  .SYNOPSIS
-    select command from history and execute
-
-  .DESCRIPTION
-    select history wuth peco and set command line to execute this.
-
-
-  .EXAMPLE
-    Set-PSReadLineKeyHandler -chord Ctrl+p -scriptBlock { SelectandExecHistory }
-    using above that hit ctrl+p to use this.
-
-#>
-function global:SelectandExecHistory() {
-	$selectCmd = (tail -20 (Get-PSReadLineOption).HistorySavePath) | peco --select-1 --on-cancel error
-	if ($?) {
-		[Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
-		[Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
-		[Microsoft.PowerShell.PSConsoleReadLine]::Insert($selectCmd)
-		# [Microsoft.PowerShell.PSConsoleReadLine]::EndOfLine()
-		# [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
-	}
- else {
-		[Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
-	}
-}

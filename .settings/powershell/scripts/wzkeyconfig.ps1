@@ -37,10 +37,9 @@ function private:wzlikekeyconfig() {
 	# exit shell
 	$keyconfig = @{
 		BriefDescription = 'exit'
-		LongDescription = 'input exit {ENTER}'
-		ScriptBlock = {
-			[Microsoft.PowerShell.PSConsoleReadLine]::Insert('exit')
-			[Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+		LongDescription  = 'input exit {ENTER}'
+		ScriptBlock      = {
+			Execute_Command "exit" -send
 		}
 	}
 	Set-PSReadLineKeyHandler -chord Ctrl+Z @keyconfig
@@ -60,8 +59,8 @@ function private:wzlikekeyconfig() {
 	# history
 	$keyconfig = @{
 		BriefDescription = 'select & execute history'
-		LongDescription = 'select history with peco & execute this'
-		ScriptBlock = { SelectandExecHistory }
+		LongDescription  = 'select history with peco & execute this'
+		ScriptBlock      = { Execute_History -send }
 	}
 
 	Set-PSReadLineKeyHandler -chord Ctrl+p @keyconfig

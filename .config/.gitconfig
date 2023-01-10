@@ -2,9 +2,9 @@
 #
 # @(#) : global git config for Windows
 #
-# @version 1.0.0
+# @version 1.0.1
 # @author  Furukawa, Atsushi <atsushifx@aglabo.com>
-# @date    2022-07-18
+# @date    2023-01-11
 # @license MIT
 #
 # @desc<<
@@ -52,9 +52,9 @@
 	selected = store
 
 [ghq]
-	root = ../workspaces/gitworks
-	root = ../workspaces/education
-	root = ../workspaces/develop
+	root = c:/users/atsushifx/workspaces/gitworks
+	root = c:/users/atsushifx/workspaces/education
+	root = c:/users/atsushifx/workspaces/develop
 
 [safe]
 	directory = C:/Users/atsushifx/app/scoop/apps
