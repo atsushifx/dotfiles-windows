@@ -18,12 +18,16 @@ source $VIMRUNTIME/defaults.vim
 " viminfo
 set viminfofile=$XDG_DATA_HOME/vim/.viminfo
 
+
 ""
 "
 " set runtimepath~=~/vimfiles
 
 
 "" vim common settings
+" shell
+set shell=pwsh
+
 
 " encoding : default display Japanese
 set fenc=utf-8

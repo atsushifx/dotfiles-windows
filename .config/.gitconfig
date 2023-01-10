@@ -38,6 +38,9 @@
 [push]
 	default = current
 
+[fetch]
+	prune = true
+
 [init]
 	defaultBranch = master
 
@@ -55,6 +58,3 @@
 
 [safe]
 	directory = C:/Users/atsushifx/app/scoop/apps
-	directory = C:\\Users\\atsushifx\\app\\scoop\\apps\\scoop\\current\\
-[fetch]
-	prune = true
