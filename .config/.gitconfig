@@ -58,3 +58,5 @@
 
 [safe]
 	directory = C:/Users/atsushifx/app/scoop/apps
+[pull]
+	rebase = false
