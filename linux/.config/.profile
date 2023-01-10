@@ -1,3 +1,17 @@
+#!/usr/bin/env bash
+#
+# @(#) : .profile main
+#
+# @version  1.0.2
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date     2022-08-16
+# @license  MIT
+#
+# @description
+# ~/.config/.profile: command interpreter main for login shells.
+# exec utilties settings & path  
+#
+
 # ~/.profile: executed by the command interpreter for login shells.
 
 # the default umask is set in /etc/profile; for setting the umask
@@ -36,6 +50,9 @@ if [ -n "$BASH_VERSION" ]; then
     . ${HOME}/.config/bash/bashrc
   fi
 fi
+
+# rbenv eval
+eval "$(rbenv init -)"
 
 # opam configuration
 test -r /home/atsushifx/.opam/opam-init/init.sh && . /home/atsushifx/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
