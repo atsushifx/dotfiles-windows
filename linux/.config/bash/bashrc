@@ -32,21 +32,26 @@ _set_prompt() {
   if [ "$_color_prompt" = yes ]; then
     PS1='[\[\033[01;32m\]\u@\h\[\033[34m\] \W\[\033[00m\]] \$ '
   else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='[ ${debian_chroot:+($debian_chroot)}\u@\h \w] \$ '
   fi
   export PS1
 }
 _set_prompt
+
+## alias
+if [[ -f "$XDG_CONFIG_HOME/aliases" ]]; then
+  . "$XDG_CONFIG_HOME/aliases"
+fi
 
 ## key config
 #bind -x '"\C-r": peco-history'
 
 
 ## bash completion
-_cmpl_d=/home/linuxbrew/.linuxbrew/etc/bash_completion.d
-for f in ${_cmpl_d}/*; do
-  . "${f}"
-done
+#_cmpl_d=/home/linuxbrew/.linuxbrew/etc/bash_completion.d
+#for f in ${_cmpl_d}/*; do
+#  . "${f}"
+#done
 
 # volta
 # volta completions bash | bash

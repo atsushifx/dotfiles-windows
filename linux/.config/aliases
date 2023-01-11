@@ -3,3 +3,8 @@
 # @(#) : bash aliases called by bashrc
 #
 # @version
+
+echo "Exec: aliases"
+
+## manage rcfiles with git
+alias rcm='git -C ~/.local/dotfiles/linux '
