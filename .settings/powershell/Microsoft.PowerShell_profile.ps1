@@ -13,7 +13,10 @@ THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK
 ## Script Setup
 Set-StrictMode -version latest
 . ((Split-Path -Path ($profile)) + '/libs/commonSettings.inc.ps1')
+
+### Libralies
 . ($LIBSDIR + "/cliFunctions.inc.ps1")  # for readline function
+
 
 ### functions
 function private:write-sudo-messages() {
@@ -34,7 +37,9 @@ function private:write-sudo-messages() {
     set default prompt for powershell
 
 #>
-function prompt() {
+function global:prompt() {
+
+	# define prompt
 	$isAdmin = [myUserRole]::isAdmin()
 	$prompt = $isAdmin ? " # " :  " > "
 	$currentPath = (Split-Path (Get-Location) -Leaf)
@@ -42,7 +47,7 @@ function prompt() {
 	$userName = $env:USERNAME
 
 	# Prompt return
-	return $currentDrive + ": /" + $currentPath + $prompt
+	$currentDrive + ": /" + $currentPath + $prompt
 }
 
 ## setup current directory
@@ -64,20 +69,17 @@ $newPath += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\
 $env:path = $newPath
 
 
-## key binding
-. ($SCRIPTSDIR + 'wzkeyconfig.ps1')
-
 ## input History Plugin
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -Colors @{ InLinePrediction = $PSStyle.Foreground.cyan }
 
+## key binding
+. ($LIBSDIR + 'keyconfig.inc.ps1')
 
-# sudo messages
-if ([myUserRole]::isAdmin()) {
-	write-sudo-messages;
-}
 
-## Tab completion
+## tab completion
+
+### Modules
 Import-Module posh-git
 Import-Module posh-wakatime
 Import-Module scoop-completion
@@ -86,3 +88,7 @@ Import-Module scoop-completion
 # volta completions
 & volta completions powershell | Out-String | Invoke-Expression
 
+# sudo messages
+if ([myUserRole]::isAdmin()) {
+	write-sudo-messages;
+}
