@@ -79,7 +79,9 @@ if ([myUserRole]::isAdmin()) {
 
 ## Tab completion
 Import-Module posh-git
+Import-Module posh-wakatime
 Import-Module scoop-completion
+
 
 # volta completions
 & volta completions powershell | Out-String | Invoke-Expression

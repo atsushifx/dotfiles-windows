@@ -19,15 +19,13 @@ THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH
 Set-StrictMode -version latest
 
 <#
-	.SYNOPSYS
+  .SYNOPSIS
 	execute cmdlet for history,
 	using switch -send is input command to cli
 
-	.NOTES
+  .DESCRIPTION
 	normal use, this function only call invoke-expression
-
-	.REMARKS
-	parameter send is used for keyhandler
+  -send option, use ReadLine for exec command for keyhandler
 #>
 function Execute_Command() {
 	param(
@@ -50,16 +48,14 @@ function Execute_Command() {
 }
 
 <#
-	.SYNOPSYS
+	.SYNOPSIS
 	select command line using peco and execute it.
 	caution: for execute this function, you must install tac, peco
 
-	.NOTES
+	.DESCRIPTION
 	display history and select using tac & peco
 	then select, execute it.
-
-	.REMARKS
-	parameter send is used for keyhandler
+  use -send switch, this function execute command like key input.
 #>
 function Execute_History() {
 	param(
