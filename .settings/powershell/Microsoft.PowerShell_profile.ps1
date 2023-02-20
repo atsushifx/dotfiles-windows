@@ -20,14 +20,14 @@ Set-StrictMode -version latest
 
 ### functions
 function private:write-sudo-messages() {
-	$white = "$([char]0x1b)[37;1m"
-	$cyan = "$([char]0x1b)[36;1m"
-	$neutral = "$([char]0x1b)[m"
-	$messages = "${white}貴方は領主様から通常の講習を受けたはずですわ｡${neutral}`n${white}それらは通常に以下3点に要約されますの｡${neutral}
+  $white = "$([char]0x1b)[37;1m"
+  $cyan = "$([char]0x1b)[36;1m"
+  $neutral = "$([char]0x1b)[m"
+  $messages = "${white}貴方は領主様から通常の講習を受けたはずですわ｡${neutral}`n${white}それらは通常に以下3点に要約されますの｡${neutral}
     ${cyan}#1${neutral}) 市民の皆様のプライバシーを尊重すること｡
     ${cyan}#2${neutral}) おタイプする前に考えること。
     ${cyan}#3${neutral}) そしてノブレス・オブリージュを肝に銘じておくことですわ！"
-	$messages | write-output
+  $messages | write-output
 }
 
 ## prompt
@@ -39,25 +39,25 @@ function private:write-sudo-messages() {
 #>
 function global:prompt() {
 
-	# define prompt
-	$isAdmin = [myUserRole]::isAdmin()
-	$prompt = $isAdmin ? " # " :  " > "
-	$currentPath = (Split-Path (Get-Location) -Leaf)
-	$currentDrive = (Convert-Path \).substring(0, 1)
-	$userName = $env:USERNAME
+  # define prompt
+  $isAdmin = [myUserRole]::isAdmin()
+  $prompt = $isAdmin ? " # " :  " > "
+  $currentPath = (Split-Path (Get-Location) -Leaf)
+  $currentDrive = (Convert-Path \).substring(0, 1)
+  $userName = $env:USERNAME
 
-	# Prompt return
-	$currentDrive + ": /" + $currentPath + $prompt
+  # Prompt return
+  $currentDrive + ": /" + $currentPath + $prompt
 }
 
 ## setup current directory
 ## ランチャー内やシステムディレクトリのときは、カレントディレクトリを移動
 if ($WORKINGDIR.Contains('AppData') -OR $WORKINGDIR.Contains('Windows')) {
-	Set-Location '~/workspaces'
+  Set-Location '~/workspaces'
 
-	# WORKINGDIRを再設定
-	Remove-Item Variable:\WORKINGDIR -Force
-	Set-Variable -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
+  # WORKINGDIRを再設定
+  Remove-Item Variable:\WORKINGDIR -Force
+  Set-Variable -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
 
 }
 
@@ -71,7 +71,8 @@ $env:path = $newPath
 
 ## input History Plugin
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
-Set-PSReadLineOption -Colors @{ InLinePrediction = $PSStyle.Foreground.cyan }
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -Colors @{ InLinePrediction = [ConsoleColor]::Cyan }
 
 ## key binding
 . ($LIBSDIR + 'keyconfig.inc.ps1')
@@ -83,12 +84,23 @@ Set-PSReadLineOption -Colors @{ InLinePrediction = $PSStyle.Foreground.cyan }
 Import-Module posh-git
 Import-Module posh-wakatime
 Import-Module scoop-completion
+Import-Module -Name CompletionPredictor
 
+### winget completion
+Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
+  param($wordToComplete, $commandAst, $cursorPosition)
+  [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
+  $Local:word = $wordToComplete.Replace('"', '""')
+  $Local:ast = $commandAst.ToString().Replace('"', '""')
+  winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
+    [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+  }
+}
 
 # volta completions
 & volta completions powershell | Out-String | Invoke-Expression
 
 # sudo messages
 if ([myUserRole]::isAdmin()) {
-	write-sudo-messages;
+  write-sudo-messages;
 }
