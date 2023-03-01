@@ -21,10 +21,13 @@ set packpath+="$XDG_CONFIG_HOME/vimfiles"
 
 " jetpack
 packadd vim-jetpack
-call jetpack#begin()
 
 " plugins
+call jetpack#begin()
+Jetpack 'tani/vim-jetpack', { 'opt': 1 }  " bootstrap
 
+" my plugins
+Jetpack 'wakatime/vim-wakatime'
 
 call jetpack#end()
 
