@@ -2,28 +2,31 @@
 "" @(#) vim user specific settings[
 ""
 "
-" @versiion  1.0.0
+" @versiion  1.0.1
 " @author    Furukawa, Atsushi <atsushifx@aglabo.com>
-" @date      2022-07-02
+" @date      2023-03-01
 " @license   MIT
 "
 
 ""
 " viminfo
-set viminfo="n$XDG_CACHE_HOME/vim/_viminfo"
+set viminfofile=$XDG_CACHE_HOME/vim/_viminfo
 
 "" load default.vim
 source $VIMRUNTIME/defaults.vim
 
 
-"" package
+"" for plugins package
 set packpath+="$XDG_CONFIG_HOME/vimfiles"
 
+" jetpack
+packadd vim-jetpack
+call jetpack#begin()
+
+" plugins
 
 
-
-
-
+call jetpack#end()
 
 
 "" vim common settings
