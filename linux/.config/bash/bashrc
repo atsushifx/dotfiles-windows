@@ -55,3 +55,7 @@ fi
 
 # volta
 # volta completions bash | bash
+
+## wakatime-count
+source ${XDG_CONFIG_HOME}/bash/bash-wakatime.sh
+

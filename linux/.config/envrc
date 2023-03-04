@@ -2,38 +2,44 @@
 #
 # @(#) : common environ settings
 #
-# @version  1.0.2
+# @version  1.0.3
 # @author   Furukawa, Atsushi <atsushifx@aglabo.com>
-# @date     2022-07-02
+# @date     2023-03-05
 # @license  MIT
 #
 # @description
-#
+# user's common environ settings
 #
 
-# @update   2022-07-03 : add VIMINIT
-# @update   2022-08-16 : add RBENV_ROOT
 
-echo "Exec: common.env"
+echo "Exec: common.envrc"
+
+export HISTFILE="${XDG_STATE_HOME}/bash/history"
 
 ## setup path
 # volta
-#VOLTA_HOME=${XDG_DATA_HOME}/.volta
+export VOLTA_HOME=${XDG_DATA_HOME}/.volta
 #PATH=${VOLTA_HOME}/bin:$PATH
 #export VOLTA_HOME
 
+# node,npm
+# NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME}/npm/npmrc
+# export NPM_CONFIG_USERCONFIG
+
 # rbenv
 #export RBENV_ROOT=${XDG_DATA_HOME}/.rbenv
+PATH="/home/linuxbrew/.linuxbrew/opt/ruby@3.1/bin:$PATH"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$HOME/bin/agla/bin:$PATH"
+    PATH="$HOME/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
 
 export PATH
 
@@ -44,9 +50,15 @@ EDITOR=/usr/bin/vim
 
 export EDITOR VISUAL PATH
 
+## wakatime config
+export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
+
+
 ## VIM
 export VIMINIT='let $MYVIMRC="${XDG_CONFIG_HOME}/vim/vimrc" | source $MYVIMRC'
 
+
+
 # opam configuration
-test -r /home/atsushifx/.opam/opam-init/init.sh && . /home/atsushifx/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+#test -r /home/atsushifx/.opam/opam-init/init.sh && . /home/atsushifx/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
