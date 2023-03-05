@@ -4,7 +4,7 @@
 #
 # @version 1.0.0
 # @author  Furukawa, Atsushi <atsushifx@aglabo.com>
-# @date    2022-07-18
+# @date    2022-03-05
 # @license MIT
 #
 # @desc<<
@@ -44,8 +44,7 @@
 ## common settings from config-common
 #
 [include]
-	path = ../../../.config/git/config-common
-
+	path = ~/.local/dotfiles/.config/git/config-common
 
 [credential]
 	helper = store --file ~/.config/.git-credentials

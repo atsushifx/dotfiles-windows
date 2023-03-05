@@ -19,16 +19,23 @@ export HISTFILE="${XDG_STATE_HOME}/bash/history"
 ## setup path
 # volta
 export VOLTA_HOME=${XDG_DATA_HOME}/.volta
-#PATH=${VOLTA_HOME}/bin:$PATH
-#export VOLTA_HOME
 
-# node,npm
-# NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME}/npm/npmrc
-# export NPM_CONFIG_USERCONFIG
+## Ruby environ
+## gems
+GEM_HOME="${XDG_DATA_HOME}/gem"
+GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"
+export GEM_HOME GEM_SPEC_HOME
 
-# rbenv
-#export RBENV_ROOT=${XDG_DATA_HOME}/.rbenv
+## bundel
+BUNDLE_USER_CONFIG="${XDG_CONFIG_HOMEs}/bundle"
+BUNDLE_USER_CACHE="${XDG_CACHE_HOME}/bundle"
+BUNDLE_USER_PLUGIN="${XDG_DATA_HOME}/bundle"
+export BUNDLE_USER_CONFIG BUNDLE_USER_CACHE BUNDLE_USER_PLUGIN
+
 PATH="/home/linuxbrew/.linuxbrew/opt/ruby@3.1/bin:$PATH"
+
+### GO
+export GOPATH="${XDG_DATA_HOME}/go"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -39,7 +46,6 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-
 
 export PATH
 
