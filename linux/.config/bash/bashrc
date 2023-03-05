@@ -48,6 +48,11 @@ fi
 
 
 ## bash completion
+_cmpl_d="${XDG_CONFIG_HOME}/bash/bash_completion.d"
+for f in ${_cmpl_d}/*; do
+  . "${f}"
+done
+
 #_cmpl_d=/home/linuxbrew/.linuxbrew/etc/bash_completion.d
 #for f in ${_cmpl_d}/*; do
 #  . "${f}"
@@ -55,3 +60,7 @@ fi
 
 # volta
 # volta completions bash | bash
+
+## wakatime-count
+source ${XDG_CONFIG_HOME}/bash/bash-wakatime.sh
+

@@ -11,7 +11,7 @@ echo "Exec: envrc"
 XDG_CONFIG_HOME="${HOME}/.config"
 XDG_DATA_HOME="${HOME}/.local/share"
 XDG_CACHE_HOME="${HOME}/.local/cache"
-XDG_STATE_HOME="${HOME}/.local/state"
+XDG_STATE_HOME="${HOME}/.local/states"
 export XDG_CONFIG_HOME XDG_DATA_HOME XDG_CACHE_HOME XDG_STATE_HOME
 
 ##
@@ -23,13 +23,15 @@ if [[ "${SHELL}" =~ "zsh" ]]; then
 fi
 
 ## setup for brew
-export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
-export HOMEBREW_CACHE="${HOMEBREW_PREFIX}/.local/cache"
-export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar";
-export HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew";
-export PATH="${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin:${PATH+:$PATH}";
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+HOMEBREW_CACHE="${HOMEBREW_PREFIX}/.local/cache"
+HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar";
+HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew";
+PATH="${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin:${PATH+:$PATH}";
+MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+export HOMEREW_PREFIX HOMEBREW_CACHE HOMEBREW_CELLAR HOMEBREW_REPOSITORY
+export PATH MANPATH INFOPATH
 
 # specific path
 # sysad define command's directory

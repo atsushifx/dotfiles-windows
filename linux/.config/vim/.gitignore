@@ -1,0 +1,7 @@
+B##
+##  ignore files using 
+##    for linux vi
+##
+
+#  ignore plugin
+**/pack/*

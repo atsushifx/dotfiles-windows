@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+#
+# @(#) : common environ settings
+#
+# @version  1.0.3
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date     2023-03-05
+# @license  MIT
+#
+# @description
+# user's common environ settings
+#
+
+
+echo "Exec: common.envrc"
+
+export HISTFILE="${XDG_STATE_HOME}/bash/history"
+
+## setup path
+# volta
+export VOLTA_HOME=${XDG_DATA_HOME}/.volta
+
+## Ruby environ
+## gems
+GEM_HOME="${XDG_DATA_HOME}/gem"
+GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"
+export GEM_HOME GEM_SPEC_HOME
+
+## bundel
+BUNDLE_USER_CONFIG="${XDG_CONFIG_HOMEs}/bundle"
+BUNDLE_USER_CACHE="${XDG_CACHE_HOME}/bundle"
+BUNDLE_USER_PLUGIN="${XDG_DATA_HOME}/bundle"
+export BUNDLE_USER_CONFIG BUNDLE_USER_CACHE BUNDLE_USER_PLUGIN
+
+PATH="/home/linuxbrew/.linuxbrew/opt/ruby@3.1/bin:$PATH"
+
+### GO
+export GOPATH="${XDG_DATA_HOME}/go"
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+export PATH
+
+# settings for editor, lang, utils
+
+## default editor/viewer , and other settings
+EDITOR=/usr/bin/vim
+
+export EDITOR VISUAL PATH
+
+## wakatime config
+export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
+
+
+## VIM
+export VIMINIT='let $MYVIMRC="${XDG_CONFIG_HOME}/vim/vimrc" | source $MYVIMRC'
+
+
+
+# opam configuration
+#test -r /home/atsushifx/.opam/opam-init/init.sh && . /home/atsushifx/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+

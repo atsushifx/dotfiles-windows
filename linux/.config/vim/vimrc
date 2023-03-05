@@ -2,9 +2,9 @@
 "" @(#) vim user specific settings
 ""
 "
-" @versiion  1.0.0
+" @versiion  1.0.1
 " @author    Furukawa, Atsushi <atsushifx@aglabo.com>
-" @date      2022-07-02
+" @date      2023-03-01
 " @license   MIT
 "
 " @description
@@ -14,13 +14,32 @@
 "
 
 "
-
-""
 " viminfo
-" set viminfofile=$XDG_DATA_HOME/vim/viminfo
+set viminfo="n$XDG_DATA_HOME/vim/viminfo"
 
+"" default
+source $VIMRUNTIME/defaults.vim
+
+
+"" setup for plugins
+set packpath+=~/.config/vim
+
+"" plugins
+" default plguins
+
+packadd vim-jetpack
+call jetpack#begin()
+Jetpack 'tani/vim-jetpack', {'opt': 1} " bootstrap
+" plugin with vim-plug
+
+Jetpack 'wakatime/vim-wakatime'
+
+
+"
+call jetpack#end()
 
 "" vim common settings
+
 
 " encoding : default display Japanese
 set fenc=utf-8

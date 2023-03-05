@@ -31,28 +31,23 @@ isInteractive() {
 
 
 ##  common environ settings
-if [ -n "$HOME/.config/.common.env" ]; then
-  . "$HOME/.config/.common.env"
+if [[ -n "$HOME/.config/envc" ]]; then
+  . "$HOME/.config/envrc"
 fi
 export PATH
 
 # in zsh this is called by zshenv
 
 # if running bash
-if [ -n "$BASH_VERSION" ]; then
+if [[ -n "$BASH_VERSION" ]]; then
   # include .bashrc if it exists
-  if [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
+  if [[ -f "$HOME/.bashrc" ]]; then
+    source "$HOME/.bashrc"
   fi
 
   # user defined bashrc
   if [[ isInteractive ]] && [[ -f ${HOME}/.config/bash/bashrc ]]; then
-    . ${HOME}/.config/bash/bashrc
+    . "${HOME}/.config/bash/bashrc"
   fi
 fi
 
-# rbenv eval
-# eval "$(rbenv init -)"
-
-# opam configuration
-# test -r /home/atsushifx/.opam/opam-init/init.sh && . /home/atsushifx/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
