@@ -30,7 +30,7 @@
 [core]
 	autocrlf = input
 	synlinks = true
-	attributesfile = './git/atributes'
+	attributesfile = '~/.config/git/atributes'
 
 [color]
 	ui = true
