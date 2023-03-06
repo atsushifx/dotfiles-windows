@@ -24,26 +24,15 @@
 ## general settings
 #
 #
-[core]
-
-[color]
-	ui = true
-
-[push]
-	default = current
-
-[init]
-	defaultBranch = master
 
 [pull]
 	ff = only
 
-[user]
-	name = Furukawa, Atsushi
-	email = 98551+atsushifx@users.noreply.github.com
+[credential]
+	helper = manager
 
-## common settings from config-common
-#
+[credential "helperselector"]
+	selected = store
 
 [ghq]
 	root = /home/atsushifx/workspaces/develop

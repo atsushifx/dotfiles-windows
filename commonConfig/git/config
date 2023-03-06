@@ -21,7 +21,6 @@
 [core]
 	autocrlf = input
 	symlinks = true
-	attributesfile = '~/.config/git/atributes'
 
 [color]
 	ui = true
@@ -35,9 +34,6 @@
 [user]
 	name = Furukawa, Atsushi
 	email = 98551+atsushifx@users.noreply.github.com
-
-[push]
-	default = current
 
 [alias]
     ss = status -s
