@@ -18,12 +18,13 @@
 #
 #<<
 
-## important settings
+[include]
+	path = ~/.local/dotfiles/commonConfig/git/config
+
+## general settings
 #
 #
 [core]
-	autocrlf = input
-	symlinks = true
 
 [color]
 	ui = true
@@ -43,14 +44,6 @@
 
 ## common settings from config-common
 #
-[include]
-	path = ~/.local/dotfiles/.config/git/config-common
-
-[credential]
-	helper = store --file ~/.config/.git-credentials
-
-[credential "helperselector"]
-	selected = store
 
 [ghq]
 	root = /home/atsushifx/workspaces/develop
