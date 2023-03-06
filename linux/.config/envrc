@@ -26,16 +26,19 @@ GEM_HOME="${XDG_DATA_HOME}/gem"
 GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"
 export GEM_HOME GEM_SPEC_HOME
 
-## bundel
+## bunde
 BUNDLE_USER_CONFIG="${XDG_CONFIG_HOMEs}/bundle"
 BUNDLE_USER_CACHE="${XDG_CACHE_HOME}/bundle"
 BUNDLE_USER_PLUGIN="${XDG_DATA_HOME}/bundle"
 export BUNDLE_USER_CONFIG BUNDLE_USER_CACHE BUNDLE_USER_PLUGIN
 
-PATH="/home/linuxbrew/.linuxbrew/opt/ruby@3.1/bin:$PATH"
+PATH="${HOMEBREW_PREFIX}/opt/ruby@3.1/bin:$PATH"
 
 ### GO
-export GOPATH="${XDG_DATA_HOME}/go"
+GOPATH="${XDG_DATA_HOME}/go"
+ME
+PATH="${HOMEBREW_PREFIX}/opt/go@1.19/bin":$PATH
+export GOPATH PATH
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
