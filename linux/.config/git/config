@@ -29,7 +29,7 @@
 	ff = only
 
 [credential]
-	helper = manager
+	helper = store
 
 [credential "helperselector"]
 	selected = store
