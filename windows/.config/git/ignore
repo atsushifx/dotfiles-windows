@@ -37,9 +37,9 @@ $~*
 #	credential files
 #	private key, etc
 #
-*/.ssh/
-*/.gnupg/*
-*/.dbus-keyrings/
+**/.ssh/
+**/.gnupg/*
+**/.dbus-keyrings/
 *credential*
 
 ##
