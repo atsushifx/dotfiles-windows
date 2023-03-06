@@ -27,16 +27,6 @@
 ##
 ## settings for Windows
 ##
-[core]
-	autocrlf = input
-	synlinks = true
-	attributesfile = '~/.config/git/atributes'
-
-[color]
-	ui = true
-
-[push]
-	default = current
 
 [fetch]
 	prune = true
@@ -58,5 +48,6 @@
 
 [safe]
 	directory = C:/Users/atsushifx/app/scoop/apps
+
 [pull]
 	rebase = false

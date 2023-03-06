@@ -1,0 +1,24 @@
+##
+##  @(#) : git global untrack file settings
+#
+##
+#
+# @version  1.0.4
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @update   2022-07-03
+# @license  MIT
+#
+# @dersc
+# git ignore files about,
+#   credential files
+#   hist, info for dotfiles
+#
+#
+
+###
+# gh (github cli) ignore
+#
+
+# ignore token file
+hosts.*
+e

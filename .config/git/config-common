@@ -20,7 +20,8 @@
 
 [core]
 	autocrlf = input
-	synlinks = true
+	symlinks = true
+	attributesfile = '~/.config/git/atributes'
 
 [color]
 	ui = true
