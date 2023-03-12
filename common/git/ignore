@@ -1,0 +1,60 @@
+##
+##  @(#) : git global untrack file settings
+#
+##
+#
+# @version  1.0.4
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @update   2022-07-03
+# @license  MIT
+#
+# @dersc
+# git ignore files about,
+#   credential files
+#   hist, info for dotfiles
+#
+#
+
+###
+#	general ignore files
+#
+
+##
+#	OS created files
+#
+.DS_Store
+thums.db
+
+##
+#	backup
+$~*
+~*
+*~
+*tmp
+*swp
+
+##
+#	credential files
+#	private key, etc
+#
+**/.ssh/
+**/.gnupg/*
+**/.dbus-keyrings/
+*credential*
+
+##
+#	shell & app created files
+
+#	history & info
+.*hist*
+.*info*
+
+#	Log Files
+*.log
+
+#	ignore programming
+#  patch
+*.diff
+*.patch
+
+e

@@ -1,5 +1,4 @@
-###
-#
+####
 # @(#) : git Linux / Windows common settings
 #
 # @version 1.0.0
@@ -21,6 +20,8 @@
 [core]
 	autocrlf = input
 	symlinks = true
+#	attributesfile = ~/.local/dotfiles/common/git/attributes
+#	excludefile = ~/.local/dotfiles/common/git/ignore
 
 [color]
 	ui = true

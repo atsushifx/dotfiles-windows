@@ -22,7 +22,8 @@
 ## common settings
 ##
 [include]
-	path = ./git/config-common
+	path = c:/Users/atsushifx/.local/dotfiles/common/git/config
+	path = C:/Users/atsushifx/.local/dotfiles/windows/git/config
 
 ##
 ## settings for Windows
@@ -30,9 +31,6 @@
 
 [fetch]
 	prune = true
-
-[init]
-	defaultBranch = master
 
 [credential]
 	helper = manager
