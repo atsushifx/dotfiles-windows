@@ -36,7 +36,6 @@ PATH="${HOMEBREW_PREFIX}/opt/ruby@3.1/bin:$PATH"
 
 ### GO
 GOPATH="${XDG_DATA_HOME}/go"
-ME
 PATH="${HOMEBREW_PREFIX}/opt/go@1.19/bin":$PATH
 export GOPATH PATH
 
