@@ -58,6 +58,11 @@ EDITOR=/usr/bin/vim
 
 export EDITOR VISUAL PATH
 
+
+## chromium
+
+export CHROME_CONFIG_HOME="${XDG_DATA_HOME}/chromium"
+
 ## wakatime config
 export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
 

@@ -23,3 +23,9 @@
 ## bash
 **/*completion.d/*
 
+## extensions
+# TabNine
+**/TabNine/*
+
+# Pulse
+**/pulse/
