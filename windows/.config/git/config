@@ -29,10 +29,19 @@
 	symlinks = true
 
 [pull]
-	rebase = false
+
+[fetch]
+	prune = true
+
+[credential]
+	helper = manager
+
+
+[credential "helperselector"]
+	selected = store
+
 
 [ghq]
 	root = c:/Users/atsushifx/workspaces/gitworks
 	root = c:/Users/atsushifx/workspaces/education
 	root = c:/Users/atsushifx/workspaces/develop
-
