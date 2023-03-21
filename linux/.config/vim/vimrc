@@ -15,7 +15,7 @@
 
 "
 " viminfo
-set viminfo="n$XDG_DATA_HOME/vim/viminfo"
+set viminfofile="$XDG_DATA_HOME/vim/_viminfo"
 
 "" default
 source $VIMRUNTIME/defaults.vim
@@ -25,13 +25,13 @@ source $VIMRUNTIME/defaults.vim
 set packpath+=~/.config/vim
 
 "" plugins
-" default plguins
-
 packadd vim-jetpack
+"
 call jetpack#begin()
-Jetpack 'tani/vim-jetpack', {'opt': 1} " bootstrap
-" plugin with vim-plug
+" default plguins
+Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
 
+" plugin with vim-plug
 Jetpack 'wakatime/vim-wakatime'
 
 
@@ -52,6 +52,6 @@ set number
 " move cursor virtusalize
 set virtualedit=block
 
-" 
+"
 set backspace=indent,eol,start
 

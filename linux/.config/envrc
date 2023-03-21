@@ -39,6 +39,14 @@ GOPATH="${XDG_DATA_HOME}/go"
 PATH="${HOMEBREW_PREFIX}/opt/go@1.19/bin":$PATH
 export GOPATH PATH
 
+## VIM
+export VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc"
+
+### rlwrap
+export RLWRAP_HOME="${XDG_CACHE_HOME}/rlwrap"
+
+## execute path
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -66,9 +74,6 @@ export CHROME_CONFIG_HOME="${XDG_DATA_HOME}/chromium"
 ## wakatime config
 export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
 
-
-## VIM
-export VIMINIT='let $MYVIMRC="${XDG_CONFIG_HOME}/vim/vimrc" | source $MYVIMRC'
 
 
 
