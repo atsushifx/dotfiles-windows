@@ -27,6 +27,7 @@
 [core]
 	autocrlf = input
 	symlinks = true
+	editor = "c:/bin/vim/vim90/vim.exe"
 
 [pull]
 
