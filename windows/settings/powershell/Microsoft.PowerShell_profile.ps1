@@ -81,10 +81,10 @@ Set-PSReadLineOption -Colors @{ InLinePrediction = [ConsoleColor]::Cyan }
 ## tab completion
 
 ### Modules
+Import-Module -Name CompletionPredictor
 Import-Module posh-git
 Import-Module posh-wakatime
 Import-Module scoop-completion
-Import-Module -Name CompletionPredictor
 
 ### winget completion
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
@@ -97,6 +97,9 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
   }
 }
 
+# Python pip completions
+& pip3 completion --powershell | Out-String | Invoke-Expression
+
 # volta completions
 & volta completions powershell | Out-String | Invoke-Expression
 
@@ -104,3 +107,4 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
 if ([myUserRole]::isAdmin()) {
   write-sudo-messages;
 }
+

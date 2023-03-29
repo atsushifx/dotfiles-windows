@@ -30,6 +30,7 @@
 	editor = "c:/bin/vim/bin/vim.exe"
 
 [pull]
+	ff = only
 
 [fetch]
 	prune = true
