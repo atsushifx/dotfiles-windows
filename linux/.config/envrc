@@ -55,18 +55,6 @@ export CHROME_CONFIG_HOME="${XDG_DATA_HOME}/chromium"
 export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
 
 
-
-
-## chromium
-
-export CHROME_CONFIG_HOME="${XDG_DATA_HOME}/chromium"
-
-## wakatime config
-export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
-
-
-
-
 ## execute path
 
 # set PATH so it includes user's private bin if it exists
