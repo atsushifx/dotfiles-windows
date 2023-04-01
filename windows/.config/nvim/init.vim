@@ -24,8 +24,9 @@ call jetpack#begin()
 Jetpack 'tani/vim-jetpack', { 'opt': 1 }  " bootstrap
 
 " my plugins
-Jetpack 'lambdalisue/fern.vim'
+Jetpack 'editorconfig/editorconfig-vim'
 Jetpack 'wakatime/vim-wakatime'
+Jetpack 'lambdalisue/fern.vim'
 
 call jetpack#end()
 

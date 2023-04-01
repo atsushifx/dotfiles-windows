@@ -97,9 +97,6 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
   }
 }
 
-# Python pip completions
-& pip3 completion --powershell | Out-String | Invoke-Expression
-
 # volta completions
 & volta completions powershell | Out-String | Invoke-Expression
 
