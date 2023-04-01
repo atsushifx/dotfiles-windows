@@ -49,14 +49,18 @@ fi
 
 ## bash completion
 _cmpl_d="${XDG_CONFIG_HOME}/bash/bash_completion.d"
-for f in ${_cmpl_d}/*; do
-  . "${f}"
-done
+if [[ -e "${_cmpl_d}" ]]; then
+  for f in ${_cmpl_d}/*; do
+    . "${f}"
+  done
+fi
 
 _cmpl_d=/home/linuxbrew/.linuxbrew/etc/bash_completion.d
-for f in ${_cmpl_d}/*; do
-  . "${f}"
-done
+if [[ -e "${_cmpl_d}" ]]; then
+  for f in ${_cmpl_d}/*; do
+    . "${f}"
+  done
+fi
 
 # volta
 # volta completions bash | bash

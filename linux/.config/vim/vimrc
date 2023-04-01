@@ -32,6 +32,7 @@ call jetpack#begin()
 Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
 
 " plugin with vim-plug
+Jetpack 'editorconfig/editorconfig-vim'
 Jetpack 'wakatime/vim-wakatime'
 
 

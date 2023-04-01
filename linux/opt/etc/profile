@@ -20,3 +20,8 @@ fi
 if [ -f /opt/etc/envrc ]; then
   . /opt/etc/envrc
 fi
+
+## gitted profile
+if [[ -f "${XDG_CONFIG_HOME}/.profile" ]]; then
+  . "${XDG_CONFIG_HOME}/.profile"
+fi

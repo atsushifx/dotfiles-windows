@@ -14,36 +14,58 @@
 
 echo "Exec: common.envrc"
 
-export HISTFILE="${XDG_STATE_HOME}/bash/history"
+export HISTFILE="${XDG_STATE_HOME}/bash/_bash_history"
 
 ## setup path
+
+## VIM
+export VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc"
+
 # volta
 export VOLTA_HOME=${XDG_DATA_HOME}/.volta
 
 ## Ruby environ
 ## gems
-GEM_HOME="${XDG_DATA_HOME}/gem"
-GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"
-export GEM_HOME GEM_SPEC_HOME
+#GEM_HOME="${XDG_DATA_HOME}/gem"
+#GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"
+#export GEM_HOME GEM_SPEC_HOME
 
 ## bunde
-BUNDLE_USER_CONFIG="${XDG_CONFIG_HOMEs}/bundle"
-BUNDLE_USER_CACHE="${XDG_CACHE_HOME}/bundle"
-BUNDLE_USER_PLUGIN="${XDG_DATA_HOME}/bundle"
-export BUNDLE_USER_CONFIG BUNDLE_USER_CACHE BUNDLE_USER_PLUGIN
+#BUNDLE_USER_CONFIG="${XDG_CONFIG_HOMEs}/bundle"
+#BUNDLE_USER_CACHE="${XDG_CACHE_HOME}/bundle"
+#BUNDLE_USER_PLUGIN="${XDG_DATA_HOME}/bundle"
+#export BUNDLE_USER_CONFIG BUNDLE_USER_CACHE BUNDLE_USER_PLUGIN
 
-PATH="${HOMEBREW_PREFIX}/opt/ruby@3.1/bin:$PATH"
+#PATH="${HOMEBREW_PREFIX}/opt/ruby@3.1/bin:$PATH"
 
 ### GO
-GOPATH="${XDG_DATA_HOME}/go"
-PATH="${HOMEBREW_PREFIX}/opt/go@1.19/bin":$PATH
-export GOPATH PATH
-
-## VIM
-export VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc"
+# GOPATH="${XDG_DATA_HOME}/go"
+# PATH="${HOMEBREW_PREFIX}/opt/go@1.19/bin":$PATH
+# export GOPATH PATH
 
 ### rlwrap
 export RLWRAP_HOME="${XDG_CACHE_HOME}/rlwrap"
+
+
+## chromium
+
+export CHROME_CONFIG_HOME="${XDG_DATA_HOME}/chromium"
+
+## wakatime config
+export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
+
+
+
+
+## chromium
+
+export CHROME_CONFIG_HOME="${XDG_DATA_HOME}/chromium"
+
+## wakatime config
+export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
+
+
+
 
 ## execute path
 
@@ -59,24 +81,9 @@ fi
 
 export PATH
 
-# settings for editor, lang, utils
 
 ## default editor/viewer , and other settings
 EDITOR=/usr/bin/vim
 
 export EDITOR VISUAL PATH
-
-
-## chromium
-
-export CHROME_CONFIG_HOME="${XDG_DATA_HOME}/chromium"
-
-## wakatime config
-export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
-
-
-
-
-# opam configuration
-#test -r /home/atsushifx/.opam/opam-init/init.sh && . /home/atsushifx/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 

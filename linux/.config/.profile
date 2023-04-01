@@ -31,7 +31,7 @@ isInteractive() {
 
 
 ##  common environ settings
-if [[ -n "$HOME/.config/envc" ]]; then
+if [[ -n "$HOME/.config/envrc" ]]; then
   . "$HOME/.config/envrc"
 fi
 export PATH
