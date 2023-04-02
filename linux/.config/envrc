@@ -19,7 +19,7 @@ export HISTFILE="${XDG_STATE_HOME}/bash/_bash_history"
 ## setup path
 
 ## VIM
-export VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc"
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # volta
 export VOLTA_HOME=${XDG_DATA_HOME}/.volta
