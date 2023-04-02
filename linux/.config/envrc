@@ -14,7 +14,7 @@
 
 echo "Exec: common.envrc"
 
-export HISTFILE="${XDG_STATE_HOME}/bash/_bash_history"
+export HISTFILE="${XDG_CACHE_HOME}/bash/_bash_history"
 
 ## setup path
 
@@ -22,36 +22,46 @@ export HISTFILE="${XDG_STATE_HOME}/bash/_bash_history"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # volta
-export VOLTA_HOME=${XDG_DATA_HOME}/.volta
+export VOLTA_HOME=${XDG_DATA_HOME}/volta
+export PATH=${PATH}:${VOLTA_HOME}/bin
+
+### from brew 
+_brew_opt="${HOMEBREW_PREFIX}/opt"
 
 ## Ruby environ
-## gems
-#GEM_HOME="${XDG_DATA_HOME}/gem"
-#GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"
-#export GEM_HOME GEM_SPEC_HOME
+if [[ -d "$_brew_opt/ruby" ]]; then  
+  _ruby_cfg="${XDG_CONFIG_HOME}/ruby"
+  _ruby_data="${XDG_DATA_HOME}/ruby"
+  _ruby_cache="${XDG_CACHE_HOME}/ruby"
 
-## bunde
-#BUNDLE_USER_CONFIG="${XDG_CONFIG_HOMEs}/bundle"
-#BUNDLE_USER_CACHE="${XDG_CACHE_HOME}/bundle"
-#BUNDLE_USER_PLUGIN="${XDG_DATA_HOME}/bundle"
-#export BUNDLE_USER_CONFIG BUNDLE_USER_CACHE BUNDLE_USER_PLUGIN
+  ## gems
+  GEM_HOME="${_ruby_data}/gem"
+  GEM_SPEC_CACHE="${_ruby_cache}/gem"
+  export GEM_HOME GEM_SPEC_HOME
 
-#PATH="${HOMEBREW_PREFIX}/opt/ruby@3.1/bin:$PATH"
+  ## Ruby#bundler
+  BUNDLE_USER_CONFIG="${_ruby_cfg}/bundle"
+  BUNDLE_USER_PLUGIN="${_ryby_data}/bundle"
+  BUNDLE_USER_CACHE="${_ruby_cache}/bundle"
+  export BUNDLE_USER_CONFIG BUNDLE_USER_CACHE BUNDLE_USER_PLUGIN
 
-### GO
-# GOPATH="${XDG_DATA_HOME}/go"
-# PATH="${HOMEBREW_PREFIX}/opt/go@1.19/bin":$PATH
-# export GOPATH PATH
+  export PATH="${_brew_opt}/ruby/bin:$PATH"
+fi
 
-### rlwrap
+## GO environ
+if [[ -d "${_brew_opt}/go" ]]; then
+  GOPATH="${XDG_DATA_HOME}/go"
+  PATH="${_brew_opt}/go/bin":$PATH
+  export GOPATH PATH
+fi
+
+
+### other tools environ for XDG]
+
+#  rlwrap
 export RLWRAP_HOME="${XDG_CACHE_HOME}/rlwrap"
 
-
-## chromium
-
-export CHROME_CONFIG_HOME="${XDG_DATA_HOME}/chromium"
-
-## wakatime config
+#  wakatime config
 export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
 
 

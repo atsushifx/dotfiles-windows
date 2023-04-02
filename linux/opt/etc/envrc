@@ -14,8 +14,6 @@ XDG_CACHE_HOME="${HOME}/.local/cache"
 XDG_STATE_HOME="${HOME}/.local/states"
 export XDG_CONFIG_HOME XDG_DATA_HOME XDG_CACHE_HOME XDG_STATE_HOME
 
-echo "setup XDG: config = ${XDG_CONFIG_HOME}"
-
 ##
 #
 # zsh specific
@@ -25,14 +23,16 @@ if [[ "${SHELL}" =~ "zsh" ]]; then
 fi
 
 ## setup for brew
-export HOMEBREW_PREFI="/home/linuxbrew/.linuxbrew";
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
 if [[ -d "${HOMEBREW_PREFIX}" ]]; then
   HOMEBREW_CACHE="${HOMEBREW_PREFIX}/.local/cache"
   HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar";
   HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew";
+  
   PATH="${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin:${PATH+:$PATH}";
   MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
   INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+
   export HOMEBREW_PREFIX HOMEBREW_CACHE HOMEBREW_CELLAR HOMEBREW_REPOSITORY
   export PATH MANPATH INFOPATH
 fi
