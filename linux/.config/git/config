@@ -4,7 +4,7 @@
 #
 # @version 1.0.0
 # @author  Furukawa, Atsushi <atsushifx@aglabo.com>
-# @date    2023-03-13
+# @date    2023-04-02
 # @license MIT
 #
 # @desc<<
@@ -30,7 +30,6 @@
 
 [credential]
 	helper = store --file ~/.local/share/git/.git-credentials
-	helper = cache --timeout 300000
 
 [credential "helperselector"]
 	selected = store 
