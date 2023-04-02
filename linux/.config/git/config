@@ -29,10 +29,11 @@
 	ff = only
 
 [credential]
-	helper = store
+	helper = store --file ~/.local/share/git/.git-credentials
+	helper = cache --timeout 300000
 
 [credential "helperselector"]
-	selected = store
+	selected = store 
 
 [ghq]
 	root = /home/atsushifx/workspaces/education
