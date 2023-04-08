@@ -78,15 +78,17 @@ Set-PSReadLineOption -Colors @{ InLinePrediction = [ConsoleColor]::Cyan }
 . ($LIBSDIR + 'keyconfig.inc.ps1')
 
 
+## Modules
+Import-Module posh-wakatime
+
 ## tab completion
 
-### Modules
+### completion modules
 Import-Module -Name CompletionPredictor
 Import-Module posh-git
-Import-Module posh-wakatime
 Import-Module scoop-completion
 
-### winget completion
+#   winget completion
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
   param($wordToComplete, $commandAst, $cursorPosition)
   [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
@@ -97,8 +99,15 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
   }
 }
 
-# volta completions
+#  githib cli
+gh completion -s powershell | Out-String | Invoke-Expression
+
+#   volta completions
 & volta completions powershell | Out-String | Invoke-Expression
+
+
+
+
 
 # sudo messages
 if ([myUserRole]::isAdmin()) {
