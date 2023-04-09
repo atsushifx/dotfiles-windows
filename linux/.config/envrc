@@ -56,6 +56,8 @@ fi
 
 
 ### other tools environ for XDG]
+# wget
+export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
 
 #  rlwrap
 export RLWRAP_HOME="${XDG_CACHE_HOME}/rlwrap"
@@ -72,8 +74,8 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/.local/dotfiles/linux/bin" ] ; then
+    PATH="$PATH:$HOME/.local/dotfiles/linux/bin"
 fi
 
 export PATH
