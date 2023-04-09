@@ -1,12 +1,18 @@
 #
 ##
-# @(#) optional profile (v1.0.0) : shell initalization on user define
+# @(#) profile : common profile for all users.
 #
+# @version 1.0.0
 # @author  Furukawa, Atsushi \atsushifx@gmail.com>
 # @date    2022-06-21
+# @license MIT
+#
+# @desc <<
 #
 #
-echo "Exec /opt/etc/profile"
+#<<
+
+# echo "Exec /opt/etc/profile"
 
 # sysad define command's directory
 if [ "$(id -u)" -eq 0 ] && [ -d /opt/sbin ]; then

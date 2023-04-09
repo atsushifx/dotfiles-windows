@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 ##
-# @(#) .config/ bashrc : user defined bashrc
+# @(#) user specific bashrc
 #
+# @version  1.0.2
+# @date     2029-04-10
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @license  MIT
+#
+# @desc <<
+# user specific bashrc
 # user defined bashrc
-# 
+#<< 
 
-echo "Exec .config/bash/bashrc"
+# local env settings 
+BASHRC_DIR=$(cd $(dirname '$0'); pwd)
+SCRIPTS_DIR="${BASHRC_DIR}/scripts"
 
-peco-history () {
-  local _cmd
-  _cmd=$( history 20|tac|sed -e "s/^[0-9 ]*//g"|peco )
-  if [[ -n ${_cmd} ]]; then
-    echo -n "Exec ${_cmd}"
-  #  READLINE_LINE="$_cmd"
-  #  READLINE_POINT=${#_cmd}
-  fi
-}
+echo "Exec: ${BASHRC_DIR}/bashrc"
 
 #
 # prompt : set prompt for bash
@@ -44,27 +45,23 @@ if [[ -f "$XDG_CONFIG_HOME/aliases" ]]; then
 fi
 
 ## key config
-#bind -x '"\C-r": peco-history'
 
 
 ## bash completion
-_cmpl_d="${XDG_CONFIG_HOME}/bash/bash_completion.d"
+_cmpl_d="${BASHRC_DIR}/bash_completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
   for f in ${_cmpl_d}/*; do
     . "${f}"
   done
 fi
 
-_cmpl_d=/home/linuxbrew/.linuxbrew/etc/bash_completion.d
+_cmpl_d="${HOMEVREW_PREFIX}/etc/bash_completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
   for f in ${_cmpl_d}/*; do
     . "${f}"
   done
 fi
-
-# volta
-# volta completions bash | bash
 
 ## wakatime-count
-source ${XDG_CONFIG_HOME}/bash/bash-wakatime.sh
+source ${XDG_CONFIG_HOME}/bash/scripts/bash-wakatime.sh
 

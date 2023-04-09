@@ -19,10 +19,6 @@
 ## untrack
 **/configstore/*
 
-
-## bash
-**/*completion.d/*
-
 ## extensions
 # TabNine
 **/TabNine/*

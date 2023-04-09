@@ -1,8 +1,18 @@
 #!/usr/bin/env bash
 #
-# @(#) envrc (v1.0.0) : common environment setup script for all shell
+# @(#) envrci environment setting for all users 
 #
-echo "Exec: envrc"
+# @version  1.0.1
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date     2023-04-10
+# @license  MIT
+#
+#
+# @desc<<
+#
+#<<
+
+# echo "Exec: envrc"
 
 ## common environment setup
 #
@@ -37,6 +47,11 @@ if [[ -d "${HOMEBREW_PREFIX}" ]]; then
   export PATH MANPATH INFOPATH
 fi
 
+## environ settings for all users
+export GNUPGHOME="${XDG_DATA_HOME}"/gnupg
+
+
+
 # specific path
 # sysad define command's directory
 if [ "$(id -u)" -eq 0 ] && [ -d /opt/sbin ]; then
@@ -45,4 +60,3 @@ fi
 if [ -d /opt/bin ]; then
   export PATH=${PATH}:/opt/bin
 fi
-

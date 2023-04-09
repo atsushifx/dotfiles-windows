@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 #
-# @(#) : bash aliases called by bashrc
+# @(#) : user common aliases
+#
+# @version  1.0.0
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date     2023-04-10
+# @license  MIT
+#
+# @desc<<
+#
+#<<
+
 #
 # @version
 
-echo "Exec: aliases"
+# echo "Exec: aliases"
 
 ## manage rcfiles with git
-alias rcm='git -C ~/.local/dotfiles/linux '
