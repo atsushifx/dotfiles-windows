@@ -3,20 +3,19 @@
 # @(#) user specific bashrc
 #
 # @version  1.0.2
-# @date     2029-04-10
+# @date     2024-04-10
 # @author   Furukawa, Atsushi <atsushifx@aglabo.com>
 # @license  MIT
 #
 # @desc <<
 # user specific bashrc
 # user defined bashrc
-#<< 
+#<<
 
 # local env settings 
-BASHRC_DIR=$(cd $(dirname '$0'); pwd)
-SCRIPTS_DIR="${BASHRC_DIR}/scripts"
 
-echo "Exec: ${BASHRC_DIR}/bashrc"
+BASHRC_DIR="${XDG_CONFIG_HOME}/bash"
+SCRIPTS_DIR="${BASHRC_DIR}/scripts"
 
 #
 # prompt : set prompt for bash
@@ -40,8 +39,8 @@ _set_prompt() {
 _set_prompt
 
 ## alias
-if [[ -f "$XDG_CONFIG_HOME/aliases" ]]; then
-  . "$XDG_CONFIG_HOME/aliases"
+if [[ -f "${XDG_CONFIG_HOME}/aliases" ]]; then
+  source "${XDG_CONFIG_HOME}/aliases"
 fi
 
 ## key config
@@ -51,6 +50,7 @@ fi
 _cmpl_d="${BASHRC_DIR}/bash_completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
   for f in ${_cmpl_d}/*; do
+    echo "Exec: $f"
     . "${f}"
   done
 fi
@@ -58,7 +58,7 @@ fi
 _cmpl_d="${HOMEVREW_PREFIX}/etc/bash_completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
   for f in ${_cmpl_d}/*; do
-    . "${f}"
+    source "${f}"
   done
 fi
 

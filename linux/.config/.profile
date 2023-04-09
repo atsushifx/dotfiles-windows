@@ -18,7 +18,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 umask 022
 
-echo "Exec .config/.profile"
+# echo "Exec .config/.profile"
 
 # // functions
 isInteractive() {
@@ -28,7 +28,6 @@ isInteractive() {
   esac
   return 1;
 }
-
 
 ##  common environ settings
 if [[ -n "$HOME/.config/envrc" ]]; then
@@ -42,12 +41,12 @@ export PATH
 if [[ -n "$BASH_VERSION" ]]; then
   # include .bashrc if it exists
   if [[ -f "$HOME/.bashrc" ]]; then
-    source "$HOME/.bashrc"
+    . "$HOME/.bashrc"
   fi
 
   # user defined bashrc
-  if [[ isInteractive ]] && [[ -f ${HOME}/.config/bash/bashrc ]]; then
-    . "${HOME}/.config/bash/bashrc"
+  if [[ isInteractive ]] && [[ -f ${XDG_CONFIG_HOME}/bash/bashrc ]]; then
+    . "${XDG_CONFIG_HOME}/bash/bashrc"
   fi
 fi
 
