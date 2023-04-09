@@ -45,13 +45,13 @@ fi
 
 ## key config
 
-
 ## bash completion
 _cmpl_d="${BASHRC_DIR}/bash_completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
+  echo "cmpl_d: ${_cmpl_d}"
   for f in ${_cmpl_d}/*; do
     echo "Exec: $f"
-    . "${f}"
+    source "${f}"
   done
 fi
 

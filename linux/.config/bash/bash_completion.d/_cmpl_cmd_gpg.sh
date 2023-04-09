@@ -1,0 +1,66 @@
+#
+# @(#) : bash completion for gpg
+#
+# @version  1.0.0
+# @date     2023-04-10
+# @author   Ville Skytta
+# @license  MI&
+#
+# @desc <<
+#
+# bash completion for gpg
+#
+#<<
+
+_comp_cmd_gpg()
+{
+    local cur prev words cword comp_args
+    _comp_initialize -- "$@" || return
+
+    local noargopts='!(-*|*[skKr]*)'
+    # shellcheck disable=SC2254
+    case $prev in
+        --sign | --clear-sign | --clearsign | --decrypt-files | \
+            --load-extension | -${noargopts}s)
+            _filedir
+            return
+            ;;
+        --list-keys | --list-public-keys | --locate-keys | \
+            --locate-external-keys | --fingerprint | --delete-keys | \
+            --delete-secret-and-public-keys | --export | --refresh-keys | \
+            --search-keys | --edit-key | --sign-key | --lsign-key | \
+            --nrsign-key | --nrlsign-key | --try-secret-key | -${noargopts}k)
+            # return list of public keys
+            COMPREPLY=($(compgen -W "$("$1" --list-keys 2>/dev/null |
+                command sed -ne \
+                    's@^pub.*/\([^ ]*\).*$@\1@p' -ne \
+                    's@^.*\(<\([^>]*\)>\).*$@\2@p')" -- "$cur"))
+            return
+            ;;
+        --list-secret-keys | --delete-secret-keys | --export-secret-keys | \
+            --export-secret-subkeys | -${noargopts}K)
+            # return list of secret keys
+            COMPREPLY=($(compgen -W "$("$1" --list-secret-keys 2>/dev/null |
+                command sed -ne 's@^.*<\([^>]*\)>.*$@\1@p')" -- "$cur"))
+            return
+            ;;
+        --recipient | -${noargopts}r)
+            COMPREPLY=($(compgen -W "$("$1" --list-keys 2>/dev/null |
+                command sed -ne 's@^.*<\([^>]*\)>.*$@\1@p')" -- "$cur"))
+            if [[ -e ~/.gnupg/gpg.conf ]]; then
+                COMPREPLY+=($(compgen -W "$(command sed -ne \
+                    's@^[ \t]*group[ \t][ \t]*\([^=]*\).*$@\1@p' \
+                    ~/.gnupg/gpg.conf)" -- "$cur"))
+            fi
+            return
+            ;;
+    esac
+
+    if [[ $cur == -* ]]; then
+        COMPREPLY=($(compgen -W '$("$1" --dump-options)' -- "$cur"))
+    fi
+} &&
+    complete -F _comp_cmd_gpg -o default gpg
+
+# ex: filetype=sh
+
