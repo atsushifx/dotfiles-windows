@@ -35,6 +35,10 @@
 [fetch]
 	prune = true
 
+[gpg]
+	program = C:\\app\\develop\\gnupg\\bin\\gpg.exe
+
+
 [credential]
 	helper = manager
 	helper = store --file ~/.local/share/git/.git-credentials
@@ -48,11 +52,3 @@
 	root = c:/Users/atsushifx/workspaces/gitworks
 	root = c:/Users/atsushifx/workspaces/education
 	root = c:/Users/atsushifx/workspaces/develop
-[commit]
-	gpgsign = true
-[user]
-	signingkey = 10FE6DBC
-[gpg]
-	program = C:\\app\\develop\\gnupg\\bin\\gpg.exe
-[credential "https://dev.azure.com"]
-	useHttpPath = true

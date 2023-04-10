@@ -32,9 +32,13 @@
 [init]
 	defaultBranch = master
 
+[commit]
+	gpgsign = true
+
 [user]
 	name = Furukawa, Atsushi
 	email = 98551+atsushifx@users.noreply.github.com
+	signingkey = 3F231413
 
 [alias]
     ss = status -s
