@@ -40,8 +40,6 @@
 
 
 [credential]
-	helper = manager
-	helper = store --file ~/.local/share/git/.git-credentials
 	helper = C:/app/scoop/apps/git/current/mingw64/bin/git-credential-manager
 
 [credential "helperselector"]
