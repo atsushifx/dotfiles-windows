@@ -23,10 +23,11 @@ function private:write-sudo-messages() {
   $white = "$([char]0x1b)[37;1m"
   $cyan = "$([char]0x1b)[36;1m"
   $neutral = "$([char]0x1b)[m"
-  $messages = "${white}貴方は領主様から通常の講習を受けたはずですわ｡${neutral}`n${white}それらは通常に以下3点に要約されますの｡${neutral}
-    ${cyan}#1${neutral}) 市民の皆様のプライバシーを尊重すること｡
-    ${cyan}#2${neutral}) おタイプする前に考えること。
-    ${cyan}#3${neutral}) そしてノブレス・オブリージュを肝に銘じておくことですわ！"
+  $messages = "${white}You gave ...${neutral}`n
+    ${cyan}#1${neutral}) Respect the privacy of others.
+    ${cyan}#2${neutral}) Think before you type.
+    ${cyan}#3${neutral}) With great power comes great responsibility.
+  "
   $messages | write-output
 }
 
