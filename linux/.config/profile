@@ -4,7 +4,7 @@
 #
 # @version  1.0.2
 # @author   Furukawa, Atsushi <atsushifx@aglabo.com>
-# @date     2022-08-16
+# @date     2023-04-10
 # @license  MIT
 #
 # @description
@@ -18,7 +18,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 umask 022
 
-# echo "Exec .config/.profile"
+echo "Exec .config/.profile"
 
 # // functions
 isInteractive() {
@@ -33,17 +33,18 @@ isInteractive() {
 if [[ -n "$HOME/.config/envrc" ]]; then
   . "$HOME/.config/envrc"
 fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/dotfiles/linux/bin" ] ; then
+    PATH="$PATH:$HOME/.local/dotfiles/linux/bin"
+fi
+
 export PATH
 
 # in zsh this is called by zshenv
 
 # if running bash
 if [[ -n "$BASH_VERSION" ]]; then
-  # include .bashrc if it exists
-  if [[ -f "$HOME/.bashrc" ]]; then
-    . "$HOME/.bashrc"
-  fi
-
   # user defined bashrc
   if [[ isInteractive ]] && [[ -f ${XDG_CONFIG_HOME}/bash/bashrc ]]; then
     . "${XDG_CONFIG_HOME}/bash/bashrc"

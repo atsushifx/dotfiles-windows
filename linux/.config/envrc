@@ -11,7 +11,7 @@
 # user's common environ settings
 #
 
-# echo "Exec: common.envrc"
+echo "Exec: common.envrc"
 
 export HISTFILE="${XDG_CACHE_HOME}/bash/_bash_history"
 
@@ -53,6 +53,7 @@ if [[ -d "${_brew_opt}/go" ]]; then
   PATH="${_brew_opt}/go/bin":$PATH
   export GOPATH PATH
 fi
+export PATH
 
 
 ### other tools environ for XDG]
@@ -66,23 +67,9 @@ export RLWRAP_HOME="${XDG_CACHE_HOME}/rlwrap"
 export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
 
 
-## execute path
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/dotfiles/linux/bin" ] ; then
-    PATH="$PATH:$HOME/.local/dotfiles/linux/bin"
-fi
-
-export PATH
-
-
 ## default editor/viewer , and other settings
 EDITOR=/usr/bin/vim
+PAGER=/usr/bin/less
 
-export EDITOR VISUAL PATH
+export EDITOR VISUAL PAGER
 
