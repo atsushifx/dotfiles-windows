@@ -37,7 +37,8 @@
 
 [credential]
 	helper = manager
-
+	helper = store --file ~/.local/share/git/.git-credentials
+	helper = C:/app/scoop/apps/git/current/mingw64/bin/git-credential-manager
 
 [credential "helperselector"]
 	selected = store
@@ -53,3 +54,5 @@
 	signingkey = 10FE6DBC
 [gpg]
 	program = C:\\app\\develop\\gnupg\\bin\\gpg.exe
+[credential "https://dev.azure.com"]
+	useHttpPath = true
