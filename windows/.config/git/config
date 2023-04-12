@@ -38,13 +38,11 @@
 [gpg]
 	program = C:\\app\\develop\\gnupg\\bin\\gpg.exe
 
-
 [credential]
 	helper = C:/app/scoop/apps/git/current/mingw64/bin/git-credential-manager
 
 [credential "helperselector"]
 	selected = store
-
 
 [ghq]
 	root = c:/Users/atsushifx/workspaces/gitworks
