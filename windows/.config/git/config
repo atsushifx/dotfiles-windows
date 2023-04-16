@@ -33,7 +33,6 @@
 	ff = only
 
 [fetch]
-	prune = true
 
 [gpg]
 	program = C:\\app\\develop\\gnupg\\bin\\gpg.exe
@@ -46,5 +45,6 @@
 
 [ghq]
 	root = c:/Users/atsushifx/workspaces/gitworks
+	root = c:/Users/atsushifx/workspaces/sandbox
 	root = c:/Users/atsushifx/workspaces/education
 	root = c:/Users/atsushifx/workspaces/develop
