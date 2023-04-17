@@ -82,6 +82,10 @@ Set-PSReadLineOption -Colors @{ InLinePrediction = [ConsoleColor]::Cyan }
 ## Modules
 Import-Module posh-wakatime
 
+
+## WakaTime for powershell
+
+
 ## tab completion
 
 ### completion modules
@@ -105,10 +109,6 @@ gh completion -s powershell | Out-String | Invoke-Expression
 
 #   volta completions
 & volta completions powershell | Out-String | Invoke-Expression
-
-
-
-
 
 # sudo messages
 if ([myUserRole]::isAdmin()) {
