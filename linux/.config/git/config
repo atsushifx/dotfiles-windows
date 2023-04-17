@@ -2,9 +2,9 @@
 #
 # @(#) : git global settings for WSL / Linux
 #
-# @version 1.0.0
+# @version 1.0.1
 # @author  Furukawa, Atsushi <atsushifx@aglabo.com>
-# @date    2023-04-02
+# @date    2023-04-17
 # @license MIT
 #
 # @desc<<
@@ -21,9 +21,12 @@
 [include]
 	path = ~/.local/dotfiles/common/git/config
 
-## general settings
+## general settings for Linux
 #
 #
+[user]
+	signingkey = 3A660D59
+
 
 [pull]
 	ff = only

@@ -32,7 +32,10 @@ if [[ "${SHELL}" =~ "zsh" ]]; then
   export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 fi
 
-## setup for brew
+## for GnuPG
+export GPG_TTY=$( tty )
+
+# setup for brew
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
 if [[ -d "${HOMEBREW_PREFIX}" ]]; then
   HOMEBREW_CACHE="${HOMEBREW_PREFIX}/.local/cache"
