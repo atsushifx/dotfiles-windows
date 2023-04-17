@@ -38,7 +38,7 @@
 [user]
 	name = Furukawa, Atsushi
 	email = atsushifx@gmail.com
-	signingkey = 6941121D
+#	signingkey = CCDA8126
 
 [alias]
     ss = status -s

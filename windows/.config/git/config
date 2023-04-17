@@ -29,6 +29,9 @@
 	symlinks = true
 	editor = "c:/bin/vim/bin/vim.exe"
 
+[user]
+	signingkey = 3A660D59
+
 [pull]
 	ff = only
 
