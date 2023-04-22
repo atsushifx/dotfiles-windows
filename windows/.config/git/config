@@ -27,10 +27,10 @@
 [core]
 	autocrlf = input
 	symlinks = true
-	editor = "c:/bin/vim/bin/vim.exe"
+#	editor = "vim.exe"
 
 [user]
-	signingkey = 3A660D59
+	signingkey = 8ED2E144
 
 [pull]
 	ff = only

@@ -13,8 +13,8 @@ B##
 ###
 # credentials
 #
-*/.ssh/*
-*/.gnupg/*
+**/.ssh/*
+**/.gnupg/*
 *cred*
 
 ###
