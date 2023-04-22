@@ -52,7 +52,7 @@ function global:prompt() {
 }
 
 ## setup current directory
-## ランチャー内やシステムディレクトリのときは、カレントディレクトリを移動
+##
 if ($WORKINGDIR.Contains('AppData') -OR $WORKINGDIR.Contains('Windows')) {
   Set-Location '~/workspaces'
 
@@ -82,33 +82,15 @@ Set-PSReadLineOption -Colors @{ InLinePrediction = [ConsoleColor]::Cyan }
 ## Modules
 Import-Module posh-wakatime
 
-
-## WakaTime for powershell
+## scoop
+Invoke-Expression (&scoop-search --hook)
 
 
 ## tab completion
-
-### completion modules
 Import-Module -Name CompletionPredictor
-Import-Module posh-git
-Import-Module scoop-completion
+Get-ChildItem -Path "$basedir\completion.d\*.ps1" | ForEach-Object { & $_.FullName }
 
-#   winget completion
-Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
-  param($wordToComplete, $commandAst, $cursorPosition)
-  [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
-  $Local:word = $wordToComplete.Replace('"', '""')
-  $Local:ast = $commandAst.ToString().Replace('"', '""')
-  winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
-    [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
-  }
-}
 
-#  githib cli
-gh completion -s powershell | Out-String | Invoke-Expression
-
-#   volta completions
-& volta completions powershell | Out-String | Invoke-Expression
 
 # sudo messages
 if ([myUserRole]::isAdmin()) {
