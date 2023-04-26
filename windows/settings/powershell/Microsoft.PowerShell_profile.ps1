@@ -42,13 +42,17 @@ function global:prompt() {
 
   # define prompt
   $isAdmin = [myUserRole]::isAdmin()
-  $prompt = $isAdmin ? " # " :  " > "
+  $psChar = $isAdmin ? " # " :  " > "
   $currentPath = (Split-Path (Get-Location) -Leaf)
   $currentDrive = (Convert-Path \).substring(0, 1)
   $userName = $env:USERNAME
 
   # Prompt return
-  $currentDrive + ": /" + $currentPath + $prompt
+  $prompt = $currentDrive + ": /" + $currentPath + $psChar
+  if ($env:ps1) {
+    $prompt = "[" + $ps1 + "]`\n"
+  }
+  $prompt
 }
 
 ## setup current directory
@@ -62,13 +66,14 @@ if ($WORKINGDIR.Contains('AppData') -OR $WORKINGDIR.Contains('Windows')) {
 
 }
 
+<#
 ## Add Path for dotnet
 $newPath = $env:path
 $newPath += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\Roslyn'
 $newPath += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools'
 $newPath += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.32.31326\bin\Hostx64\x64'
-$env:path = $newPath
-
+## $env:path = $newPath
+#>
 
 ## input History Plugin
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
@@ -78,22 +83,20 @@ Set-PSReadLineOption -Colors @{ InLinePrediction = [ConsoleColor]::Cyan }
 ## key binding
 . ($LIBSDIR + 'keyconfig.inc.ps1')
 
-
 ## Modules
-Import-Module posh-wakatime
+Import-Module posh-git
 
 ## scoop
 Invoke-Expression (&scoop-search --hook)
-
 
 ## tab completion
 Import-Module -Name CompletionPredictor
 Get-ChildItem -Path "$basedir\completion.d\*.ps1" | ForEach-Object { & $_.FullName }
 
-
+# Wakatime setup
+. "~\workspaces\develop\pwsh-wakatime/pwsh-wakatime.ps1"
 
 # sudo messages
 if ([myUserRole]::isAdmin()) {
   write-sudo-messages;
 }
-

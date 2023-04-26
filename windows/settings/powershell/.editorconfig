@@ -1,0 +1,28 @@
+## EditorConfig is awesome: https://EditorConfig.org
+#
+# @(#)  PoertSHell settings
+#
+# @version  1.0.0
+# @date		2022-07-02
+# @author	Furukawa, Atsushi <atsushifx@aglabo.com>
+# @license  MIT
+#
+# @update	2022-07-22	add config for .git*
+#
+# @description
+# user default editorconfig :
+# symlink this to ~ : user root
+#
+#
+
+
+
+# top-most EditorConfig file
+# root = true
+
+# Microsoft powershell
+# shell script
+[**.{ps1,psm1,psd1}]
+indent_style = space
+indent_size = 2
+tab_width = 2
