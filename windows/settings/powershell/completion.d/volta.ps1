@@ -10,4 +10,4 @@ THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK
 #>
 
 #   volta completions
-& volta completions powershell | Out-String | Invoke-Expression
+volta completions powershell | Out-String | Invoke-Expression
