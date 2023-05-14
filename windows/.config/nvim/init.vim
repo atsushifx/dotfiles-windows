@@ -14,10 +14,30 @@ set viminfofile=$XDG_CACHE_HOME/nvim/_nviminfo
 
 
 "" for plugins package
-set packpath+="$XDG_CONFIG_HOME/vimfiles"
+set packpath+="$XDG_CONFIG_HOME/nvim"
 
+"" vim common settings
+" shell
+set shell=pwsh
+
+" encoding : default display Japanese
+set fenc=utf-8
+set encoding=utf-8
+set fileformats=unix
+
+
+" disp line number
+set number
+
+set virtualedit=block
+set backspace=indent,eol,start
+
+"" Plugins
 " jetpack
-packadd vim-jetpack
+" let g:jetpack_download_method = 'curl'
+let g:jetpack_download_method = 'git'
+
+" packadd vim-jetpack
 
 " plugins
 call jetpack#begin()
@@ -31,23 +51,5 @@ Jetpack 'lambdalisue/fern.vim'
 call jetpack#end()
 
 
-"" vim common settings
-" shell
-set shell=pwsh
-
-
-" encoding : default display Japanese
-set fenc=utf-8
-set encoding=utf-8
-set fileformats=unix
-
-" disp line number
-set number
-
-
-set virtualedit=block
-
-
-set backspace=indent,eol,start
 
 
