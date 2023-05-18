@@ -20,7 +20,7 @@
 
 # setting from common
 [include]
-	path = C:/Users/atsushifx/.local/dotfiles/common/git/config
+	path = ~/.local/dotfiles/common/git/config
 
 ## general settings for Windows Git
 #
@@ -46,7 +46,7 @@
 	selected = cache
 
 [ghq]
-	root = c:/Users/atsushifx/workspaces/gitworks
-	root = c:/Users/atsushifx/workspaces/sandbox
-	root = c:/Users/atsushifx/workspaces/education
-	root = c:/Users/atsushifx/workspaces/develop
+	root = ~/workspaces/gitworks
+	root = ~/workspaces/sandbox
+	root = ~/workspaces/education
+	root = ~/workspaces/develop
