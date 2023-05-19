@@ -46,7 +46,11 @@ Jetpack 'tani/vim-jetpack', { 'opt': 1 }  " bootstrap
 " my plugins
 Jetpack 'editorconfig/editorconfig-vim'
 Jetpack 'wakatime/vim-wakatime'
+
+" file manager
 Jetpack 'lambdalisue/fern.vim'
+Jetpack 'junegunn/fzf.vim'
+
 
 call jetpack#end()
 
