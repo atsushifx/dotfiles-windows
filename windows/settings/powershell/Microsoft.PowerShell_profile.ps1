@@ -94,7 +94,7 @@ Import-Module -Name CompletionPredictor
 Get-ChildItem -Path "$basedir\completion.d\*.ps1" | ForEach-Object { & $_.FullName }
 
 # Wakatime setup
-. "~\workspaces\develop\pwsh-wakatime/pwsh-wakatime.ps1"
+. "c:/var/apps/pwsh-wakatime.ps1"
 
 # sudo messages
 if ([myUserRole]::isAdmin()) {

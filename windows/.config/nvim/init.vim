@@ -50,6 +50,3 @@ Jetpack 'lambdalisue/fern.vim'
 
 call jetpack#end()
 
-
-
-
