@@ -32,8 +32,6 @@
 [init]
 	defaultBranch = master
 
-[commit]
-	gpgsign = true
 
 [user]
 	name = Furukawa, Atsushi
@@ -68,3 +66,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 
+
+
+## ispech specific config
+[includeif "gitdir/i:~/workspaces/works-ispech/"]
+  path = ~/workspaces/works-ispech/git/config-ispech
