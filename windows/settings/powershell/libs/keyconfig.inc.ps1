@@ -70,7 +70,7 @@ function private:wzlikekeyconfig() {
   Set-PSReadLineKeyHandler -chord Ctrl+x -function NextHistory
 
   # zsh like tab completion
-  Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+  # Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 }
 
 wzlikekeyconfig
