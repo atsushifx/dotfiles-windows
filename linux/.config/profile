@@ -30,8 +30,8 @@ isInteractive() {
 }
 
 ##  common environ settings
-if [[ -n "$HOME/.config/envrc" ]]; then
-  . "$HOME/.config/envrc"
+if [[ -n "${XDG_CONFIG_HOME}/envrc" ]]; then
+  . "${XDG_CONFIG_HOME}/envrc"
 fi
 
 # set PATH so it includes user's private bin if it exists

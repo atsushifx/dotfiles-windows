@@ -12,7 +12,7 @@
 #
 #<<
 
-# echo "Exec: envrc"
+echo "Exec: envrc"
 
 ## common environment setup
 #

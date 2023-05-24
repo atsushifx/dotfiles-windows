@@ -22,7 +22,7 @@ pushd "${HOME}"
 ## add script
 echo '
 # dotfiles profile
-if [ -f "${XDG_CONFIG_HOME}/profile" ]; then
+if [[ -f "${XDG_CONFIG_HOME}/profile" ]] then
     . "${XDG_CONFIG_HOME}/profile"
 fi
 ' >> ~/.profile

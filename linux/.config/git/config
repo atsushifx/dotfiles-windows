@@ -26,10 +26,8 @@
 #
 
 [commit]
-	gpgsign = true
 
 [user]
-	signingkey = 3A660D59
 
 [pull]
 	ff = only
