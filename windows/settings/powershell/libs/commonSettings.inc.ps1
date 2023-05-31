@@ -43,7 +43,7 @@ Set-StrictMode -version latest
 
 function setupScriptCommonConstants() {
 	$baseDir = (Split-Path -Path $PROFILE)
-	set-Variable -Scope Global -Option ReadOnly -Name THISCMD -Value (Split-Path -Leaf $MyInvocation.PSCommandPath) -Description "executes command"
+	set-Variable -Scope Global -Option ReadOnly -Name PSCOMMAND -Value (Split-Path -Leaf $MyInvocation.PSCommandPath) -Description "executes command"
 	Set-Variable -Scope Global -Option ReadOnly -Name LIBSDIR -Value $baseDir'/libs/' -Description 'common libs directory'
 	Set-Variable -Scope Global -Option ReadOnly -Name SCRIPTSDIR -Value $baseDir'/scripts/' -Description 'Common scripts directory'
 	Set-Variable -Scope Global -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
