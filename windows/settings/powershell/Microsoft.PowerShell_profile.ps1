@@ -25,9 +25,7 @@ THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH
 
 ## Script Setup
 Set-StrictMode -version latest
-
-
-. ($PSScriptRoot + '/libs/commonSettings.inc.ps1')
+. $PSScriptRoot'/libs/commonSettings.inc.ps1'
 setupScriptCommonConstants
 
 ### Libralies
