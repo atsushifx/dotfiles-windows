@@ -1,12 +1,17 @@
 <#
-  .SYNOPSIS
+	.SYNOPSIS
     frequency use functions library
 
-  .NOTES
+	.DESCRIPTION
+	script common settings:
+	set up script common constants / 
+	adminCheck
 
+	.NOTES
 	@Author		Furukawa, Atsushi <atsushifx@aglabo.com>
 	@License	MIT License https://opensource.org/licenses/MIT
 
+	@date		2023-05-31
 	@Version	1.0.1
 
 	script common settings & common use functions
@@ -19,22 +24,43 @@ THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH
 #>
 Set-StrictMode -version latest
 
+
 ## Set common Constants
-$baseDir = (Split-Path -Path $PROFILE)
-set-Variable -Option ReadOnly -Name THISCMD -Value (Split-Path -Leaf $MyInvocation.PSCommandPath) -Description "executes command"
-Set-Variable -Option ReadOnly -Name LIBSDIR -Value $baseDir'/libs/' -Description 'common libs directory'
-Set-Variable -Option ReadOnly -Name SCRIPTSDIR -Value $baseDir'/scripts/' -Description 'Common scripts directory'
-Set-Variable -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
 
 <#
- # static function class for check user role
- #
- # check current user is elevated as 'Administrator'
- #
- #
+	.SYNOPSIS
+	set powershell script common constants
+
+	.DESCRIPTION
+	set common constants variable for powershell script
+	- THISCMD: script namr
+	- LIBSDIR: common function libray directory
+	- SCRIPTSDIR: common scripts direcyory
+	- WORKINGDIR: script execution directory
+
+	.NOTES
+#>
+
+function setupScriptCommonConstants() {
+	$baseDir = (Split-Path -Path $PROFILE)
+	set-Variable -Scope Global -Option ReadOnly -Name THISCMD -Value (Split-Path -Leaf $MyInvocation.PSCommandPath) -Description "executes command"
+	Set-Variable -Scope Global -Option ReadOnly -Name LIBSDIR -Value $baseDir'/libs/' -Description 'common libs directory'
+	Set-Variable -Scope Global -Option ReadOnly -Name SCRIPTSDIR -Value $baseDir'/scripts/' -Description 'Common scripts directory'
+	Set-Variable -Scope Global -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
+}
+
+<#
+	.SYNOPSIS
+	check user role class
+
+	.DESCRIPTION
+	check script works by windowsbuiltinrole: User/PowerUser/Administrator
+	method:isAdmin checks user works as administrator
+
+	.NOTES
  #>
-class myUserRole {
-	hidden static [Security.Principal.WindowsPrincipal]  $principal = [myUserRole]::getCurrentPrincipal()
+class aglaUserRole {
+	hidden static [Security.Principal.WindowsPrincipal]  $principal = [aglaUserRole]::getCurrentPrincipal()
 
 	# get current windows principal
 	hidden static [Security.Principal.WindowsPrincipal] getCurrentPrincipal() {
@@ -43,9 +69,8 @@ class myUserRole {
 		return $pr
 	}
 
-	#
-	static [bool]  hasRole([Security.Principal.WindowsBuiltInRole] $role) {
-		<#
+	
+	<#
       .SYNOPSIS
         check current user has role parameter
 
@@ -53,15 +78,14 @@ class myUserRole {
         $role
         user role (Administrator, User, ...)
     #>
-		return [myUserRole]::principal.IsInRole([Security.Principal.WindowsBuiltinRole] $role)
+	static [bool]  hasRole([Security.Principal.WindowsBuiltInRole] $role) {
+		return [aglaUserRole]::principal.IsInRole([Security.Principal.WindowsBuiltinRole] $role)
 	}
 
-	#
-	static [bool]  isAdmin() {
-		<#
+	<#
       check user as 'Administrator'
     #>
-		return [myUserRole]::hasRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+	static [bool]  isAdmin() {
+		return [aglaUserRole]::hasRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 	}
 }
-

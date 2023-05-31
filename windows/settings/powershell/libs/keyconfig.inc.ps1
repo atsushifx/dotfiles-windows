@@ -1,23 +1,30 @@
 <#
-  .SYNOPSIS
-    PowerShell key config script
+	.SYNOPSIS
+	key customize script
 
-  .NOTE
-    Author:   Furukawa, Atsushi <atsushifx@aglabo.com>
-    License:  MIT License  https://opensource.org/licenses/MIT
+	.DESCRIPTION
+	key function customize : config key of powershell command line
+  default customize: wz (Wz/diamond cursor key)
 
-THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
+	.NOTES
+	@Author		Furukawa, Atsushi <atsushifx@aglabo.com>
+	@License 	MIT License https://opensource.org/licenses/MIT
 
+	@date		2023-05-31
+	@Version 	1.0.0
+
+THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. 
+THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 #>
 
-## Wz like key bindings
-
 <#
-  .SYNOPSIS
-    select command from history and execute
+	.SYNOPSIS
+    key customize like wz editor
 
-  .DESCRIPTION
-    select history wuth peco and set command line to execute this.
+	.DESCRIPTION
+	key config/customize like wzeditot
+	diamond key -> move cursor & history
+	ctrl+p: select history wuth peco and set command line to execute this.
 
 
   .EXAMPLE
@@ -25,11 +32,11 @@ THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK
     using above that hit ctrl+p to use this.
 
 #>
-function private:wzlikekeyconfig() {
+function keyconfig_wzlike() {
   Set-PSReadLineOption -EditMode windows
 
 
-  # windows defaukt
+  # windows default Crtl*Shift+<Key>
   Set-PSReadLineKeyHandler -chord Ctrl+A -function SelectAll
   Set-PSReadLineKeyHandler -chord Ctrl+X -function cut
   Set-PSReadLineKeyHandler -chord Ctrl+C -function copy
@@ -73,6 +80,5 @@ function private:wzlikekeyconfig() {
   # Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 }
 
-wzlikekeyconfig
-
+keyconfig_wzlike
 

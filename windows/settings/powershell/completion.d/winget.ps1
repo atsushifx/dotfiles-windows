@@ -1,16 +1,23 @@
 <#
   .SYNOPSIS
-    winget completion script for powershell
+    winget tab completion for powershell
 
-  .NOTE
-    Author:   Furukawa, Atsushi <atsushifx@aglabo.com>
-    License:  MIT License  https://opensource.org/licenses/MIT
+  .DESCRIPTION
+    set up winget  tab completion function for powershell.
+    this function set up from script with `winget complete`
+    
+  .NOTES
+    @Author   Furukawa, Atsushi <atsushifx@aglabo.com>
+    @License  MIT License https://opensource.org/licenses/MIT
 
-THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
+    @date     2023-05-31
+    @Version  1.0.0
 
+THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. 
+THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 #>
 
-#   winget completion
+#   winget completion function
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
     param($wordToComplete, $commandAst, $cursorPosition)
         [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()

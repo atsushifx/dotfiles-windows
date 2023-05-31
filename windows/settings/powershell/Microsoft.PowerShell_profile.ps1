@@ -1,22 +1,40 @@
 <#
   .SYNOPSIS
     PowerShell initialize script for CLI
+  
+  .DESCRIPTION
+    powershell initialize script.
+    this is:
+      set Script Vsrisble through `libs/commonSettings.inc.ps1'
+      set predictiion wuth completion  
+      customize key config
+      setup completion from `completion.d/*/ps1'
+      set wakatime heartbeat
 
-  .NOTE
-    Author:   Furukawa, Atsushi <atsushifx@aglabo.com>
-    License:  MIT License  https://opensource.org/licenses/MIT
+  
+  .NOTES
+    @Author   Furukawa, Atsushi <atsushifx@aglabo.com>
+    @License  MIT License https://opensource.org/licenses/MIT
 
-THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
-
+    @Date     2023-05-31
+    @Version  1.0.5
+    
+THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
+THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 #>
 
 ## Script Setup
 Set-StrictMode -version latest
-. ((Split-Path -Path ($profile)) + '/libs/commonSettings.inc.ps1')
+
+
+. ($PSScriptRoot + '/libs/commonSettings.inc.ps1')
+setupScriptCommonConstants
 
 ### Libralies
-. ($LIBSDIR + "/cliFunctions.inc.ps1")  # for readline function
+. ($LIBSDIR + "cliFunctions.inc.ps1")  # for readline function
 
+
+$private:baseDir = Split-Path -path $profile
 
 ### functions
 function private:write-sudo-messages() {
@@ -41,7 +59,7 @@ function private:write-sudo-messages() {
 function global:prompt() {
 
   # define prompt
-  $isAdmin = [myUserRole]::isAdmin()
+  $isAdmin = [aglaUserRole]::isAdmin()
   $psChar = $isAdmin ? " # " :  " > "
   $currentPath = (Split-Path (Get-Location) -Leaf)
   $currentDrive = (Convert-Path \).substring(0, 1)
@@ -49,9 +67,6 @@ function global:prompt() {
 
   # Prompt return
   $prompt = $currentDrive + ": /" + $currentPath + $psChar
-  if ($env:ps1) {
-    $prompt = "[" + $ps1 + "]`\n"
-  }
   $prompt
 }
 
@@ -62,18 +77,9 @@ if ($WORKINGDIR.Contains('AppData') -OR $WORKINGDIR.Contains('Windows')) {
 
   # WORKINGDIRを再設定
   Remove-Item Variable:\WORKINGDIR -Force
-  Set-Variable -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
+  Set-Variable -Option ReadOnly -Scope Global -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
 
 }
-
-<#
-## Add Path for dotnet
-$newPath = $env:path
-$newPath += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\Roslyn'
-$newPath += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools'
-$newPath += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.32.31326\bin\Hostx64\x64'
-## $env:path = $newPath
-#>
 
 ## input History Plugin
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
@@ -81,22 +87,21 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -Colors @{ InLinePrediction = [ConsoleColor]::Cyan }
 
 ## key binding
-. ($LIBSDIR + 'keyconfig.inc.ps1')
+. ($LIBSDIR + "keyconfig.inc.ps1" )
 
-## Modules
-Import-Module posh-git
+### Modules
 
 ## scoop
 Invoke-Expression (&scoop-search --hook)
 
 ## tab completion
 Import-Module -Name CompletionPredictor
-Get-ChildItem -Path "$basedir\completion.d\*.ps1" | ForEach-Object { & $_.FullName }
+Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { & $_.FullName }
 
 # Wakatime setup
 . "c:/var/apps/pwsh-wakatime.ps1"
 
 # sudo messages
-if ([myUserRole]::isAdmin()) {
+if ([aglaUserRole]::isAdmin()) {
   write-sudo-messages;
 }

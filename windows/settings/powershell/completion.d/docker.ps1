@@ -1,12 +1,11 @@
-
 <#
   .SYNOPSIS
-    wsl tab completion for powershell
-  
+    docker completion for powershell
+
   .DESCRIPTION
-    set up wsl tab completion function for powershell.
-    this function is setted up from WSLTabCOmpletion moduel
-    
+    docker completion for powershell command lline.
+    set this function with DockerCompletion
+
   .NOTES
     @Author   Furukawa, Atsushi <atsushifx@aglabo.com>
     @License  MIT License https://opensource.org/licenses/MIT
@@ -17,5 +16,5 @@
 THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. 
 THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 #>
- 
-import-module WSLTabCompletion
+
+Import-Module DockerCompletion
