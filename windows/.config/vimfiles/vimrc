@@ -36,7 +36,7 @@ set packpath+="$XDG_CONFIG_HOME/vimfiles"
 
 " jetpack
 " let g:jetpack_download_method = 'curl'
-let g:jetpack_download_method = 'git'
+" let g:jetpack_download_method = 'git'
 " packadd vim-jetpack
 
 " plugins

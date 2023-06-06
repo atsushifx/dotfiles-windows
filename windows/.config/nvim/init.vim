@@ -34,8 +34,6 @@ set backspace=indent,eol,start
 
 "" Plugins
 " jetpack
-" let g:jetpack_download_method = 'curl'
-let g:jetpack_download_method = 'git'
 
 " packadd vim-jetpack
 
@@ -43,14 +41,18 @@ let g:jetpack_download_method = 'git'
 call jetpack#begin()
 Jetpack 'tani/vim-jetpack', { 'opt': 1 }  " bootstrap
 
-" my plugins
-Jetpack 'editorconfig/editorconfig-vim'
+" load plugins
+Jetpack 'gpanders/editorconfig.nvim'
 Jetpack 'wakatime/vim-wakatime'
 
-" file manager
-Jetpack 'lambdalisue/fern.vim'
-Jetpack 'junegunn/fzf.vim'
-
+Jetpack 'lambdalisue/fern.vim'       " File Manager
 
 call jetpack#end()
 
+" auto install plugins
+for name in jetpack#names()
+  if !jetpack#tap(name)
+    call jetpack#sync()
+    break
+  endif
+endfor
