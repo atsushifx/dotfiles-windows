@@ -18,7 +18,7 @@ set packpath+="$XDG_CONFIG_HOME/nvim"
 
 "" vim common settings
 " shell
-set shell=pwsh
+" set shell=pwsh
 
 " encoding : default display Japanese
 set fenc=utf-8
@@ -33,7 +33,13 @@ set virtualedit=block
 set backspace=indent,eol,start
 
 "" Plugins
-" jetpack
+" load jetpack to autoload
+let s:jetpackfile = stdpath('config') . '/autoload/jetpack.vim'
+let s:jetpackurl = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
+if !filereadable(s:jetpackfile)
+  let s:jetpackloader = printf('curl -fsSLo %s --create-dirs %s', s:jetpackfile, s:jetpackurl)
+  call system(s:jetpackloader)
+endif
 
 " packadd vim-jetpack
 

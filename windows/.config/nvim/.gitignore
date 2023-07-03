@@ -3,19 +3,19 @@
 #
 ##
 #
-# @version  1.0.0
+# @version  1.0.1
 # @author   Furukawa, Atsushi <atsushifx@aglabo.com>
-# @update   2023-03-01
+# @update   2024-06-08
 # @license  MIT
 #
-# @desc
-# git ignore files about vim
+# @desc <<
+# git ignore files for neovim
 #
 #
-#
-#
+#<<
+
 
 /*
-!/*rc
-!/*git*
-!/*vim
+!/**.git*
+!/**vim
+/autoload*

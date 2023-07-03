@@ -30,7 +30,7 @@
 #	editor = "vim.exe"
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 
 [user]
 	signingkey = 8ED2E144
