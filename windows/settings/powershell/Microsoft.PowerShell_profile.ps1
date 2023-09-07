@@ -1,24 +1,24 @@
 <#
   .SYNOPSIS
     PowerShell initialize script for CLI
-  
+
   .DESCRIPTION
     powershell initialize script.
     this is:
       set Script Vsrisble through `libs/commonSettings.inc.ps1'
-      set predictiion wuth completion  
+      set predictiion wuth completion
       customize key config
       setup completion from `completion.d/*/ps1'
       set wakatime heartbeat
 
-  
+
   .NOTES
     @Author   Furukawa, Atsushi <atsushifx@aglabo.com>
     @License  MIT License https://opensource.org/licenses/MIT
 
     @Date     2023-05-31
     @Version  1.0.5
-    
+
 THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
 THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 #>
