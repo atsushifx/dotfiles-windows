@@ -27,7 +27,7 @@
 [core]
 	autocrlf = input
 	symlinks = true
-#	editor = "vim.exe"
+#	editor = "nvim.exe --wait"
 
 [commit]
 	gpgsign = false
@@ -53,3 +53,7 @@
 	root = ~/workspaces/sandbox
 	root = ~/workspaces/education
 	root = ~/workspaces/develop
+[safe]
+	directory = C:/Users/atsushifx/app/scoop/buckets/main
+[merge]
+	ff = false

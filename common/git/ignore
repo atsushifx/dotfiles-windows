@@ -23,7 +23,7 @@
 #	OS created files
 #
 .DS_Store
-thums.db
+thumbs.db
 
 ##
 #	backup
@@ -57,4 +57,3 @@ $~*
 *.diff
 *.patch
 
-e
