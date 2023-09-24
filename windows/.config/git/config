@@ -35,25 +35,24 @@
 [user]
 	signingkey = 8ED2E144
 
-[pull]
-	ff = only
-
-[fetch]
 
 [gpg]
 	program = C:\\app\\develop\\gnupg\\bin\\gpg.exe
 
+[credential]
+	helper = store --file ~/.local/share/git/.git-credentials
 
-[credential "helperselector"]
-	selected = store
-	selected = cache
+[safe]
+	directory = C:/Users/atsushifx/app/scoop/buckets/main
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 
 [ghq]
 	root = ~/workspaces/gitworks
 	root = ~/workspaces/sandbox
 	root = ~/workspaces/education
 	root = ~/workspaces/develop
-[safe]
-	directory = C:/Users/atsushifx/app/scoop/buckets/main
-[merge]
-	ff = false

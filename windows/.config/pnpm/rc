@@ -10,8 +10,8 @@ init-module=C:\Users\atsushifx\.config\pnpm\init.js
 init-version=0.1.0
 
 ## global setup directory
-global-dir=${PNPM_HOME}
-global-bin-dir=${PNPM_HOME}
+global-dir=${XDG_DATA_HOME}/pnpm
+global-bin-dir=${XDG_DATA_HOME}/pnpm
 
 
 # peer devevdancy

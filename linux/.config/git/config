@@ -37,6 +37,8 @@
 
 [credential "helperselector"]
 	selected = store
+	selected = cache
+
 
 [ghq]
 	root = ~/workspaces/education
