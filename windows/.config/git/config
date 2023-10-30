@@ -33,10 +33,12 @@
 	gpgsign = false
 
 [user]
-	signingkey = 8ED2E144
+	name = Furukawa, Atsushi
+	email = atsushifx@gmail.com
 
 [pull]
 	ff = only
+
 
 [fetch]
 
