@@ -1,0 +1,7 @@
+##
+##  ignore files using git
+##    for windows dotfiles/powershell
+##
+
+## PowerShell
+powershell/modules/
