@@ -57,7 +57,8 @@ if [[ -e "${_cmpl_d}" ]]; then
   done
 fi
 
-_cmpl_d="${HOMEVREW_PREFIX}/etc/bash_completion.d"
+#   completion from brew
+_cmpl_d="${HOMEBREW_PREFIX}/etc/bash_completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
   for f in ${_cmpl_d}/*; do
     . "${f}"
