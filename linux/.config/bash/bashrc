@@ -15,7 +15,7 @@
 # local env settings 
 
 BASHRC_DIR="${XDG_CONFIG_HOME}/bash"
-SCRIPTS_DIR="${BASHRC_DIR}/scripts"
+BASH_SCRIPTS_DIR="${BASHRC_DIR}/scripts"
 
 echo "Exec: .config/bash/bashrc"
 
@@ -48,15 +48,6 @@ fi
 ## key config
 
 ## bash completion
-_cmpl_d="${BASHRC_DIR}/bash_completion.d"
-if [[ -e "${_cmpl_d}" ]]; then
-  echo "cmpl_d: ${_cmpl_d}"
-  for f in "$( ls -1 ${_cmpl_d}/*.{sh,bash} )"; do
-    echo "Exec: $f"
-    . "${f}"
-  done
-fi
-
 #   completion from brew
 _cmpl_d="${HOMEBREW_PREFIX}/etc/bash_completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
@@ -65,6 +56,15 @@ if [[ -e "${_cmpl_d}" ]]; then
   done
 fi
 
+#   complwtion for local bashrc
+_cmpl_d="${BASHRC_DIR}/bash_completion.d"
+if [[ -e "${_cmpl_d}" ]]; then
+  echo "cmpl_d: ${_cmpl_d}"
+  for f in "$( ls -1 ${_cmpl_d}/*.{sh,bash} )"; do
+    echo "Exec: $f"
+    . "${f}"
+  done
+fi
 ## wakatime-count
 . ${XDG_CONFIG_HOME}/bash/scripts/bash-wakatime.sh
 
