@@ -39,6 +39,7 @@
 [pull]
 	ff = only
 
+[merge]
 
 [fetch]
 
