@@ -94,7 +94,7 @@ Set-PSReadLineOption -Colors @{ InLinePrediction = [ConsoleColor]::Cyan }
 
 ## tab completion
 Import-Module -Name CompletionPredictor
-Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { & $_.FullName }
+Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { . $_.FullName }
 
 # Wakatime setup
 . "c:/var/apps/pwsh-wakatime.ps1"
