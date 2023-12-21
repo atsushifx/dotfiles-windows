@@ -27,3 +27,10 @@ if [ -f /opt/etc/envrc ]; then
   . /opt/etc/envrc
 fi
 
+if [[ "${SHELL}" =~ "bash" ]]; then
+  # bash-completion
+  if [[ -f "/etc/bash_completiton" ]]; then
+    . "/etc/bash_completion"
+  fi
+fi
+
