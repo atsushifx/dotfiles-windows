@@ -39,7 +39,17 @@
 [pull]
 	ff = only
 
+[diff]
+	tool = p4merge
+
 [merge]
+	tool = p4merge
+
+[difftool]
+    prompt = false
+
+[mergetool]
+    prompt = false
 
 [fetch]
 
@@ -51,6 +61,7 @@
 
 [safe]
 	directory = C:/Users/atsushifx/app/scoop/buckets/main
+	directory = C:/Users/atsushifx/app/scoop/apps/scoop/current
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
