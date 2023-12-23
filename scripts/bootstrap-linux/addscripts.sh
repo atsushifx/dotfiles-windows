@@ -15,7 +15,7 @@
 #<<
 
 echo '
-if [[ -f /opt/etc/profile]]; then
+if [[ -f "/opt/etc/profile" ]]; then
   . /opt/etc/profile
 fi
 ' >> /etc/profile
