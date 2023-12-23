@@ -7,14 +7,15 @@
 # @date     2023-12-23
 # @license  MIT
 #
-# @description <<
-# create symbolic from dotfiles opt/* to /opt/*
+# @desc <<
+# create symbolic from dotfiles 'linux/opt/*' to '/opt/*'
 #
 #<<
 
 _optdir="${HOME}/.local/dotfiles/linux/opt"
 
 for d in $(ls "${_optdir}/" ); do
+  sudo chown -R root:root "${_optdir}/$d"
   if [[ ! -d "/opt/$d" ]]; then
     sudo ln -s "$_optdir/$d" /opt
   fi
