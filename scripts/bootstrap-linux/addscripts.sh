@@ -15,14 +15,15 @@
 #<<
 
 echo '
+#  exec dotfiles /etc/profile
 if [[ -f "/opt/etc/profile" ]]; then
   . /opt/etc/profile
 fi
-' >> /etc/profile
+' | sudo tee -a /etc/profile >> /dev/null
 
 # for user
 echo '
-## exec dotfiles
+#  exec dotfiles profile
 if [[ -f "$HOME/.config/profile" ]]; then
   . $HOME/.config/profile
 fi
