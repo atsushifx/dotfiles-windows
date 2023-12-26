@@ -10,6 +10,8 @@
 # @description
 # user's common environ settings
 #
+# set HISTFILE for XDG Base
+#
 
 echo "Exec: common.envrc"
 

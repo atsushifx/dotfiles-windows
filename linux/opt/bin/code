@@ -8,10 +8,9 @@
 # @license MIT
 #
 # @desc <<
+#
 # execute windows vs code with --remote option,
 # it's open folder remote wsl mode
-#
-# @desc <<
 #
 #<<
 
