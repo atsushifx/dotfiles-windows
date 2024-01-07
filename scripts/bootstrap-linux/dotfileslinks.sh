@@ -12,6 +12,15 @@
 #
 #<<
 
+## create link on $HOME
+pushd "$HOME"
+
+ln -s ./.local/dotfiles/linux/.config .
+ln -s ./.config/.editorconfig .
+
+popd
+
+## create /opt dirs
 _optdir="${HOME}/.local/dotfiles/linux/opt"
 
 for d in $(ls "${_optdir}/" ); do
@@ -20,3 +29,5 @@ for d in $(ls "${_optdir}/" ); do
     sudo ln -s "$_optdir/$d" /opt
   fi
 done
+
+# End 

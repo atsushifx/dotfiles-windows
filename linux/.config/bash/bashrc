@@ -66,5 +66,5 @@ if [[ -e "${_cmpl_d}" ]]; then
   done
 fi
 ## wakatime-count
-. ${XDG_CONFIG_HOME}/bash/scripts/bash-wakatime.sh
+# . ${XDG_CONFIG_HOME}/bash/scripts/bash-wakatime.sh
 

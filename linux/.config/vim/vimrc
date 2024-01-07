@@ -46,7 +46,7 @@ Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
 " plugin with vim-plug
 Jetpack 'lambdalisue/fern.vim'
 Jetpack 'editorconfig/editorconfig-vim'
-Jetpack 'wakatime/vim-wakatime'
+" Jetpack 'wakatime/vim-wakatime'
 
 
 "
