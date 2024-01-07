@@ -30,4 +30,7 @@ for d in $(ls "${_optdir}/" ); do
   fi
 done
 
+## remove old dotfiles
+rm -f ~/.bash_history ~/.viminfo
+
 # End 
