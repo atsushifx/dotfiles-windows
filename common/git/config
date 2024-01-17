@@ -23,9 +23,9 @@
 	attributesfile = ~/.local/dotfiles/common/git/attributes
 #	excludefile = ~/.local/dotfiles/common/git/ignore
 
-
 [color]
 	ui = true
+
 
 [init]
 	defaultBranch = main
@@ -38,12 +38,17 @@
 
 [merge]
 	ff = false
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
 
 [fetch]
 
 [user]
 	name = Furukawa, Atsushi
 	email = atsushifx@gmail.com
+
 
 [alias]
     ss = status -s
