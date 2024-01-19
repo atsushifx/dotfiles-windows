@@ -13,8 +13,9 @@
 #<<
 
 ## create link on $HOME
-pushd "$HOME"
+pushd "$HOME" > /dev/null
 
+rm -fr ~/.config
 ln -s ./.local/dotfiles/linux/.config .
 ln -s ./.config/.editorconfig .
 
