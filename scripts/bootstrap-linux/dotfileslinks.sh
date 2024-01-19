@@ -24,7 +24,7 @@ popd
 _optdir="${HOME}/.local/dotfiles/linux/opt"
 
 for d in $(ls "${_optdir}/" ); do
-  sudo chown -R root:root "${_optdir}/$d"
+  # sudo chown -R root:root "${_optdir}/$d"
   if [[ ! -d "/opt/$d" ]]; then
     sudo ln -s "$_optdir/$d" /opt
   fi
