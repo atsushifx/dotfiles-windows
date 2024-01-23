@@ -38,15 +38,26 @@ source $VIMRUNTIME/defaults.vim
 
 "" plugins
 "# packadd vim-jetpack
+" 
+" autoinstall jetpack
+let s:jetpackhome = g:netrw_home
+let s:jetpackfile = s:jetpackhome . '/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
+let s:jetpackurl = 'https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
+
+if !filereadable(s:jetpackfile)
+  call system(printf('curl -fsSLo %s --create-dirs %s', s:jetpackfile, s:jetpackurl))
+endif
+execute 'source ' s:jetpackfile
+
 "
-call jetpack#begin()
+call jetpack#begin(s:jetpackhome)
 " default plguins
 Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
 
 " plugin with vim-plug
 Jetpack 'lambdalisue/fern.vim'
 Jetpack 'editorconfig/editorconfig-vim'
-" Jetpack 'wakatime/vim-wakatime'
+Jetpack 'wakatime/vim-wakatime'
 
 
 "
