@@ -90,7 +90,7 @@ Set-PSReadLineOption -Colors @{ InLinePrediction = [ConsoleColor]::Cyan }
 ### Modules
 
 ## scoop
-Invoke-Expression (&scoop-search --hook)
+Invoke-Expression (&scoop-search-multisource -hook)
 
 ## tab completion
 Import-Module -Name CompletionPredictor
