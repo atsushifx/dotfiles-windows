@@ -29,7 +29,7 @@ fi
 
 if [[ "${SHELL}" =~ "bash" ]]; then
   # bash-completion
-  if [[ -f "/etc/bash_completiton" ]]; then
+  if [[ -f "/etc/bash_completion" ]]; then
     . "/etc/bash_completion"
   fi
 fi
