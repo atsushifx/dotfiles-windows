@@ -2,7 +2,7 @@
 #
 # @(#) : git global settings for WSL / Linux
 #
-# @version 1.0.1
+# @version 1.0.2
 # @author  Furukawa, Atsushi <atsushifx@aglabo.com>
 # @date    2023-04-17
 # @license MIT
@@ -26,21 +26,16 @@
 #
 
 [core]
-	pager = delta
-
-[interactive]
-	diffFilter = delta --color-only
+	autocrlf = input
+	symlinks = true
 
 [commit]
+	gpgsign = false
 
 [user]
 
 [pull]
 	ff = only
-
-[delta]
-    navigate = true
-    light = false
 
 [credential]
 	helper = store --file ~/.local/share/git/.git-credentials

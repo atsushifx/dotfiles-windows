@@ -1,8 +1,8 @@
 ###
 #
-# @(#) : git Linux / Windows common settings
+# @(#) : git Windows common settings
 #
-# @version 1.0.0
+# @version 1.0.2
 # @author  Furukawa, Atsushi <atsushifx@aglabo.com>
 # @date    2022-07-18
 # @license MIT
@@ -28,10 +28,6 @@
 	autocrlf = input
 	symlinks = true
 #	editor = "nvim.exe --wait"
-	pager = delta
-
-[interactive]
-    diffFilter = delta --color-only
 
 [commit]
 	gpgsign = false
@@ -78,7 +74,3 @@
 	root = ~/workspaces/sandbox
 	root = ~/workspaces/education
 	root = ~/workspaces/develop
-
-[delta]
-    navigate = true    # use n and N to move between diff sections
-    light = false
