@@ -22,10 +22,10 @@
 	symlinks = true
 	attributesfile = ~/.local/dotfiles/common/git/attributes
 #	excludefile = ~/.local/dotfiles/common/git/ignore
+	pager = delta
 
 [color]
 	ui = true
-
 
 [init]
 	defaultBranch = main
@@ -44,6 +44,10 @@
     colorMoved = default
 
 [fetch]
+
+
+[interactive]
+	diffFilter = delta --color-only
 
 [user]
 	name = Furukawa, Atsushi

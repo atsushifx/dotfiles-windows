@@ -32,8 +32,6 @@ if [[ "${SHELL}" =~ "zsh" ]]; then
   export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 fi
 
-## for GnuPG
-export GPG_TTY=$( tty )
 
 # setup for brew
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
@@ -51,8 +49,13 @@ if [[ -d "${HOMEBREW_PREFIX}" ]]; then
 fi
 
 ## environ settings for all users
-export GNUPGHOME="${XDG_DATA_HOME}"/gnupg
 
+# gnupg
+export GNUPGHOME="${XDG_DATA_HOME}"/gnupg
+export GPG_TTY=$( tty )
+
+#  rlwrap
+export RLWRAP_HOME="${XDG_CACHE_HOME}/rlwrap"
 
 
 # specific path

@@ -25,12 +25,22 @@
 #
 #
 
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
 [commit]
 
 [user]
 
 [pull]
 	ff = only
+
+[delta]
+    navigate = true
+    light = false
 
 [credential]
 	helper = store --file ~/.local/share/git/.git-credentials

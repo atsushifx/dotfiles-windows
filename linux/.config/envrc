@@ -58,13 +58,12 @@ if [[ -d "${_brew_opt}/go" ]]; then
 fi
 export PATH
 
+## Racket
+export PLTUSERHOME="${XDG_DATA_HOME}/racket"
 
 ### other tools environ for XDG]
 # wget
 export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
-
-#  rlwrap
-export RLWRAP_HOME="${XDG_CACHE_HOME}/rlwrap"
 
 #  wakatime config
 export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
