@@ -1,3 +1,0 @@
-(
- (readline-input-history (#",exit"))
-)

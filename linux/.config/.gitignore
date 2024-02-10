@@ -16,12 +16,11 @@
 #
 #<<
 
-## untrack
-**/configstore/*
+### untrackfiles
 
-## extensions
-# TabNine
-**/TabNine/*
 
-# Pulse
-**/pulse/
+## Languages
+# Racket
+racket-prefs.rktd
+
+
