@@ -81,7 +81,7 @@
 
 [delta]
 	navigate = true
-	syntax-theme = github
+	syntax-theme = GitHub
 	line-numbers = true
 	side-by-side = true
 
