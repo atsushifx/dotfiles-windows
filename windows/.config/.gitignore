@@ -15,5 +15,8 @@
 #
 #<<
 
-## .config/<directories>
-/blogsync
+## Languages
+# Racket
+_lock*
+*/download-cache*
+racket-prefs.rktd
