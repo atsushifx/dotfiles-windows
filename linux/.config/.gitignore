@@ -18,6 +18,9 @@
 
 ### untrackfiles
 
+## completion
+**/completion.d/*
+
 
 ## Languages
 # Racket

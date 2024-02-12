@@ -56,15 +56,18 @@ if [[ -e "${_cmpl_d}" ]]; then
   done
 fi
 
-#   complwtion for local bashrc
-_cmpl_d="${BASHRC_DIR}/bash_completion.d"
+#   compltion for local bashrc
+_cmpl_d="${BASHRC_DIR}/completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
-  echo "cmpl_d: ${_cmpl_d}"
-  for f in "$( ls -1 ${_cmpl_d}/*.{sh,bash} )"; do
+  for f in ${_cmpl_d}/*.{sh,bash} ; do
     echo "Exec: $f"
     . "${f}"
   done
 fi
 ## wakatime-count
 # . ${XDG_CONFIG_HOME}/bash/scripts/bash-wakatime.sh
+
+
+## from WSL goto ~/temp
+[[ `pwd` =~ /mnt\/c/ ]] && cd ~/temp
 
