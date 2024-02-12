@@ -26,12 +26,13 @@
 thumbs.db
 
 ##
-#	backup
+#	backup/swap/temp
 $~*
 ~*
 *~
 *tmp
 *swp
+*lock
 
 ##
 #	credential files
