@@ -1,0 +1,1 @@
+#hash((build-stamp . "") (catalogs . ("https://download.racket-lang.org/releases/8.11.1/catalog/" #f)) (default-scope . "user") (doc-search-url . "https://download.racket-lang.org/releases/8.11.1/doc/local-redirect/index.html") (download-cache-dir . "C:\\Users\\atsushifx\\.local\\cache/racket/download-cache"))
