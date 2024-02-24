@@ -13,6 +13,7 @@
 #<<
 
 echo "Exec /opt/etc/profile"
+stty stop undef
 
 # sysad define command's directory
 if [ "$(id -u)" -eq 0 ] && [ -d /opt/sbin ]; then

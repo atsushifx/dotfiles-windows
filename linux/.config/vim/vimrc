@@ -80,3 +80,5 @@ set virtualedit=block
 "
 set backspace=indent,eol,start
 
+" for ocaml
+set rtp^="$OPAMROOT/5.1.1/share/ocp-indent/vim"

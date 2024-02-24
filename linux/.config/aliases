@@ -11,9 +11,7 @@
 #
 #<<
 
-#
-# @version
+echo "Exec: aliases"
 
-# echo "Exec: aliases"
+alias ocaml='rlwrap ocaml '
 
-## manage rcfiles with git

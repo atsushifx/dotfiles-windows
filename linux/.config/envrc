@@ -30,7 +30,9 @@ export PATH=${PATH}:${VOLTA_HOME}/bin
 ### from brew 
 _brew_opt="${HOMEBREW_PREFIX}/opt"
 
-## Ruby environ
+## Programming languages
+
+#  Ruby environ
 if [[ -d "$_brew_opt/ruby" ]]; then  
   _ruby_cfg="${XDG_CONFIG_HOME}/ruby"
   _ruby_data="${XDG_DATA_HOME}/ruby"
@@ -50,7 +52,7 @@ if [[ -d "$_brew_opt/ruby" ]]; then
   export PATH="${_brew_opt}/ruby/bin:$PATH"
 fi
 
-## GO environ
+#  GO environ
 if [[ -d "${_brew_opt}/go" ]]; then
   GOPATH="${XDG_DATA_HOME}/go"
   PATH="${_brew_opt}/go/bin":$PATH
@@ -58,8 +60,12 @@ if [[ -d "${_brew_opt}/go" ]]; then
 fi
 export PATH
 
-## Racket
+#  Racket
 # export PLTUSERHOME="${XDG_DATA_HOME}/racket"
+
+#  ocaml
+export OPAMROOT="$XDG_DATA_HOME/opam"
+
 
 ### other tools environ for XDG]
 # wget

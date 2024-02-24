@@ -47,5 +47,6 @@
 
 [ghq]
 	root = ~/workspaces/education
+	root = ~/workspaces/sandbox
 	root = ~/workspaces/develop
 
