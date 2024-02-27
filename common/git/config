@@ -92,8 +92,9 @@
 	process = git-lfs filter-process
 
 [delta]
-	navigate = true
 	syntax-theme = GitHub
 	line-numbers = true
 	side-by-side = true
-
+	navigate = true
+	file-decoration-style = white box
+	hunk-header-style = omit
