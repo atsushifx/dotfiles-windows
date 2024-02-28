@@ -25,3 +25,5 @@
 	autocrlf = input
 #	excludesfile = linux/.config/git/ignore
 
+[init]
+	mainBranch = main-windows
