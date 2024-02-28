@@ -92,7 +92,7 @@
 	process = git-lfs filter-process
 
 [delta]
-	syntax-theme = Dracura
+	syntax-theme = Dracula
 	line-numbers = true
 	side-by-side = true
 	navigate = true
