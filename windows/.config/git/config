@@ -46,10 +46,10 @@
 	tool = p4merge
 
 [difftool]
-    prompt = false
+	prompt = false
 
 [mergetool]
-    prompt = false
+	prompt = false
 
 [fetch]
 

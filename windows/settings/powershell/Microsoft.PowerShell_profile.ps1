@@ -103,3 +103,6 @@ Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { . $_.FullNa
 if ([aglaUserRole]::isAdmin()) {
   write-sudo-messages;
 }
+
+# setup ocaml
+(& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }

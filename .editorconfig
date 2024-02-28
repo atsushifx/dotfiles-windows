@@ -48,8 +48,6 @@ indent_style = space
 indent_size = 2
 tab_width = 2
 
-
-
 ### setting files
 
 # for git config
@@ -58,7 +56,7 @@ indent_style = tab
 indent_size = tab
 tab_width = 4
 
-[*/git/*]
+[**/git/*]
 indent_style = tab
 indent_size = tab
 tab_width = 4
