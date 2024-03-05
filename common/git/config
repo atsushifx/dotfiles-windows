@@ -52,6 +52,8 @@
 
 [rebase]
 	autosquash = true
+	autostash = true
+	abbreviateCommands = true
 
 [fetch]
 
