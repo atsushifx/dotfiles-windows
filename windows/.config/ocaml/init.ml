@@ -11,7 +11,6 @@
  *)
 
 print_string "init ocaml from initl.ml\n";;
-(*
+
 let print_non_escaped_string ppf = Format.fprintf ppf "\"%s\"";;
 #install_printer print_non_escaped_string;;
-*)
