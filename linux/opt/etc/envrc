@@ -64,5 +64,5 @@ if [ "$(id -u)" -eq 0 ] && [ -d /opt/sbin ]; then
   export PATH=${PATH}:/opt/sbin
 fi
 if [ -d /opt/bin ]; then
-  export PATH=${PATH}:/opt/bin
+  export PATH=${PATH+:$PATH}:/opt/bin
 fi
