@@ -33,7 +33,7 @@
 	gpgsign = false
 
 [user]
-	name = Furukawa, Atsushi
+	name = Furukawa Atsushi
 	email = atsushifx@gmail.com
 
 [pull]
