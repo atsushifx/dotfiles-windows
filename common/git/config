@@ -67,9 +67,8 @@
 	diffFilter = delta --color-only
 
 [user]
-	name = Furukawa, Atsushi
+	name = Furukawa Atsushi
 	email = atsushifx@gmail.com
-
 
 [alias]
 	ss = status -s

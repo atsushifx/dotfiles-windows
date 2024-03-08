@@ -68,7 +68,7 @@ fi
 # . ${XDG_CONFIG_HOME}/bash/scripts/bash-wakatime.sh
 
 ## zoxide setup
-eval "$(zoxide init bash --hook prompt )"
+# eval "$(zoxide init bash --hook prompt )"
 
 ## from WSL goto ~/temp
 [[ `pwd` =~ /mnt\/c/ ]] && cd ~/temp
