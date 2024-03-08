@@ -105,4 +105,4 @@ if ([aglaUserRole]::isAdmin()) {
 }
 
 # setup ocaml
-(& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }
+# (& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }
