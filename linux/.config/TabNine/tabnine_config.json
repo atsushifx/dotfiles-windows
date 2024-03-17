@@ -39,7 +39,7 @@
   "has_git_repos": true,
   "gusr": null,
   "exclude_file_masks": null,
-  "inline_suggestions_mode": null,
+  "inline_suggestions_mode": false,
   "use_specialized_model_if_available": null,
   "snippets_enabled_v2": null,
   "inline_suggestions_mode_clients": null,

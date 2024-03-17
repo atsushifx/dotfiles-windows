@@ -19,12 +19,16 @@ export HISTFILE="${XDG_STATE_HOME}/_history"
 
 ## setup path
 
-## VIM
+## Editor Utils
+# VIM
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # volta
 export VOLTA_HOME=${XDG_DATA_HOME}/volta
 export PATH=${PATH}:${VOLTA_HOME}/bin
+
+#  rlwrap
+export RLWRAP_HOME="${XDG_DATA_HOME}/rlwrap"
 
 ### from brew 
 _brew_opt="${HOMEBREW_PREFIX}/opt"

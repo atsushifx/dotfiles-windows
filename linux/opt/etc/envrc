@@ -54,10 +54,6 @@ fi
 export GNUPGHOME="${XDG_DATA_HOME}"/gnupg
 export GPG_TTY=$( tty )
 
-#  rlwrap
-export RLWRAP_HOME="${XDG_CONFIG_HOME}/rlwrap"
-export RLWRAP_DATA="${XDG_DATA_HOME}/rlwrap"
-
 
 # specific path
 # sysad define command's directory
