@@ -65,7 +65,7 @@
 	cmd = difft "$LOCAL" "$REMOTE"
 
 [pager]
-	dft = true
+	difftool = true
 	diff = delta
 	log = delta
 	reflog = delta
