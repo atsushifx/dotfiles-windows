@@ -21,6 +21,11 @@
 ## completion
 **/completion.d/*
 
+## Utils
+# TabNine
+**/TabNine/*
+# !**/TabNine/TabNine.toml
+!**/TabNine/*config*.json
 
 ## Languages
 # Racket
