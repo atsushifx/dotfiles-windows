@@ -62,7 +62,7 @@
 	prompt = false
 
 [difftool "difftastic"]
-	cmd = difft "$LOCAL" "$REMOTE"
+	cmd = difft --skip-unchanged --strip-cr "$LOCAL" "$REMOTE"
 
 [pager]
 	difftool = true
