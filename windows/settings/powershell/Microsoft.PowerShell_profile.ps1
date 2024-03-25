@@ -104,5 +104,11 @@ if ([aglaUserRole]::isAdmin()) {
   write-sudo-messages;
 }
 
+# BuildTools Path
+$env:path += "C:\app\develop\VS\VC\Tools\MSVC\14.39.33519\bin\Hostx64\x64;"
+$env:path += "C:\app\develop\VS\MSBuild\Current\Bin\Roslyn;"
+$env:path += "C:\app\develop\VS\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;"
+
 # setup ocaml
 # (& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }
+
