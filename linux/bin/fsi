@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# @(#) : F# REPL executor for WSL
+#
+# @version 1.0.0
+# @author  Furukawa Atsushi <atsushifx@aglabo.com>
+# @date    2024-03-07
+# @license MIT
+#
+# @desc <<
+#
+# execute windows F# interactive mode (REPL)
+#
+#<<
+
+# set exec path
+fspath="/mnt/c/app/develop/VS/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools"
+PATH="$fspath:${PATH+;$PATH}"
+
+# execute
+"$fspath/fsi.exe" $*

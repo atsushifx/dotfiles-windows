@@ -16,7 +16,6 @@
 echo "Exec: common.envrc"
 
 export HISTFILE="${XDG_STATE_HOME}/_history"
-export PATH="$HOME/bin/agla:$PATH"
 
 ## setup path
 
