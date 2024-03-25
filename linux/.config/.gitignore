@@ -24,7 +24,7 @@
 ## Utils
 # TabNine
 **/TabNine/*
-!**/TabNine/TabNine.toml
+# !**/TabNine/TabNine.toml
 !**/TabNine/*config*.json
 
 ## Languages
