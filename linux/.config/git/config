@@ -32,10 +32,9 @@
 [commit]
 	gpgsign = false
 
-[user]
-
 [pull]
 	ff = only
+
 
 [credential]
 	helper = store --file ~/.local/share/git/.git-credentials

@@ -22,7 +22,6 @@
 	symlinks = true
 	attributesfile = ~/.local/dotfiles/common/git/attributes
 #	excludefile = ~/.local/dotfiles/common/git/ignore
-	pager = delta
 	smonitor = true
 	untrackedCache = true
 	ignorecase = false
@@ -43,9 +42,6 @@
 	ff = false
 	conflictstyle = zdiff3
 
-[diff]
-	colorMoved = default
-	algorithm = histogram
 
 [branch]
 	sort = -committerdate
@@ -57,14 +53,26 @@
 
 [fetch]
 
+
+[diff]
+	tool = difftastic
+#	colorMoved = default
+#	algorithm = histogram
+[difftool]
+	prompt = false
+
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+
 [pager]
+	dft = true
 	diff = delta
 	log = delta
 	reflog = delta
 	show = delta
 
-[interactive]
-	diffFilter = delta --color-only
+#[interactive]
+#	diffFilter = delta --color-only
 
 [user]
 	name = Furukawa Atsushi
@@ -75,6 +83,7 @@
 	br = branch
 	co = checkout
 	sw = switch
+	dft = difftool
 	pr = pull -r
 	ps = push
 	co = checkout

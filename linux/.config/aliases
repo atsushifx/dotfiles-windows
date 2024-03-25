@@ -15,5 +15,5 @@ echo "Exec: aliases"
 
 # setup alias
 
-alias ocaml="rlwrap -f $RLWRAP_HOME/ocaml_completions -H $RLWRAP_DATA/history/ocaml_history ocaml "
+alias ocaml="rlwrap -f . ocaml "
 

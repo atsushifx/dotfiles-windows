@@ -13,7 +13,7 @@
 # set HISTFILE for XDG Base
 #
 
-echo "Exec: common.envrc"
+echo "Exec: config/envrc"
 
 export HISTFILE="${XDG_STATE_HOME}/_history"
 
@@ -64,7 +64,8 @@ fi
 export PATH
 
 #  Racket
-# export PLTUSERHOME="${XDG_DATA_HOME}/racket"
+# export PLTUSERHOME="${XDG_CONFIG_HOME}/racket"
+# export PLTADDONDIR="${XDG_DATA_HOME}/racket"
 
 #  ocaml
 export OPAMROOT="$XDG_DATA_HOME/opam"
