@@ -28,6 +28,8 @@
 	autocrlf = input
 	symlinks = true
 #	editor = "nvim.exe --wait"
+	excludesfile = ~/.local/dotfiles/common/git/ignore
+
 
 [commit]
 	gpgsign = false
