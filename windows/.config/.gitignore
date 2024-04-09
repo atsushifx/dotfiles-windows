@@ -15,8 +15,13 @@
 #
 #<<
 
+## Utils
+# TabNine
+**/TabNine/*
+# !**/TabNine/TabNine.toml
+!**/TabNine/*config*.json
+
 ## Languages
 # Racket
 _lock*
-*/download-cache*
 racket-prefs.rktd
