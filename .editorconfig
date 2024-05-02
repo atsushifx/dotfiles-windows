@@ -2,20 +2,15 @@
 #
 # @(#)  default editorconfig settings for user
 #
-# @version  1.0.3
+# @version	1.0.4
 # @date		2022-07-02
 # @author	Furukawa, Atsushi <atsushifx@aglabo.com>
-# @license  MIT
-#
-# @update	2022-07-22	add config for .git*
+# @license	MIT
 #
 # @description
 # user default editorconfig :
 # symlink this to ~ : user root
 #
-#
-
-
 
 # top-most EditorConfig file
 root = true
@@ -35,32 +30,24 @@ tab_width=4
 
 # ext type settings
 
+### General Files
+
 # script executable
 [**.]
 indent_style = space
 indent_size = 2
 tab_width = 2
 
-
 # shell script
-[**.{sh,bash}]
+[**.{sh,bash,zsh}]
 indent_style = space
 indent_size = 2
 tab_width = 2
 
-### setting files
+### Languages
 
-# for git config
-[**.git*]
-indent_style = tab
-indent_size = tab
-tab_width = 4
 
-[**/git/*]
-indent_style = tab
-indent_size = tab
-tab_width = 4
-
+### Settings
 # ini files
 [**.ini]
 tab_width = 4
@@ -76,9 +63,21 @@ indent_style = tab
 tab_width = 2
 indent_style = space
 
-### markdown
+### Documents
+# markdown
 [**.md]
 indent_size = tab
 tab_width = 2
 indent_style = space
 
+### Git config
+# for git config
+[**.git*]
+indent_style = tab
+indent_size = tab
+tab_width = 4
+
+[**/git/*]
+indent_style = tab
+indent_size = tab
+tab_width = 4
