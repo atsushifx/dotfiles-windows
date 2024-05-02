@@ -61,9 +61,8 @@
 [credential]
 	helper = store --file ~/.local/share/git/.git-credentials
 
-[safe]
-	directory = C:/Users/atsushifx/app/scoop/buckets/main
-	directory = C:/Users/atsushifx/app/scoop/apps/scoop/current
+[credential "helperselector"]
+	selected = manager
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f

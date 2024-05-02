@@ -42,7 +42,6 @@
 	ff = false
 	conflictstyle = zdiff3
 
-
 [branch]
 	sort = -committerdate
 
@@ -53,6 +52,8 @@
 
 [fetch]
 
+[column]
+	ui = auto
 
 [diff]
 	tool = difftastic
@@ -83,9 +84,10 @@
 	br = branch
 	co = checkout
 	sw = switch
+	diff = diff -b -w
 	dft = difftool
 	pr = pull -r
-	ps = push
+	pushf = push --force-with-lease
 	co = checkout
 	st = status
 	tags = tag -l
@@ -108,3 +110,6 @@
 	navigate = true
 	file-decoration-style = white box
 	hunk-header-style = omit
+
+[rerere]
+	enabled = true
