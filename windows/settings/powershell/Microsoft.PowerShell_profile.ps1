@@ -97,7 +97,7 @@ Import-Module -Name CompletionPredictor
 Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { . $_.FullName }
 
 # Wakatime setup
-. "c:/var/apps/pwsh-wakatime.ps1"
+. $PSScriptRoot'/scripts/pwsh-wakatime.ps1"
 
 # sudo messages
 if ([aglaUserRole]::isAdmin()) {
