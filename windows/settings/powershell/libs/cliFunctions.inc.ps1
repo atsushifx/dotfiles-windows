@@ -12,7 +12,7 @@
 	@date		2023-05-31
 	@Version 	1.0.0
 
-THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. 
+THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
 THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
 #>
 Set-StrictMode -version latest
@@ -27,7 +27,7 @@ Set-StrictMode -version latest
 	emulate edit command line for execute command
 
 	.PARAMETER command
-  
+
 	.PARAMETER send
 
 	.NOTES
@@ -81,3 +81,38 @@ function Execute_History() {
 }
 
 Set-Alias -Name hh -Value "Execute_History"
+
+<#
+	.SYNOPSIS
+	Get Process Object of Parent Process called by ProcessID
+
+	.DESCRIPTION
+
+
+	.PARAMETER ProcessId
+	Child Process ID: Get Parent Process from this ID
+
+
+	.NOTES
+	This function requires appropriate permissions as it uses WMI.
+	Some security software may block WMI queries.
+
+	.LINK
+	Get-Process
+	Get-WmiObject
+ #>
+function global:Get-ParentProcessId {
+	param (
+		[Parameter(Mandatory = $true,
+			Position = 0,
+			ValueFromPipeline = $true,
+			ValueFromPipelineByPropertyName = $true)]
+		[int]$ProcessID
+	)
+
+	process {
+		$query = "SELECT ParentProcessId FROM Win32_Process WHERE ProcessId = $ProcessId"
+		$parentID = (Get-WmiObject -Query $query).ParentProcessId
+		$parentID
+	}
+}

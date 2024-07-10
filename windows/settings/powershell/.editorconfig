@@ -23,7 +23,6 @@
 # Microsoft powershell
 # shell script
 [**.{ps1,psm1,psd1}]
-tab_width = 4
 indent_style = tab
 indent_size = tab
-
+tab_width = 2

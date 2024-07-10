@@ -35,18 +35,6 @@ setupScriptCommonConstants
 $private:baseDir = Split-Path -path $profile
 
 ### functions
-function private:write-sudo-messages() {
-  $white = "$([char]0x1b)[37;1m"
-  $cyan = "$([char]0x1b)[36;1m"
-  $neutral = "$([char]0x1b)[m"
-  $messages = "${white}You gave ...${neutral}`n
-    ${cyan}#1${neutral}) Respect the privacy of others.
-    ${cyan}#2${neutral}) Think before you type.
-    ${cyan}#3${neutral}) With great power comes great responsibility.
-  "
-  $messages | write-output
-}
-
 ## prompt
 # Invoke-Expression (&starship init powershell)
 <#
@@ -56,28 +44,48 @@ function private:write-sudo-messages() {
 #>
 function global:prompt() {
 
-  # define prompt
-  $isAdmin = [aglaUserRole]::isAdmin()
-  $psChar = $isAdmin ? " # " :  " > "
-  $currentPath = (Split-Path (Get-Location) -Leaf)
-  $currentDrive = (Convert-Path \).substring(0, 1)
-  $userName = $env:USERNAME
+	# define prompt
+	$isAdmin = [aglaUserRole]::isAdmin()
+	$psChar = $isAdmin ? " # " :  " > "
+	$currentPath = (Split-Path (Get-Location) -Leaf)
+	$currentDrive = (Convert-Path \).substring(0, 1)
+	$userName = $env:USERNAME
 
-  # Prompt return
-  $prompt = $currentDrive + ": /" + $currentPath + $psChar
-  $prompt
+	# Prompt return
+	$prompt = $currentDrive + ": /" + $currentPath + $psChar
+	$prompt
 }
 
-## setup current directory
+
+function private:write-sudo-messages() {
+	$white = "$([char]0x1b)[37;1m"
+	$cyan = "$([char]0x1b)[36;1m"
+	$neutral = "$([char]0x1b)[m"
+	$messages = "${white}You gave ...${neutral}`n
+    ${cyan}#1${neutral}) Respect the privacy of others.
+    ${cyan}#2${neutral}) Think before you type.
+    ${cyan}#3${neutral}) With great power comes great responsibility.
+  "
+	$messages | write-output
+}
+
+<#
+	.SYNOPSIS
+	set current working directory to workspaces if call from menu/explorer
+#>
+function private:Set-WorkingDir() {
+	$cur = Get-Location
+	if ($cur -eq $env:USERPROFILE) {
+		cd $USERPROFILE+"/workspaces"
+	}
+
+
+}
+
+
+### main roution
 ##
-if ($WORKINGDIR.Contains('AppData') -OR $WORKINGDIR.Contains('Windows')) {
-  Set-Location '~/workspaces'
-
-  # WORKINGDIRを再設定
-  Remove-Item Variable:\WORKINGDIR -Force
-  Set-Variable -Option ReadOnly -Scope Global -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
-
-}
+Set-WorkingDir
 
 ## input History Plugin
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
@@ -101,7 +109,7 @@ Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { . $_.FullNa
 
 # sudo messages
 if ([aglaUserRole]::isAdmin()) {
-  write-sudo-messages;
+	write-sudo-messages;
 }
 
 # BuildTools Path
