@@ -16,4 +16,5 @@ echo "Exec: aliases"
 # setup alias
 
 alias ocaml="rlwrap -f . ocaml "
+alias sml="rlwrap -f . sml "
 

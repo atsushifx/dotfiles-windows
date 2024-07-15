@@ -12,10 +12,10 @@
 # user defined bashrc
 #<<
 
-# local env settings 
+# local env settings
 
 BASHRC_DIR="${XDG_CONFIG_HOME}/bash"
-BASH_SCRIPTS_DIR="${BASHRC_DIR}/scripts"
+BASHSCRIPTS_DIR="${BASHRC_DIR}/scripts"
 
 echo "Exec: .config/bash/bashrc"
 
@@ -59,17 +59,18 @@ fi
 #   compltion for local bashrc
 _cmpl_d="${BASHRC_DIR}/completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
-  for f in ${_cmpl_d}/*.{sh,bash} ; do
-    echo "Exec: $f"
+  for f in ${_cmpl_d}/*.{sh,bash}; do
     . "${f}"
   done
 fi
 ## wakatime-count
-# . ${XDG_CONFIG_HOME}/bash/scripts/bash-wakatime.sh
+_watatime_script="${BASHSCRIPTS_DIR}/bash_wakatime.sh"
+if [[ -f "${_watatime_script}" ]]; then
+  source "${_watatime_script}"
+fi
 
 ## zoxide setup
 # eval "$(zoxide init bash --hook prompt )"
 
 ## from WSL goto ~/temp
-[[ `pwd` =~ /mnt\/c/ ]] && cd ~/temp
-
+[[ i$(pwd) =~ /mnt\/c/ ]] && cd ~/temp || return 1
