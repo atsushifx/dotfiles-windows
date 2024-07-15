@@ -21,7 +21,7 @@
 	autocrlf = input
 	symlinks = true
 	attributesfile = ~/.local/dotfiles/common/git/attributes
-#	excludefile = ~/.local/dotfiles/common/git/ignore
+#	excludesfile = ~/.local/dotfiles/common/git/ignore
 	smonitor = true
 	untrackedCache = true
 	ignorecase = false
