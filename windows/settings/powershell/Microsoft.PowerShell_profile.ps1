@@ -44,29 +44,29 @@ $private:baseDir = Split-Path -path $profile
 #>
 function global:prompt() {
 
-	# define prompt
-	$isAdmin = [aglaUserRole]::isAdmin()
-	$psChar = $isAdmin ? " # " :  " > "
-	$currentPath = (Split-Path (Get-Location) -Leaf)
-	$currentDrive = (Convert-Path \).substring(0, 1)
-	$userName = $env:USERNAME
+  # define prompt
+  $isAdmin = [aglaUserRole]::isAdmin()
+  $psChar = $isAdmin ? " # " :  " > "
+  $currentPath = (Split-Path (Get-Location) -Leaf)
+  $currentDrive = (Convert-Path \).substring(0, 1)
+  $userName = $env:USERNAME
 
-	# Prompt return
-	$prompt = $currentDrive + ": /" + $currentPath + $psChar
-	$prompt
+  # Prompt return
+  $prompt = $currentDrive + ": /" + $currentPath + $psChar
+  $prompt
 }
 
 
 function private:write-sudo-messages() {
-	$white = "$([char]0x1b)[37;1m"
-	$cyan = "$([char]0x1b)[36;1m"
-	$neutral = "$([char]0x1b)[m"
-	$messages = "${white}You gave ...${neutral}`n
+  $white = "$([char]0x1b)[37;1m"
+  $cyan = "$([char]0x1b)[36;1m"
+  $neutral = "$([char]0x1b)[m"
+  $messages = "${white}You gave ...${neutral}`n
     ${cyan}#1${neutral}) Respect the privacy of others.
     ${cyan}#2${neutral}) Think before you type.
     ${cyan}#3${neutral}) With great power comes great responsibility.
   "
-	$messages | write-output
+  $messages | write-output
 }
 
 <#
@@ -74,10 +74,10 @@ function private:write-sudo-messages() {
 	set current working directory to workspaces if call from menu/explorer
 #>
 function private:Set-WorkingDir() {
-	$cur = Get-Location
-	if ($cur -eq $env:USERPROFILE) {
-		cd $USERPROFILE+"/workspaces"
-	}
+  $cur = Get-Location
+  if ($cur -eq $env:USERPROFILE) {
+    cd $USERPROFILE+"/workspaces"
+  }
 
 
 }
@@ -104,12 +104,20 @@ Invoke-Expression (&scoop-search-multisource -hook)
 Import-Module -Name CompletionPredictor
 Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { . $_.FullName }
 
+# zoxide
+Invoke-Expression (& {
+    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+    (zoxide init --hook $hook powershell | Out-String)
+  })
+
 # Wakatime setup
 . $SCRIPTSDIR"/pwsh-wakatime.ps1"
 
+
+
 # sudo messages
 if ([aglaUserRole]::isAdmin()) {
-	write-sudo-messages;
+  write-sudo-messages;
 }
 
 # BuildTools Path
