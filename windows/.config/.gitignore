@@ -21,6 +21,10 @@
 # !**/TabNine/TabNine.toml
 !**/TabNine/*config*.json
 
+# git
+jgit/*
+
+
 ## Languages
 # Racket
 _lock*

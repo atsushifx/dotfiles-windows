@@ -4,7 +4,7 @@
 
 	.DESCRIPTION
 	script common settings:
-	set up script common constants / 
+	set up script common constants /
 	adminCheck
 
 	.NOTES
@@ -46,7 +46,6 @@ function setupScriptCommonConstants() {
 	set-Variable -Scope Global -Option ReadOnly -Name PSCOMMAND -Value (Split-Path -Leaf $MyInvocation.PSCommandPath) -Description "executes command"
 	Set-Variable -Scope Global -Option ReadOnly -Name LIBSDIR -Value $baseDir'/libs/' -Description 'common libs directory'
 	Set-Variable -Scope Global -Option ReadOnly -Name SCRIPTSDIR -Value $baseDir'/scripts/' -Description 'Common scripts directory'
-	Set-Variable -Scope Global -Option ReadOnly -Name WORKINGDIR -Value (Get-Location).Path -Description 'Script works directory'
 }
 
 <#
@@ -69,7 +68,7 @@ class aglaUserRole {
 		return $pr
 	}
 
-	
+
 	<#
       .SYNOPSIS
         check current user has role parameter
