@@ -31,7 +31,6 @@ setupScriptCommonConstants
 ### Libralies
 . ($LIBSDIR + "cliFunctions.inc.ps1")  # for readline function
 
-
 $private:baseDir = Split-Path -path $profile
 
 ### functions
@@ -104,27 +103,29 @@ Invoke-Expression (&scoop-search-multisource -hook)
 Import-Module -Name CompletionPredictor
 Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { . $_.FullName }
 
-# zoxide
-Invoke-Expression (& {
-    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
-    (zoxide init --hook $hook powershell | Out-String)
-  })
+
+## Other tools
+# carapace completior
+# $env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+# Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
+# Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+# carapace _carapace | Out-String | Invoke-Expression
 
 # Wakatime setup
 . $SCRIPTSDIR"/pwsh-wakatime.ps1"
 
 
+# BuildTools Path
+# $env:path += "C:\app\develop\VS\VC\Tools\MSVC\14.39.33519\bin\Hostx64\x64;"
+# $env:path += "C:\app\develop\VS\MSBuild\Current\Bin\Roslyn;"
+# $env:path += "C:\app\develop\VS\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;"
+
+# setup ocaml
+# (& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }
+
+## for sudo / admin
 
 # sudo messages
 if ([aglaUserRole]::isAdmin()) {
   write-sudo-messages;
 }
-
-# BuildTools Path
-$env:path += "C:\app\develop\VS\VC\Tools\MSVC\14.39.33519\bin\Hostx64\x64;"
-$env:path += "C:\app\develop\VS\MSBuild\Current\Bin\Roslyn;"
-$env:path += "C:\app\develop\VS\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;"
-
-# setup ocaml
-# (& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }
-
