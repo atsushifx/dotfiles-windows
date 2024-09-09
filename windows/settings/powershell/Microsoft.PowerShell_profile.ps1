@@ -105,10 +105,11 @@ Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { . $_.FullNa
 
 
 ## Other tools
-$env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
-Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-carapace _carapace | Out-String | Invoke-Expression
+# carapace completior
+# $env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+# Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
+# Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+# carapace _carapace | Out-String | Invoke-Expression
 
 # Wakatime setup
 . $SCRIPTSDIR"/pwsh-wakatime.ps1"
