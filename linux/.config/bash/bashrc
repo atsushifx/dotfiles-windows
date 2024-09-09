@@ -56,7 +56,16 @@ if [[ -e "${_cmpl_d}" ]]; then
   done
 fi
 
-#   compltion for local bashrc
+###   compltion for local bashrc
+# zoxide
+eval "$(zoxide init bash)"
+
+
+# carapace
+# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+# source <(carapace _carapace)
+
+# compleion scripts
 _cmpl_d="${BASHRC_DIR}/completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
   for f in ${_cmpl_d}/*.{sh,bash}; do

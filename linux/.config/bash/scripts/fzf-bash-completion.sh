@@ -120,6 +120,27 @@ _fzf_bash_completion_parse_dq() {
     printf '%s\n' "$words"
 }
 
+_fzf_bash_completion_unquote_strings() {
+    local line
+    while IFS= read -r line; do
+        if [[ "$line" =~ ^\'[^\']*\'?$ ]]; then
+            # single quoted with no single quotes inside
+            line="${line%%\'}"
+            printf '%s\n' "${line:1}"
+        elif [[ "$line" =~ ^\"(\\.|[^\"$])*\"?$ ]]; then
+            # double quoted with all special characters quoted
+            "$_fzf_bash_completion_sed" -r 's/\\(.)/\1/g' <<<"${line:1-1}"
+        elif [[ "$line" == *\\* && "$line" =~ ^(\\.|[a-zA-Z0-9_])*$ ]]; then
+            # all special characters are quoted
+            "$_fzf_bash_completion_sed" -r 's/\\(.)/\1/g' <<<"$line"
+        else
+            # this string is either boring or too complicated to parse
+            # print as is
+            printf '%s\n' "$line"
+        fi
+    done
+}
+
 _fzf_bash_completion_parse_line() {
     _fzf_bash_completion_shell_split \
         | _fzf_bash_completion_parse_dq \
@@ -205,6 +226,7 @@ fzf_bash_completion() {
     printf '%s' "$(_fzf_bash_completion_loading_msg)"
     command tput rc 2>/dev/null || echo -ne "\0338"
 
+    local raw_comp_words=()
     local COMP_WORDS=() COMP_CWORD COMP_POINT COMP_LINE
     local COMP_TYPE=37 # % == indicates menu completion
     local line="${READLINE_LINE:0:READLINE_POINT}"
@@ -212,25 +234,29 @@ fzf_bash_completion() {
     wordbreaks="${wordbreaks//[]^]/\\&}"
     wordbreaks="${wordbreaks//[[:space:]]/}"
     if [[ "$line" =~ [^[:space:]] ]]; then
-        readarray -t COMP_WORDS < <(_fzf_bash_completion_parse_line <<<"$line")
+        readarray -t raw_comp_words < <(_fzf_bash_completion_parse_line <<<"$line")
     fi
 
-    if [[ ${#COMP_WORDS[@]} -gt 1 ]]; then
-        _fzf_bash_completion_expand_alias "${COMP_WORDS[0]}"
+    if [[ ${#raw_comp_words[@]} -gt 1 ]]; then
+        _fzf_bash_completion_expand_alias "${raw_comp_words[@]}"
     fi
+    readarray -t COMP_WORDS < <(printf '%s\n' "${raw_comp_words[@]}" | _fzf_bash_completion_unquote_strings)
 
     printf -v COMP_LINE '%s' "${COMP_WORDS[@]}"
     COMP_POINT="${#COMP_LINE}"
     # remove the ones that just spaces
     local i
     # iterate in reverse
-    for (( i = ${#COMP_WORDS[@]}-1; i >= 0; i --)); do
+    for (( i = ${#COMP_WORDS[@]}-2; i >= 0; i --)); do
         if ! [[ "${COMP_WORDS[i]}" =~ [^[:space:]] ]]; then
             COMP_WORDS=( "${COMP_WORDS[@]:0:i}" "${COMP_WORDS[@]:i+1}" )
         fi
     done
-    if [[ "${#COMP_WORDS[@]}" = 0 || "$line" =~ .*[[:space:]]$ ]]; then
+    # add an extra blank word if last word is just space
+    if [[ "${#COMP_WORDS[@]}" = 0 ]]; then
         COMP_WORDS+=( '' )
+    elif ! [[ "${COMP_WORDS[${#COMP_WORDS[@]}-1]}" =~ [^[:space:]] ]]; then
+        COMP_WORDS[${#COMP_WORDS[@]}-1]=''
     fi
     COMP_CWORD="${#COMP_WORDS[@]}"
     (( COMP_CWORD-- ))
@@ -246,15 +272,16 @@ fzf_bash_completion() {
     if [[ "$cur" =~ ^[$wordbreaks]$ ]]; then
         cur=
     fi
+    local raw_cur="${cur:+${raw_comp_words[-1]}}"
 
     local COMPREPLY=
     fzf_bash_completer "$cmd" "$cur" "$prev"
     if [ -n "$COMPREPLY" ]; then
-        if [ -n "$cur" ]; then
-            line="${line::-${#cur}}"
+        if [ -n "$raw_cur" ]; then
+            line="${line::-${#raw_cur}}"
         fi
         READLINE_LINE="${line}${COMPREPLY}${READLINE_LINE:$READLINE_POINT}"
-        (( READLINE_POINT+=${#COMPREPLY} - ${#cur} ))
+        (( READLINE_POINT+=${#COMPREPLY} - ${#raw_cur} ))
     fi
 
     printf '\r'
@@ -263,7 +290,7 @@ fzf_bash_completion() {
 
 _fzf_bash_completion_selector() {
     FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" \
-        $(__fzfcmd 2>/dev/null || echo fzf) -1 -0 --prompt "> $line" --nth 2 -d "$_FZF_COMPLETION_SEP" --ansi \
+        $(__fzfcmd 2>/dev/null || echo fzf) -1 -0 --prompt "${FZF_TAB_COMPLETION_PROMPT:-> }$line" --nth 2 -d "$_FZF_COMPLETION_SEP" --ansi \
     | tr -d "$_FZF_COMPLETION_SEP"
 }
 
@@ -271,7 +298,7 @@ _fzf_bash_completion_expand_alias() {
     if alias "$1" &>/dev/null; then
         value=( ${BASH_ALIASES[$1]} )
         if [ -n "${value[*]}" -a "${value[0]}" != "$1" ]; then
-            COMP_WORDS=( "${value[@]}" "${COMP_WORDS[@]:1}" )
+            raw_comp_words=( "${value[@]}" "${raw_comp_words[@]:1}" )
         fi
     fi
 }
@@ -279,13 +306,13 @@ _fzf_bash_completion_expand_alias() {
 _fzf_bash_completion_auto_common_prefix() {
     if [ "$FZF_COMPLETION_AUTO_COMMON_PREFIX" = true ]; then
         local prefix item items prefix_len prefix_is_full input_len i
-        read -r prefix && items=("$prefix") || return
+        IFS= read -r prefix && items=("$prefix") || return
         prefix_len="${#prefix}"
         prefix_is_full=1 # prefix == item
 
         input_len="$(( ${#1} ))"
 
-        while [ "$prefix_len" != "$input_len" ] && read -r item && items+=("$item"); do
+        while [ "$prefix_len" != "$input_len" ] && IFS= read -r item && items+=("$item"); do
             for ((i=$input_len; i<$prefix_len; i++)); do
                 if [[ "${item:i:1}" != "${prefix:i:1}" ]]; then
                     prefix_len="$i"
@@ -333,7 +360,6 @@ fzf_bash_completer() {
         # hack: hijack compopt
         compopt() { _fzf_bash_completion_compopt "$@"; }
 
-        local __unquoted="${2#[\"\']}"
         exec {__evaled}>&1
         coproc (
             (
@@ -352,11 +378,11 @@ fzf_bash_completer() {
                 done
                 printf '%s\n' "$_FZF_COMPLETION_SEP$_fzf_sentinel1$_fzf_sentinel2"
             ) | $_fzf_bash_completion_sed -un "/$_fzf_sentinel1$_fzf_sentinel2/q; p" \
-              | _fzf_bash_completion_auto_common_prefix "$__unquoted" \
-              | _fzf_bash_completion_unbuffered_awk '$0!="" && !x[$0]++' '$0 = "\x1b[37m" substr($0, 1, len) "\x1b[0m" sep substr($0, len+1)' -vlen="${#__unquoted}" -vsep="$_FZF_COMPLETION_SEP"
+              | _fzf_bash_completion_auto_common_prefix "$raw_cur" \
+              | _fzf_bash_completion_unbuffered_awk '$0!="" && !x[$0]++' '$0 = "\x1b[37m" substr($0, 1, len) "\x1b[0m" sep substr($0, len+1)' -vlen="${#raw_cur}" -vsep="$_FZF_COMPLETION_SEP"
         )
         local coproc_pid="$COPROC_PID"
-        value="$(_fzf_bash_completion_selector "$1" "$__unquoted" "$3" <&"${COPROC[0]}")"
+        value="$(_fzf_bash_completion_selector "$1" "$raw_cur" "$3" <&"${COPROC[0]}")"
         code="$?"
         value="$(<<<"$value" tr \\n \ )"
         value="${value% }"
@@ -367,7 +393,7 @@ fzf_bash_completer() {
         # kill descendant processes of coproc
         descend_process () {
             printf '%s\n' "$1"
-            for pid in $(pgrep -P "$1"); do
+            for pid in $(ps -ef | "$_fzf_bash_completion_awk" -v ppid="$1" '$3 == ppid { print $2 }'); do
                 descend_process "$pid"
             done
         }
@@ -484,7 +510,7 @@ _fzf_bash_completion_complete() {
             printf '\n'
         ) | _fzf_bash_completion_apply_xfilter "$compl_xfilter" \
           | _fzf_bash_completion_unbuffered_awk '$0!=""' 'sub(find, replace)' -vfind='.*' -vreplace="$(printf %s "$compl_prefix" | "$_fzf_bash_completion_sed" 's/[&\]/\\&/g')&$(printf %s "$compl_suffix" | "$_fzf_bash_completion_sed" 's/[&\]/\\&/g')" \
-          | if read -r line || (( ${#COMPREPLY[@]} )); then
+          | if IFS= read -r line || (( ${#COMPREPLY[@]} )); then
               ([[ -z "$line" ]] || printf '%s\n' "$line"; cat) | _fzf_bash_completion_quote_filenames "$@"
             else
                 # got no results
@@ -497,18 +523,17 @@ _fzf_bash_completion_complete() {
                     # these are all filenames
                     printf 'compl_filenames=1\n'>&"${__evaled}"
                     compgen "${compgen_opts[@]}" -- "$2" \
-                    | _fzf_bash_completion_dir_marker \
-                    | compl_filenames=1 _fzf_bash_completion_quote_filenames "$@"
+                    | compl_filenames=1 _fzf_bash_completion_quote_filenames "$@" \
+                    | _fzf_bash_completion_dir_marker
                 fi
             fi
 
         if [ "$compl_plusdirs" = 1 ]; then
             compgen -o dirnames -- "$2" \
-            | _fzf_bash_completion_dir_marker \
-            | compl_filenames=1 _fzf_bash_completion_quote_filenames "$@"
+            | compl_filenames=1 _fzf_bash_completion_quote_filenames "$@" \
+            | _fzf_bash_completion_dir_marker
         fi
     ) \
-    | _fzf_bash_completion_unbuffered_awk '' 'sub(find, replace)' -vfind="^$(_fzf_bash_completion_awk_escape "$2")" -vreplace="$("$_fzf_bash_completion_sed" -r 's/\\(.)/\1/g; s/[&\]/\\&/g' <<<"$2")" \
     | "$dir_marker"
 }
 
@@ -532,13 +557,20 @@ _fzf_bash_completion_apply_xfilter() {
 }
 
 _fzf_bash_completion_dir_marker() {
-    local line
+    local line expanded
     while IFS= read -r line; do
+        expanded="$line"
+
         # adapted from __expand_tilde_by_ref
-        if [[ "$line" == \~* ]]; then
-            eval "$(printf expanded=~%q "${line:1}")"
+        if [[ "$expanded" == \~* ]]; then
+            eval "$(printf expanded=~%q "${expanded:1}")"
         fi
-        [ -d "${expanded-"$line"}" ] && line="${line%/}/"
+
+        if [[ "$compl_noquote" != 1 && "$expanded" == *\\* ]]; then
+            expanded="$("$_fzf_bash_completion_sed" -r 's/\\(.)/\1/g' <<<"$expanded")"
+        fi
+
+        [ -d "$expanded" ] && line="${line%/}/"
         printf '%s\n' "$line"
     done
 }
@@ -547,12 +579,7 @@ _fzf_bash_completion_quote_filenames() {
     if [ "$compl_noquote" != 1 -a "$compl_filenames" = 1 ]; then
         local IFS line
         while IFS= read -r line; do
-            if [ "$line" = "$2" ]; then
-                printf '%s\n' "$line"
-            # never quote the prefix
-            elif [ "${line::${#2}}" = "$2" ]; then
-                printf '%s%q\n' "$2" "${line:${#2}}"
-            elif [ "${line::1}" = '~' ]; then
+            if [ "${line::1}" = '~' ]; then
                 printf '~%q\n' "${line:1}"
             else
                 printf '%q\n' "$line"

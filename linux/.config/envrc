@@ -68,6 +68,9 @@ export PATH
 #  ocaml
 export OPAMROOT="$XDG_DATA_HOME/opam"
 
+### Tools config environment
+# fzf
+export FZF_DEFAULT_OPTS="--height 40% --border"
 
 ### other tools environ for XDG]
 # wget

@@ -31,8 +31,13 @@ isInteractive() {
 
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/dotfiles/linux/bin" ] ; then
+
+# dotfiles shell scripts
+if [[ -d "$HOME/.local/dotfiles/linux/bin" ]] ; then
     PATH="$PATH:$HOME/.local/dotfiles/linux/bin"
+fi
+if [[ -d "$HOME/.loca/bin" ]]; then
+    PATH="$PATH:$HOME/.local/bin"
 fi
 export PATH
 
@@ -53,5 +58,5 @@ fi
 
 
 # opam configuration setup
-test -r /home/atsushifx/.local/share/opam/opam-init/init.sh && . /home/atsushifx/.local/share/opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# test -r /home/atsushifx/.local/share/opam/opam-init/init.sh && . /home/atsushifx/.local/share/opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 # eval $(opam env)
