@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# @(#) : dotnet executor for WSL
+#
+# @version 1.0.0
+# @author  Furukawa Atsushi <atsushifx@aglabo.com>
+# @date    2024-03-07
+# @license MIT
+#
+# @desc <<
+#
+# execute windows dotnet.exe
+#
+#<<
+
+# set exec path
+dotnetpath="/mnt/c/Program Files/dotnet"
+fspath="/mnt/c/app/develop/VS/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools"
+PATH="$dotnetpath:$fspath:${PATH}"
+
+# execute
+dotnet.exe $*
+

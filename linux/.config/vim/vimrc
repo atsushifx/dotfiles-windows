@@ -1,0 +1,84 @@
+"" vim settings
+"" @(#) vim user specific settings
+""
+"
+" @versiion  1.0.1
+" @author    Furukawa, Atsushi <atsushifx@aglabo.com>
+" @date      2023-03-01
+" @license   MIT
+"
+" @description
+" vim user default settings.
+" set default directoris move to .config for using git.
+"
+"
+
+"
+" viminfo
+set viminfofile=$XDG_CACHE_HOME/vim/_viminfo
+
+"" setup for XDG Base
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath+=$XDG_DATA_HOME/vim
+set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf " use fzf in vim
+
+set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+
+let g:netrw_home = $XDG_DATA_HOME."/vim"
+call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
+set viewdir=$XDG_DATA_HOME/vim/view | call mkdir(&viewdir, 'p')
+
+set backupdir=$XDG_CACHE_HOME/vim/backup | call mkdir(&backupdir, 'p')
+set directory=$XDG_CACHE_HOME/vim/swap   | call mkdir(&directory, 'p')
+set undodir=$XDG_CACHE_HOME/vim/undo     | call mkdir(&undodir,   'p')
+
+"" default
+source $VIMRUNTIME/defaults.vim
+
+
+"" plugins
+"# packadd vim-jetpack
+" 
+" autoinstall jetpack
+let s:jetpackhome = g:netrw_home
+let s:jetpackfile = s:jetpackhome . '/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
+let s:jetpackurl = 'https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
+
+if !filereadable(s:jetpackfile)
+  call system(printf('curl -fsSLo %s --create-dirs %s', s:jetpackfile, s:jetpackurl))
+endif
+execute 'source ' s:jetpackfile
+
+"
+call jetpack#begin(s:jetpackhome)
+" default plguins
+Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
+
+" plugin with vim-plug
+Jetpack 'lambdalisue/fern.vim'
+Jetpack 'editorconfig/editorconfig-vim'
+Jetpack 'wakatime/vim-wakatime'
+
+
+"
+call jetpack#end()
+
+"" vim common settings
+
+
+" encoding : default display Japanese
+set fenc=utf-8
+set encoding=utf-8
+set fileformats=unix
+
+" 行番号
+set number
+
+" move cursor virtusalize
+set virtualedit=block
+
+"
+set backspace=indent,eol,start
+
+" for ocaml
+set rtp^="$OPAMROOT/5.1.1/share/ocp-indent/vim"

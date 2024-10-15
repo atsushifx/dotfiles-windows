@@ -1,0 +1,35 @@
+##
+##  @(#) : git global untrack file settings
+#
+##
+#
+# @version  1.0.0
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @update   2022-03-05
+# @license  MIT
+#
+# @dersc
+# git ignore files about,
+#   credential files
+#   hist, info for dotfiles
+#
+#
+#<<
+
+### untrackfiles
+
+## completion
+**/completion.d/*
+
+## Utils
+# TabNine
+**/TabNine/*
+# !**/TabNine/TabNine.toml
+!**/TabNine/*config*.json
+
+## Languages
+# Racket
+_lock*
+racket-prefs.rktd
+
+

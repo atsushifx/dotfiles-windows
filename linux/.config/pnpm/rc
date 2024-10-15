@@ -1,0 +1,19 @@
+;;init.author.email=atsushifx@gmail.com
+;;init.author.name=Furukawa, Atsushi
+;;init.license=MIT
+;;init.module=C:\Users\atsushifx\.config\.npm-init.js
+;;init.version=0.1.0
+init-author-email=atsushifx@aglabo.com
+init-author-name=Furukawa, Atsushi
+init-license=MIT
+init-module=${XDG_CONFIG_HOME}/pnpm/rc/npm-init.js
+init-version=0.1.0
+
+prefix=${XDG_DATA_HOME}/node
+global-bin-dir=${VOLTA_HOME}/bin
+store-dir=${XDG_DATA_HOME}/pnpm/store
+# cache-dir=C:/Users/atsushifx/AppData/local/npm/cache
+
+# peer devevdancy
+auto-install-peers=true
+strict-peer-dependencies=false

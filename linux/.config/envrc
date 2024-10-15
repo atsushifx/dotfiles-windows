@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+#
+# @(#) : common environ settings
+#
+# @version  1.0.3
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date     2023-03-05
+# @license  MIT
+#
+# @description
+# user's common environ settings
+#
+# set HISTFILE for XDG Base
+#
+
+echo "Exec: config/envrc"
+
+export HISTFILE="${XDG_STATE_HOME}/_history"
+
+## setup path
+
+## Editor Utils
+# VIM
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+
+# volta
+export VOLTA_HOME=${XDG_DATA_HOME}/volta
+export PATH=${PATH}:${VOLTA_HOME}/bin
+
+#  rlwrap
+export RLWRAP_HOME="${XDG_DATA_HOME}/rlwrap"
+
+### from brew 
+_brew_opt="${HOMEBREW_PREFIX}/opt"
+
+## Programming languages
+
+#  Ruby environ
+if [[ -d "$_brew_opt/ruby" ]]; then  
+  _ruby_cfg="${XDG_CONFIG_HOME}/ruby"
+  _ruby_data="${XDG_DATA_HOME}/ruby"
+  _ruby_cache="${XDG_CACHE_HOME}/ruby"
+
+  ## gems
+  GEM_HOME="${_ruby_data}/gem"
+  GEM_SPEC_CACHE="${_ruby_cache}/gem"
+  export GEM_HOME GEM_SPEC_HOME
+
+  ## Ruby#bundler
+  BUNDLE_USER_CONFIG="${_ruby_cfg}/bundle"
+  BUNDLE_USER_PLUGIN="${_ryby_data}/bundle"
+  BUNDLE_USER_CACHE="${_ruby_cache}/bundle"
+  export BUNDLE_USER_CONFIG BUNDLE_USER_CACHE BUNDLE_USER_PLUGIN
+
+  export PATH="${_brew_opt}/ruby/bin:$PATH"
+fi
+
+#  GO environ
+if [[ -d "${_brew_opt}/go" ]]; then
+  GOPATH="${XDG_DATA_HOME}/go"
+  PATH="${_brew_opt}/go/bin":$PATH
+  export GOPATH PATH
+fi
+export PATH
+
+#  Racket (no environ used)
+
+#  ocaml
+export OPAMROOT="$XDG_DATA_HOME/opam"
+
+### Tools config environment
+# fzf
+export FZF_DEFAULT_OPTS="--height 40% --border"
+
+### other tools environ for XDG]
+# wget
+export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
+
+#  wakatime config
+export WAKATIME_HOME="${XDG_DATA_HOME}/wakatime"
+
+
+## default editor/viewer , and other settings
+EDITOR=/usr/bin/vim
+PAGER=/usr/bin/less
+
+export EDITOR VISUAL PAGER
+

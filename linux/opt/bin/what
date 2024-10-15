@@ -1,0 +1,185 @@
+#!/usr/bin/env bash
+#
+# @(#) : display shell script usage
+#
+# @version 1.0.0
+# @author  Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date    2023-12-27
+# @license MIT
+#
+# @description <<
+#
+# what <file>
+#  print shell script usage
+#
+# -d    print usage created by header
+# -v    print version
+# -h -? print this usage
+#
+#
+###
+#
+# THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
+# THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
+#
+#<<
+
+### initialize
+set -euC -o pipefail
+readonly THISCMD="$0"
+
+readonly SCRIPTDIR=$(
+	cd "$(dirname "$0")"
+	pwd
+)
+readonly WORKINGDIR="$(pwd)"
+readonly LIBDIR="${SCRIPTDIR}/inc"
+
+# cd "$SCRIPTDIR"
+
+### linrary read
+
+### Global Variables
+# @global filenames from command line
+INPUT_FILES=
+
+# @global command flag (0:what/ 1:header)
+FLAG_HEADER=0
+
+## utility functionis
+
+#
+# _isBinary : check if filetype is text / binary
+#
+# @param filename
+# @return text : file is text filea / binary : file is binary(ELF exe, ...)
+#
+#@desciription <<
+#
+##<<
+_isBinary() {
+	local _filetype
+	_filetype=$(file "$1")
+	if [[ "${_filetype}" =~ "text" ]]; then
+		echo "text"
+	else
+		echo "binary"
+	fi
+}
+
+### command functions
+
+#
+# what
+#  print oneline usage created bt '@(#)' comment
+what() {
+	local _file
+	local _cmd _ver _desc
+
+	_file="$*"
+	_cmd=$(basename "$_file")
+	_ver=$(strings "$_file" | grep '@version' | head -1 | awk '{print $3}')
+	_desc=$(strings "$_file" | grep '@(#)' | head -1 | sed -e 's/[^.]*#)[ :]*//')
+
+	echo "${_cmd} ( v$_ver ) : ${_desc}"
+	return 0
+}
+
+##
+# header : print usage created by header comment
+#
+# @param nil
+# @return usage message
+#
+# @desc<<
+# print usage created by header commeny
+# message begins @help, @usage, @desc(ription) and
+# ends by null line or '<<'(for binary)
+#
+#<<
+header() {
+	local _file _type
+
+	_file="$*"
+	_type=$(_isBinary "$_file")
+
+	if [[ "$_type" == "text" ]]; then
+		cat "${_file}" \
+		| sed -r 1,"/^#[@ ]*(usage|help|desc)/d" \
+		|	sed -r '/^$/,${ d; }' \
+		| sed -r 's/^[#< ]*//' \
+		| cat -s
+	else
+		strings -w "${_file}" |
+			sed -r '1,/^#[ ]*@(usage|help|desc)/d' |
+			sed -r '/^$/,${ d; }' |
+			sed -e 's/^[#< ]*//' |
+			cat -s
+	fi
+}
+
+### main block (call this script as command)]
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+
+	## main functions
+
+	#
+	# usage : print usage messages from this command
+	#
+	usage() {
+		header "${THISCMD}"
+		exit 1
+	}
+
+	#
+	# print this command's version
+	#
+	version() {
+		what "${THISCMD}"
+		exit 0
+	}
+
+	#
+	# parse_args : check option and file from commanf line
+	#
+	parse_args() {
+		while getopts "dvh?" OPT; do
+			case $OPT in
+			d) FLAG_HEADER=1 ;;
+			v) version ;;
+			h | ?) usage ;;
+			esac
+		done
+		shift $((OPTIND - 1))
+		INPUT_FILES="$*"
+	}
+
+fi
+### end OF main functions
+
+### mai roution
+main() {
+	local _file
+
+	for _file in "${@}"; do
+		if [[ ! -f "${_file}" ]]; then
+			_file=$(which "${_file}")
+		fi
+		if [[ $FLAG_HEADER -ne 1 ]]; then
+			what "${_file}"
+		else
+			header "${_file}"
+		fi
+	done
+}
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+	parse_args "$@"
+
+	if [[ "${INPUT_FILES}" == "" ]]; then
+		version
+	else
+		main "${INPUT_FILES}"
+	fi
+fi
+

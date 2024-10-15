@@ -1,0 +1,31 @@
+##
+##
+##  @(#) : git global untrack file settings
+#        :   for Window
+##
+#
+# @version  1.0.0
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @update   202-09-24
+# @license  MIT
+#
+# @desc<<
+# git ignore files about,
+#  Windows XDG_BASE_CONFIG
+#
+#<<
+
+## Utils
+# TabNine
+**/TabNine/*
+# !**/TabNine/TabNine.toml
+!**/TabNine/*config*.json
+
+# git
+jgit/*
+
+
+## Languages
+# Racket
+_lock*
+racket-prefs.rktd

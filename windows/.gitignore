@@ -1,0 +1,25 @@
+##
+##  @(#) : gitignore for windows common settings
+#
+##
+#
+# @version  1.0.0
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @update   2024-02-10
+# @license  MIT
+#
+# @desc<<
+#
+# gitignore about windows settings
+#
+#<<
+
+
+
+## Windows specific
+# PowerShell
+powershell/modules/
+
+## Languages
+# Racket
+racket-prefs.rktd

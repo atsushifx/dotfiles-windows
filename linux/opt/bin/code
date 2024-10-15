@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# @(#) : VS Code executor for WSL
+#
+# @version 1.0.05
+# @author  Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date    2022-07-02
+# @license MIT
+#
+# @desc <<
+#
+# execute windows vs code with --remote option,
+# it's open folder remote wsl mode
+#
+#<<
+
+vscode=/mnt/c/app/develop/ide/VSCode
+"$vscode/bin/code" --remote wsl+$(hostname) $*
+

@@ -1,0 +1,21 @@
+##
+##  @(#) : git ignore for vim
+#
+##
+#
+# @version  1.0.0
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @update   2023-03-01
+# @license  MIT
+#
+# @desc
+# git ignore files about vim
+#
+#
+#
+#
+
+/*
+!/*rc
+!/*git*
+

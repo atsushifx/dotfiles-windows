@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+##
+# @(#) user specific bashrc
+#
+# @version  1.0.2
+# @date     2024-04-10
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @license  MIT
+#
+# @desc <<
+# user specific bashrc
+# user defined bashrc
+#<<
+
+# local env settings
+
+BASHRC_DIR="${XDG_CONFIG_HOME}/bash"
+BASHSCRIPTS_DIR="${BASHRC_DIR}/scripts"
+
+echo "Exec: .config/bash/bashrc"
+
+#
+# prompt : set prompt for bash
+#
+_set_prompt() {
+  local _colorprompt
+
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    _color_prompt=yes
+  else
+    _color_prompt=
+  fi
+
+  if [ "$_color_prompt" = yes ]; then
+    PS1='[\[\033[01;32m\]\u@\h\[\033[34m\] \W\[\033[00m\]] \$ '
+  else
+    PS1='[ ${debian_chroot:+($debian_chroot)}\u@\h \w] \$ '
+  fi
+  export PS1
+}
+_set_prompt
+
+## alias
+if [[ -f "${XDG_CONFIG_HOME}/aliases" ]]; then
+  . "${XDG_CONFIG_HOME}/aliases"
+fi
+
+## key config
+
+## bash completion
+#   completion from brew
+_cmpl_d="${HOMEBREW_PREFIX}/etc/bash_completion.d"
+if [[ -e "${_cmpl_d}" ]]; then
+  for f in ${_cmpl_d}/*; do
+    . "${f}"
+  done
+fi
+
+###   compltion for local bashrc
+# zoxide
+eval "$(zoxide init bash)"
+
+
+# carapace
+# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+# source <(carapace _carapace)
+
+# compleion scripts
+_cmpl_d="${BASHRC_DIR}/completion.d"
+if [[ -e "${_cmpl_d}" ]]; then
+  for f in ${_cmpl_d}/*.{sh,bash}; do
+    . "${f}"
+  done
+fi
+## wakatime-count
+_watatime_script="${BASHSCRIPTS_DIR}/bash_wakatime.sh"
+if [[ -f "${_watatime_script}" ]]; then
+  source "${_watatime_script}"
+fi
+
+## zoxide setup
+# eval "$(zoxide init bash --hook prompt )"
+
+## from WSL goto ~/temp
+[[ i$(pwd) =~ /mnt\/c/ ]] && cd ~/temp || return 1

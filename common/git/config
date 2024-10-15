@@ -1,0 +1,119 @@
+####
+# @(#) : git Linux / Windows common settings
+#
+# @version 1.0.1
+# @author  Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date    2022-07-18
+# @license MIT
+#
+# @desc<<
+#
+# git common settings for Windows & Linux
+# this file used by include directive from .gitconfig for Linux/Windows
+#
+#
+# THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
+# THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
+#
+#<<
+
+[core]
+	autocrlf = input
+	symlinks = true
+	attributesfile = ~/.local/dotfiles/common/git/attributes
+    excludesfile = ~/.local/dotfiles/common/git/ignore
+	smonitor = true
+	untrackedCache = true
+	ignorecase = false
+
+[color]
+	ui = true
+
+[init]
+	defaultBranch = main
+
+[push]
+	default = current
+
+[pull]
+	ff = only
+
+[merge]
+	ff = false
+	conflictstyle = zdiff3
+
+[branch]
+	sort = -committerdate
+
+[rebase]
+	autosquash = true
+	autostash = true
+	abbreviateCommands = true
+
+[fetch]
+
+[column]
+	ui = auto
+
+[diff]
+	tool = difftastic
+#	colorMoved = default
+#	algorithm = histogram
+[difftool]
+	prompt = false
+
+[difftool "difftastic"]
+	cmd = difft --skip-unchanged --strip-cr "$LOCAL" "$REMOTE"
+
+[pager]
+	difftool = true
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+
+#[interactive]
+#	diffFilter = delta --color-only
+
+[user]
+	name = Furukawa Atsushi
+	email = atsushifx@gmail.com
+
+[aliases]
+
+
+[alias]
+	ss = status -s
+	br = branch
+	co = checkout
+	sw = switch
+	diff = diff -b -w
+	dft = difftool
+	pr = pull -r
+	pushf = push --force-with-lease
+	co = checkout
+	st = status
+	tags = tag -l
+	remotes = remote -v
+	fixit = commit --amend --no-edit
+	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+	ll = log --stat --abbrev-commit
+	lg = log --color --graph --pretty=format:'%C(bold white)%h%Creset -%C(bold green)%d%Creset %s %C(bold green)(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+aliases = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[delta]
+	syntax-theme = Dracula
+	line-numbers = true
+	side-by-side = true
+	navigate = true
+	file-decoration-style = white box
+	hunk-header-style = omit
+
+[rerere]
+	enabled = true

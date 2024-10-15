@@ -1,0 +1,51 @@
+###
+#
+# @(#) : git global settings for WSL / Linux
+#
+# @version 1.0.2
+# @author  Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date    2023-04-17
+# @license MIT
+#
+# @desc<<
+#
+# git common settings for WSL / Linux
+# Windows / Linux common settings is .config/config-commoon
+#
+#
+# THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
+# THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
+#
+#<<
+
+[include]
+	path = ~/.local/dotfiles/common/git/config
+
+## general settings for Linux
+#
+#
+
+[core]
+	autocrlf = input
+	symlinks = true
+
+[commit]
+	gpgsign = false
+
+[pull]
+	ff = only
+
+
+[credential]
+	helper = store --file ~/.local/share/git/.git-credentials
+
+[credential "helperselector"]
+	selected = store
+	selected = cache
+
+
+[ghq]
+	root = ~/workspaces/education
+	root = ~/workspaces/sandbox
+	root = ~/workspaces/develop
+

@@ -1,0 +1,79 @@
+###
+#
+# @(#) : git Windows common settings
+#
+# @version 1.0.2
+# @author  Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date    2022-07-18
+# @license MIT
+#
+# @desc<<
+#
+# git common settings for Windows & Linux
+# this file used by include directive from .gitconfig for Linux/Windows
+#
+#
+# THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND.
+# THE ENTIRE RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER.
+#
+#<<
+
+# setting from common
+[include]
+	path = ~/.local/dotfiles/common/git/config
+
+## general settings for Windows Git
+#
+[core]
+	autocrlf = input
+	symlinks = true
+
+
+[commit]
+	gpgsign = false
+
+[user]
+	name = Furukawa Atsushi
+	email = atsushifx@gmail.com
+
+[pull]
+	ff = only
+
+[diff]
+	tool = p4merge
+
+[merge]
+	tool = p4merge
+
+[difftool]
+	prompt = false
+
+[mergetool]
+	prompt = false
+
+[fetch]
+
+[gpg]
+	program = C:\\app\\develop\\gnupg\\bin\\gpg.exe
+
+[credential]
+	helper = store --file ~/.local/share/git/.git-credentials
+	helper = manager
+
+[credential "helperselector"]
+	selected = manager
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[ghq]
+	root = ~/workspaces/gitworks
+	root = ~/workspaces/sandbox
+	root = ~/workspaces/education
+	root = ~/workspaces/develop
+
+[safe]
+	directory = C:/Users/atsushifx/app/scoop/apps/scoop/current

@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+#
+# @(#) : .profile main
+#
+# @version  1.0.2
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date     2023-04-10
+# @license  MIT
+#
+# @description
+# ~/.config/.profile: command interpreter main for login shells.
+# exec utilties settings & path  
+#
+
+# ~/.profile: executed by the command interpreter for login shells.
+
+# the default umask is set in /etc/profile; for setting the umask
+# for ssh logins, install and configure the libpam-umask package.
+umask 022
+
+echo "Exec .config/.profile"
+
+# // functions
+isInteractive() {
+  case $- in
+    *i*) return 1;;
+      *) return 0;;
+  esac
+  return 1;
+}
+
+
+# set PATH so it includes user's private bin if it exists
+
+# dotfiles shell scripts
+if [[ -d "$HOME/.local/dotfiles/linux/bin" ]] ; then
+    PATH="$PATH:$HOME/.local/dotfiles/linux/bin"
+fi
+if [[ -d "$HOME/.loca/bin" ]]; then
+    PATH="$PATH:$HOME/.local/bin"
+fi
+export PATH
+
+##  common environ settings
+if [[ -n "${XDG_CONFIG_HOME}/envrc" ]]; then
+  . "${XDG_CONFIG_HOME}/envrc"
+fi
+
+# in zsh this is called by zshenv
+
+# if running bash
+if [[ -n "$BASH_VERSION" ]]; then
+  # user defined bashrc
+  if [[ isInteractive ]] && [[ -f ${XDG_CONFIG_HOME}/bash/bashrc ]]; then
+    . "${XDG_CONFIG_HOME}/bash/bashrc"
+  fi
+fi
+
+
+# opam configuration setup
+# test -r /home/atsushifx/.local/share/opam/opam-init/init.sh && . /home/atsushifx/.local/share/opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# eval $(opam env)

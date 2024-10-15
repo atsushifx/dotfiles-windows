@@ -1,0 +1,49 @@
+##
+##  ignore files using  git
+##    for windows dotfiles
+##
+
+### general file settings
+#
+
+###
+#	editor backups
+
+
+###
+# credentials
+#
+**/.ssh/*
+**/.gnupg/*
+*cred*
+
+###
+#
+# Windows settings
+#
+
+
+## PowerShell
+
+# ignore modules
+**/powershell/Modules/*
+**/PSReadLine/
+
+## Scoop
+
+# ignore scoop settings
+**/scoop/
+
+## pnpm ?
+**/configStore/*
+
+
+
+##
+# unix settings
+
+
+## shell & apps
+*hist*
+*info*
+

@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+#
+# @(#) envrci environment setting for all users 
+#
+# @version  1.0.1
+# @author   Furukawa, Atsushi <atsushifx@aglabo.com>
+# @date     2023-04-10
+# @license  MIT
+#
+#
+# @desc<<
+#
+#<<
+
+echo "Exec: envrc"
+
+## common environment setup
+#
+# XDG BASE DIRECTORY
+#
+XDG_CONFIG_HOME="${HOME}/.config"
+XDG_DATA_HOME="${HOME}/.local/share"
+XDG_CACHE_HOME="${HOME}/.local/cache"
+XDG_STATE_HOME="${HOME}/.local/states"
+export XDG_CONFIG_HOME XDG_DATA_HOME XDG_CACHE_HOME XDG_STATE_HOME
+
+##
+#
+# zsh specific
+#
+if [[ "${SHELL}" =~ "zsh" ]]; then
+  export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+fi
+
+
+# setup for brew
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+if [[ -d "${HOMEBREW_PREFIX}" ]]; then
+  HOMEBREW_CACHE="${HOMEBREW_PREFIX}/.local/cache"
+  HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar";
+  HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew";
+  
+  PATH="${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin:${PATH+:$PATH}";
+  MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+  INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+
+  export HOMEBREW_PREFIX HOMEBREW_CACHE HOMEBREW_CELLAR HOMEBREW_REPOSITORY
+  export PATH MANPATH INFOPATH
+fi
+
+## environ settings for all users
+
+# gnupg
+export GNUPGHOME="${XDG_DATA_HOME}"/gnupg
+export GPG_TTY=$( tty )
+
+
+# specific path
+# sysad define command's directory
+if [ "$(id -u)" -eq 0 ] && [ -d /opt/sbin ]; then
+  export PATH=${PATH}:/opt/sbin
+fi
+if [ -d /opt/bin ]; then
+  export PATH=${PATH+:$PATH}:/opt/bin
+fi

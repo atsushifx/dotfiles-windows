@@ -1,0 +1,19 @@
+init.author.email=atsushifx@aglabo.com
+init.author.name=Furukawa, Atsushi
+init.license=MIT
+init.module=C:\Users\atsushifx\.config\pnpm\init.js
+;;init.version=0.1.0
+init-author-email=atsushifx@aglabo.com
+init-author-name=Furukawa, Atsushi
+init-license=MIT
+init-module=C:\Users\atsushifx\.config\pnpm\init.js
+init-version=0.1.0
+
+## global setup directory
+global-dir=${XDG_DATA_HOME}/pnpm
+global-bin-dir=${XDG_DATA_HOME}/pnpm
+
+
+# peer devevdancy
+auto-install-peers=true
+strict-peer-dependencies=false
