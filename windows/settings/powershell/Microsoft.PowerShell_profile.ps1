@@ -55,7 +55,10 @@ function global:prompt() {
   $prompt
 }
 
-
+<#
+  .SYNOPSIS
+  write sudo message if user works as admin
+#>
 function private:write-sudo-messages() {
   $white = "$([char]0x1b)[37;1m"
   $cyan = "$([char]0x1b)[36;1m"
@@ -110,7 +113,8 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 carapace _carapace | Out-String | Invoke-Expression
 
 # Wakatime setup
-. $SCRIPTSDIR"/pwsh-wakatime.ps1"
+# use wakatime for windows 
+. "$SCRIPTSDIR/pwsh-wakatime.ps1"
 
 
 # BuildTools Path
