@@ -28,13 +28,13 @@
 	autocrlf = input
 	symlinks = true
 
-
 [commit]
-	gpgsign = false
+	gpgsign = true
 
 [user]
 	name = Furukawa Atsushi
 	email = atsushifx@gmail.com
+	signkey = 005D8871DD059FF3
 
 [pull]
 	ff = only
