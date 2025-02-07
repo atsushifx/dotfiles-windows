@@ -106,6 +106,8 @@ Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { . $_.FullNa
 
 
 ## Other tools
+$env:NODE_PATH=$env:PNPM_HOME + "\5\node_modules"
+
 # carapace completior
 $env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
