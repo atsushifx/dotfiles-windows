@@ -1,0 +1,29 @@
+## @(#) : lefthook config
+#
+# @version 1.0.0
+# @author  Furukawa, Atsushi <atsushifx@gmail.com>
+# @date    2024-02-05
+# @license MIT
+#
+# @desc<<
+#
+# git hook configuration by lefthook
+#
+#<<
+
+pre-commit:
+  parallel: true
+  commands:
+    gitleaks:
+      run: gitleaks protect --staged
+
+    secretlint:
+      glob: '**/*'
+      run: secretlint --maskSecrets --secretlintignore .gitignore "{staged_files}"
+
+# check commit message style
+commit-msg:
+  parallel: true
+  commands:
+    commitlint:
+      run: pnpx commitlint -e
