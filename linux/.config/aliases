@@ -15,6 +15,10 @@ echo "Exec: aliases"
 
 # setup alias
 
+# applications
+alias www-browser="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
+
+# languages
 alias ocaml="rlwrap -f . ocaml "
 alias sml="rlwrap -f . sml "
 

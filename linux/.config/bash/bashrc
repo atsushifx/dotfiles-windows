@@ -48,6 +48,10 @@ fi
 ## key config
 
 ## bash completion
+#   carapace completion
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+source <(carapace _carapace)
+
 #   completion from brew
 _cmpl_d="${HOMEBREW_PREFIX}/etc/bash_completion.d"
 if [[ -e "${_cmpl_d}" ]]; then
