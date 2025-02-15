@@ -1,12 +1,12 @@
-init.author.email=atsushifx@aglabo.com
-init.author.name=Furukawa, Atsushi
+init.author.email=atsushifx@gmail.com
+init.author.name=Furukawa Atsushi
 init.license=MIT
-init.module=C:\Users\atsushifx\.config\pnpm\init.js
+init.module=${XDG_CONFIG_HOME}\pnpm\init.js
 ;;init.version=0.1.0
-init-author-email=atsushifx@aglabo.com
-init-author-name=Furukawa, Atsushi
+init-author-email=atsushifx@gmail.com
+init-author-name=Furukawa Atsushi
 init-license=MIT
-init-module=C:\Users\atsushifx\.config\pnpm\init.js
+init-module=${XDG_CONFIG_HOME}\pnpm\init.js
 init-version=0.1.0
 
 ## global setup directory
