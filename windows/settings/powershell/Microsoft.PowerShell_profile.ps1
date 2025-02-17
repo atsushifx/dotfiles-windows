@@ -5,8 +5,8 @@
   .DESCRIPTION
     powershell initialize script.
     this is:
-      set Script Vsrisble through `libs/commonSettings.inc.ps1'
-      set predictiion wuth completion
+      set Script Variables through `libs/commonSettings.inc.ps1'
+      set prediction with completion
       customize key config
       setup completion from `completion.d/*/ps1'
       set wakatime heartbeat
@@ -28,7 +28,7 @@ Set-StrictMode -version latest
 . $PSScriptRoot'/libs/commonSettings.inc.ps1'
 setupScriptCommonConstants
 
-### Libralies
+### Libraries
 . ($LIBSDIR + "cliFunctions.inc.ps1")  # for readline function
 
 $private:baseDir = Split-Path -path $profile
@@ -43,16 +43,16 @@ $private:baseDir = Split-Path -path $profile
 #>
 function global:prompt() {
 
-  # define prompt
-  $isAdmin = [aglaUserRole]::isAdmin()
-  $psChar = $isAdmin ? " # " :  " > "
-  $currentPath = (Split-Path (Get-Location) -Leaf)
-  $currentDrive = (Convert-Path \).substring(0, 1)
-  $userName = $env:USERNAME
+	# define prompt
+	$isAdmin = [aglaUserRole]::isAdmin()
+	$psChar = $isAdmin ? " # " :  " > "
+	$currentPath = (Split-Path (Get-Location) -Leaf)
+	$currentDrive = (Convert-Path \).substring(0, 1)
+	$userName = $env:USERNAME
 
-  # Prompt return
-  $prompt = $currentDrive + ": /" + $currentPath + $psChar
-  $prompt
+	# Prompt return
+	$prompt = $currentDrive + ": /" + $currentPath + $psChar
+	$prompt
 }
 
 <#
@@ -60,15 +60,15 @@ function global:prompt() {
   write sudo message if user works as admin
 #>
 function private:write-sudo-messages() {
-  $white = "$([char]0x1b)[37;1m"
-  $cyan = "$([char]0x1b)[36;1m"
-  $neutral = "$([char]0x1b)[m"
-  $messages = "${white}You gave ...${neutral}`n
+	$white = "$([char]0x1b)[37;1m"
+	$cyan = "$([char]0x1b)[36;1m"
+	$neutral = "$([char]0x1b)[m"
+	$messages = "${white}You gave ...${neutral}`n
     ${cyan}#1${neutral}) Respect the privacy of others.
     ${cyan}#2${neutral}) Think before you type.
     ${cyan}#3${neutral}) With great power comes great responsibility.
   "
-  $messages | write-output
+	$messages | write-output
 }
 
 <#
@@ -76,14 +76,14 @@ function private:write-sudo-messages() {
 	set current working directory to workspaces if call from menu/explorer
 #>
 function private:Set-WorkingDir() {
-  $cur = Get-Location
-  if ($cur -eq $env:USERPROFILE) {
-    Set-Location $USERPROFILE+"/workspaces"
-  }
+	$cur = Get-Location
+	if ($cur -eq $env:USERPROFILE) {
+		Set-Location $USERPROFILE+"/workspaces"
+	}
 }
 
 
-### main roution
+### main routine
 ##
 Set-WorkingDir
 
@@ -106,23 +106,23 @@ Get-ChildItem -Path "$basedir/completion.d/*.ps1" | ForEach-Object { . $_.FullNa
 
 
 ## Other tools
-$env:NODE_PATH=$env:PNPM_HOME + "\5\node_modules"
+$env:NODE_PATH = $env:PNPM_HOME + "\5\node_modules"
 
-# carapace completior
-$env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+# carapace completion tool for powershell
+# $env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 carapace _carapace | Out-String | Invoke-Expression
 
 # Wakatime setup
-# use wakatime for windows 
+# use wakatime for windows
 . "$SCRIPTSDIR/pwsh-wakatime.ps1"
 
 
 # BuildTools Path
-# $env:path += "C:\app\develop\VS\VC\Tools\MSVC\14.39.33519\bin\Hostx64\x64;"
-# $env:path += "C:\app\develop\VS\MSBuild\Current\Bin\Roslyn;"
-# $env:path += "C:\app\develop\VS\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;"
+
+# pnpm monorepo
+$env:path += ".\app\tools\node_modules\.bin"
 
 # setup ocaml
 # (& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }
@@ -131,5 +131,5 @@ carapace _carapace | Out-String | Invoke-Expression
 
 # sudo messages
 if ([aglaUserRole]::isAdmin()) {
-  write-sudo-messages;
+	write-sudo-messages;
 }

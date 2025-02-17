@@ -1,0 +1,13 @@
+;; Environments Variable name
+LIBSDIR
+SCRIPTSDIR
+
+;; with in filename, variables
+keyconfig
+multisource
+
+;; shell intellisense
+inshellisense
+
+;; Tool name
+opam

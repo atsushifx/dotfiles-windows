@@ -1,0 +1,21 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaryDefinitions": [
+    {
+      "name": "userCommon",
+      "description": "user common dictionary",
+      "path": "${env:XDG_CONFIG_HOME}/cSpell/dicts/user-common.dic",
+      "addWords": true
+    },
+    {
+      "name": "user",
+      "description": "user dictionary for this project.",
+      "path": "$(workspaceFolder)/.vscode/cspell/dicts/user.dic"
+    }
+  ]
+],
+"dictionaries": [
+  "userCommon"
+]
+}
