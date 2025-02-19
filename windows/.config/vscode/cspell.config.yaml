@@ -1,0 +1,22 @@
+## @(#) : cSpell user global settings
+#
+# This file is used to configure the cSpell extension for Visual Studio Code.
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/packages/cspell-types/cspell.schema.json
+version: "0.2"
+language: en
+dictionaryDefinitions:
+  - name: user-dic
+    description: dictionary words for user settings
+    path: "${env:XDG_CONFIG_HOME}/vscode/cSpell/user.dic
+    addWords: true
+  - name: project-dic
+    description: dictionary words for project level
+    path: ${workspaceFolder}/.vscode/cSpell/project.dic
+    addWords: true
+dictionaries:
+  - user
+  - project
+  - companies
+  - software-terms
+useGitignore: true
+
