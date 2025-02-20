@@ -1,0 +1,33 @@
+// @(#) :  cspell config for user centric settings
+{
+	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/packages/cspell-types/cspell.schema.json",
+	"version": "0.2",
+	"language": "en",
+	"caseSensitive": true,
+	"dictionaryDefinitions": [
+		{
+			"name": "user-dic",
+			"description": "dictionary words for user settings",
+			"path": "${env:XDG_CONFIG_HOME}/vscode/cSpell/user.dic",
+			"addWords": true,
+			"scope": "user"
+		},
+		{
+			"name": "project-dic",
+			"description": "user dictionary for this project",
+			"path": "./cspell/dicts/project.dic",
+			"addWords": true,
+			"scope": "workspace"
+		}
+	],
+	"dictionaries": [
+		"en-us",
+		"software-terms",
+		"public-licenses",
+		"shellscript",
+		"vim",
+		"user-dic",
+		"project-dic"
+	],
+	"useGitignore": true
+}

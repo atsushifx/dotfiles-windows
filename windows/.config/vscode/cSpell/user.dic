@@ -1,14 +1,10 @@
-## @(#) : cSpell user dictionary
-
-##  User Name, Handle
+# @(#) : cSpell user dictionary
 Atsushi
-Furukawa
 atsushifx
-
-##
-dicts
-
-
-## development tools
-wakatime
-
+difftool
+Furukawa
+gitworks
+gpgsign
+helperselector
+mergetool
+signingkey
